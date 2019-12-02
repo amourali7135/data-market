@@ -1,6 +1,7 @@
 class CreateBuyers < ActiveRecord::Migration[5.2]
   def change
     create_table :buyers do |t|
+      t.string :name
       t.text :biography
       t.text :intentions
       t.string :website
@@ -11,6 +12,7 @@ class CreateBuyers < ActiveRecord::Migration[5.2]
       t.string :city
       t.string :phone
       t.string :email
+      t.string :types
       t.references :user, foreign_key: true
 
       t.timestamps

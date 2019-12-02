@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2019_12_01_194157) do
   enable_extension "plpgsql"
 
   create_table "buyers", force: :cascade do |t|
+    t.string "name"
     t.text "biography"
     t.text "intentions"
     t.string "website"
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_12_01_194157) do
     t.string "city"
     t.string "phone"
     t.string "email"
+    t.string "types"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -35,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_12_01_194157) do
   create_table "data", force: :cascade do |t|
     t.string "format"
     t.text "content"
+    t.string "types"
     t.bigint "seller_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -57,6 +60,9 @@ ActiveRecord::Schema.define(version: 2019_12_01_194157) do
     t.text "usage"
     t.text "reward"
     t.boolean "anonymous"
+    t.integer "total"
+    t.string "types"
+    t.boolean "accept?"
     t.bigint "buyer_id"
     t.bigint "seller_id"
     t.bigint "datum_id"
@@ -107,6 +113,7 @@ ActiveRecord::Schema.define(version: 2019_12_01_194157) do
     t.string "birth_country"
     t.boolean "smoker"
     t.string "education_level"
+    t.string "types"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

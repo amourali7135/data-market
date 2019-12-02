@@ -19,6 +19,7 @@ class CreateSellers < ActiveRecord::Migration[5.2]
       t.string :birth_country
       t.boolean :smoker
       t.string :education_level
+      t.string :types
       t.references :user, foreign_key: true
 
       t.timestamps

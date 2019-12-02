@@ -5,10 +5,12 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :validatable
 
 
-  has_one :seller
-  has_one :buyer
+  has_one :seller, dependent: :destroy
+  has_one :buyer, dependent: :destroy
   has_many :data, through: :sellers, dependent: :destroy
   has_many :inquiries, through: :buyers, dependent: :destroy
+  has_many :payments, through: :buyers, dependent: :destroy
+  has_many :transactions, through: :data, dependent: :destroy
 
 
 end

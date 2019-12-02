@@ -55,7 +55,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1070" y="210" name="buyers">
+<table x="1002" y="165" name="buyers">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -160,7 +160,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="100" y="26" name="data">
+<table x="81" y="34" name="data">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -182,7 +182,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="822" y="16" name="inquiries">
+<table x="787" y="50" name="inquiries">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -200,6 +200,9 @@
 <default>NULL</default></row>
 <row name="anonymous?" null="1" autoincrement="0">
 <datatype>BOOLEAN</datatype>
+<default>NULL</default></row>
+<row name="total" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="id_buyers" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -266,7 +269,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="544" y="32" name="payments">
+<table x="567" y="40" name="payments">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -310,7 +313,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="631" y="274" name="transaction">
+<table x="577" y="268" name="transaction">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
