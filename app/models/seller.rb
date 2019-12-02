@@ -38,6 +38,6 @@ class Seller < ApplicationRecord
   end
 
   def self.occupation #Be broad.
-    ['Male', 'Female' ].sort
+    ['Teacher', 'Academia',  ].sort
   end
 end
