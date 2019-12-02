@@ -1,2 +1,18 @@
-<h1>Data#new</h1>
-<p>Find me in app/views/data/new.html.erb</p>
+Do it right...
+
+<div class="container-small mt-3">
+<div class="row align-items-center justify-content-center">
+<h2>Please provide the info for whatever you feel comfortable sharing with others!</h2>
+</div>
+
+<div class="row align-items-center justify-content-center">
+<%= simple_form_for [@seller, @data] do |f|%>
+<%= f.input :format %>
+<%= f.input :content %>
+<%= f.input :types %>
+<div style="text-align:center">
+<%= f.button :submit, 'Submit', class: 'btn btn-danger'%>
+</div>
+<% end %>
+</div>
+</div>

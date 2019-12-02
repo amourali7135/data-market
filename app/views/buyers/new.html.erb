@@ -1,2 +1,29 @@
-<h1>Buyers#new</h1>
-<p>Find me in app/views/buyers/new.html.erb</p>
+Have booleans/select 2/everything done right bro.  Country gem.
+
+<div class="container-small mt-3">
+<div class="row align-items-center justify-content-center">
+<h2>Please provide the info for whatever you feel comfortable sharing with others!</h2>
+</div>
+
+<div class="row align-items-center justify-content-center">
+<%= simple_form_for @buyer do |f|%>
+<%= f.input :name %>
+<%= f.input :biography %>
+<%= f.input :intentions %>
+<%= f.input :website %>
+<%= f.input :contact %>
+<%= f.input :size %>
+<%= f.input :country %>
+<%= f.input :city %>
+<%= f.input :phone %>
+<%= f.input :email %>
+<%= f.input :types %>
+<%= f.input :photo %>
+<%= f.input :photo_cache, as: :hidden %>
+<%= f.input :github, label: "Github Username", placeholder: "Github.com/username" %>
+<div style="text-align:center">
+<%= f.button :submit, 'Submit', class: 'btn btn-danger'%>
+</div>
+<% end %>
+</div>
+</div>
