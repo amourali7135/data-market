@@ -1,9 +1,8 @@
 class CreateInquiries < ActiveRecord::Migration[5.2]
   def change
     create_table :inquiries do |t|
-      t.text :information
+      t.text :information_usage
       t.text :requirements
-      t.text :usage
       t.text :reward
       t.boolean :anonymous
       t.integer :total

@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     resources :inquiries
   end
 
-  resources :payments, except: [:index]
+  resources :orders, except: [:index]
 
   resources :transactions, except: [:index]
 

@@ -1,1 +1,34 @@
-Please provide whatever information about yourself you are comfortable with sharing.  The more specific information you give, the more likely it is that you'll be matched to a data buyer though!
+Have booleans/select 2/everything done right bro.  Warning on top properly.
+
+<div class="container-small mt-3">
+<div class="row align-items-center justify-content-center">
+<h2>IMPORTANT!</h2>
+<h2>Please provide however much personal information you are comfortable with providing.</h2>
+<h2>The more you provide, the higher likelihood of matching with a buyer you will likely be.</h2>
+</div>
+
+<div class="row align-items-center justify-content-center">
+<%= simple_form_for @seller do |f|%>
+<%= f.input :age %>
+<%= f.input :types, collection: Seller.types, input_html: {multiple: true, id: "buyer_types"}, label: "What types of data would you be interested in selling?" %>
+<%= f.input :country, collection: CountryStateSelect.countries_collection.sort, input_html: {id: "buyers_country"} %>
+<%= f.input :birth_country, collection: CountryStateSelect.countries_collection.sort, input_html: {id: "buyers_country"}, label: "Birth country if different than current country" %>
+<%= f.input :city %>
+<%= f.input :sex, collection: Seller.sexes %>
+<%= f.input :occupation, collection: Seller.occupation %>
+<%= f.input :income %>
+<%= f.input :ethnicity, collection: Seller.ethnicity %>
+<%= f.input :race, collection: Seller.race %>
+<%= f.input :religion, collection: Seller.religion %>
+<%= f.input :sexuality, collection: Seller.sexuality %>
+<%= f.input :politics, collection: Seller.politics %>
+<%= f.input :relationship_status, collection: Seller.relationship_status %>
+<%= f.input :children, label: "Do you have children?" %>
+<%= f.input :smoker, label: "Do you smoke?" %>
+<%= f.input :education_level, collection: Seller.education_level %>
+<div style="text-align:center">
+<%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+</div>
+<% end %>
+</div>
+</div>

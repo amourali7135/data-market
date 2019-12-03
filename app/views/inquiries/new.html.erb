@@ -1,2 +1,22 @@
-<h1>Inquiries#new</h1>
-<p>Find me in app/views/inquiries/new.html.erb</p>
+Have booleans/select 2/everything done right bro.
+
+<div class="container-small mt-3">
+<div class="row align-items-center justify-content-center">
+<h2>Please provide information about the data that you are seeking out!</h2>
+</div>
+
+<div class="row align-items-center justify-content-center">
+<%= simple_form_for @inquiry do |f|%>
+<%= f.input :information_usage, label: "What type of data are you seeking?" %>
+<%= f.input :requirements, label: "What is required of the seller that's providing their data?" %>
+<%= f.input :reward, label: "How much are you offering for this data?" %>
+<%= f.input :anonymous, label: "Does the identity of the seller of the data need to be provided as well?" %>
+<%= f.input :total, label: "How many people do you need data from?" %>
+<%= f.input :intentions, label: "What do you seek to do with the data you are after?" %>
+<%= f.input :types, collection: Inquiry.types, input_html: {multiple: true, id: "buyer_types"}, label: "What types of data are you interested in purchasing?" %>
+<div style="text-align:center">
+<%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+</div>
+<% end %>
+</div>
+</div>

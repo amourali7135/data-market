@@ -5,9 +5,10 @@ class Seller < ApplicationRecord
   # validate presence of anything?
   #above age 18!!!
   validates :age, presence: true
+  validates :types, presence: true
 
   def self.sexes
-    ['Male', 'Female', 'Other' ]
+    ['Male', 'Female', 'Other', ]
   end
 
   def self.ethnicity #lots, shit
@@ -41,4 +42,9 @@ class Seller < ApplicationRecord
   def self.occupation #Be broad.
     ['Teacher', 'Academia',  ].sort
   end
+
+  def self.types #Try here and calling data.types both!
+    ['Medical', 'Financial', 'Personal', 'Business', 'Political', 'Internet', 'Phone', 'Google', 'Social Media', 'Life', 'Academic', 'Survey' ].sort
+  end
+
 end

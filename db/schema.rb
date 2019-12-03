@@ -54,9 +54,8 @@ ActiveRecord::Schema.define(version: 2019_12_01_194157) do
   end
 
   create_table "inquiries", force: :cascade do |t|
-    t.text "information"
+    t.text "information_usage"
     t.text "requirements"
-    t.text "usage"
     t.text "reward"
     t.boolean "anonymous"
     t.integer "total"
@@ -157,3 +156,4 @@ ActiveRecord::Schema.define(version: 2019_12_01_194157) do
   add_foreign_key "transactions", "data"
   add_foreign_key "transactions", "inquiries"
 end
+uyer

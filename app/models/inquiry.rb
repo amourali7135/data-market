@@ -13,4 +13,7 @@ class Inquiry < ApplicationRecord
 
   #How the fuck to make this not be a spam like result?  Shit.
 
+  def self.types #Try here and calling data.types both!
+    ['Medical', 'Financial', 'Personal', 'Business', 'Political', 'Internet', 'Phone', 'Google', 'Social Media', 'Life', 'Academic', 'Survey' ].sort
+  end
 end
