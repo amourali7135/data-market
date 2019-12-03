@@ -9,7 +9,7 @@ class Data < ApplicationRecord
   validates :types, presence: true
 
   def self.types #so many possibilities to keep adding
-    ['Medical', 'Financial', 'Personal', 'Business', 'Political', 'Internet', 'Phone', 'Google', 'Social Media', 'Life', 'Academic', '' ].sort
+    ['Medical', 'Financial', 'Personal', 'Business', 'Political', 'Internet', 'Phone', 'Google', 'Social Media', 'Life', 'Academic', 'Survey' ].sort
   end
 
 end

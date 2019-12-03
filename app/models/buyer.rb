@@ -1,4 +1,5 @@
 class Buyer < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
 
   belongs_to :user
   has_many :inquiries, dependent: :destroy
@@ -10,9 +11,10 @@ class Buyer < ApplicationRecord
   validates :biography, presence: true
   validates :intentions, presence: true
   validates :types, presence: true
+  validates :country, presence: true
 
   def self.types #Try here and calling data.types both!
-    ['Medical', 'Financial', 'Personal', 'Business', 'Political', 'Internet', 'Phone', 'Google', 'Social Media', 'Life', 'Academic', '' ].sort
+    ['Medical', 'Financial', 'Personal', 'Business', 'Political', 'Internet', 'Phone', 'Google', 'Social Media', 'Life', 'Academic', 'Survey' ].sort
   end
 
 

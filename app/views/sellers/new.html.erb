@@ -1,1 +1,34 @@
-Please provide whatever information about yourself you are comfortable with sharing.  The more specific information you give, the more likely it is that you'll be matched to a data buyer though!
+Have booleans/select 2/everything done right bro.  Country gem.
+
+<div class="container-small mt-3">
+<div class="row align-items-center justify-content-center">
+<h2>NOTE!  Please provide information about yourself and what you seek data for.</h2>
+</div>
+
+<div class="row align-items-center justify-content-center">
+<%= simple_form_for @buyer do |f|%>
+<%= f.input :age %>
+<%= f.input :country, collection: CountryStateSelect.countries_collection.sort, input_html: {id: "buyers_country"} %>
+<%= f.input :birth_country, collection: CountryStateSelect.countries_collection.sort, input_html: {id: "buyers_country"}, label: "Birth country if different than current country" %>
+<%= f.input :city %>
+<%= f.input :sex, collection: Seller.sexes, %>
+<%= f.input :occupation, collection: Seller.occupation, %>
+<%= f.input :income %>
+<%= f.input :ethnicity, collection: Seller.ethnicity, %>
+<%= f.input :race, collection: Seller.race, %>
+<%= f.input :religion, collection: Seller.religion, %>
+<%= f.input :sexuality, collection: Seller.sexuality, %>
+<%= f.input :politics, collection: Seller.politics, %>
+<%= f.input :relationship_status, collection: Seller.relationship_status, %>
+<%= f.input :children, collection: Seller.children, %>
+<%= f.input :smoker %>
+<%= f.input :education_level, collection: Seller.education_level, %>
+<%= f.input :types, collection: Seller.types, input_html: {multiple: true, id: "buyer_types"}, label: "What types of data would you be interested in selling?" %>
+<%= f.input :photo %>
+<%= f.input :photo_cache, as: :hidden %>
+<div style="text-align:center">
+<%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+</div>
+<% end %>
+</div>
+</div>

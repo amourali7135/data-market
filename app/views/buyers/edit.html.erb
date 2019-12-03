@@ -1,1 +1,27 @@
-Copy and paste from the new page after it's done perfectly with referrals n shit.
+Have booleans/select 2/everything done right bro.  Country gem.
+
+<div class="container-small mt-3">
+<div class="row align-items-center justify-content-center">
+<h2>Please provide information about yourself and what you seek data for.</h2>
+</div>
+
+<div class="row align-items-center justify-content-center">
+<%= simple_form_for @buyer do |f|%>
+<%= f.input :name %>
+<%= f.input :biography %>
+<%= f.input :intentions, label: "What do you seek to do with the data you are after?" %>
+<%= f.input :website, label: "Please provide the full URL of your website.", placeholder: "www.yourwebsite.com" %>
+<%= f.input :contact, label: "How can you be contacted?", placeholder: "Email, phone number, etc." %>
+<%= f.input :size, label: "How many people are associated with your data seeking group?" %>
+<%= f.input :country, collection: CountryStateSelect.countries_collection.sort, input_html: {id: "buyers_country"} %>
+<%= f.input :city %>
+<%= f.input :phone %>
+<%= f.input :types, collection: Buyer.types, input_html: {multiple: true, id: "buyer_types"}, label: "What types of data are you interested in purchasing?" %>
+<%= f.input :photo %>
+<%= f.input :photo_cache, as: :hidden %>
+<div style="text-align:center">
+<%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+</div>
+<% end %>
+</div>
+</div>

@@ -4,9 +4,10 @@ class Seller < ApplicationRecord
 
   # validate presence of anything?
   #above age 18!!!
+  validates :age, presence: true
 
-  def self.sex
-    ['Male', 'Female' ]
+  def self.sexes
+    ['Male', 'Female', 'Other' ]
   end
 
   def self.ethnicity #lots, shit
