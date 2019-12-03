@@ -9,10 +9,11 @@ class Buyer < ApplicationRecord
   validates :name, presence: true
   validates :biography, presence: true
   validates :intentions, presence: true
-  validates :email, presence: true
   validates :types, presence: true
 
-
+  def self.types #Try here and calling data.types both!
+    ['Medical', 'Financial', 'Personal', 'Business', 'Political', 'Internet', 'Phone', 'Google', 'Social Media', 'Life', 'Academic', '' ].sort
+  end
 
 
 end

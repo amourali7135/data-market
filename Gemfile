@@ -15,6 +15,8 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'country_select'
+gem 'country_state_select'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

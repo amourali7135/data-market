@@ -11,7 +11,6 @@ class CreateBuyers < ActiveRecord::Migration[5.2]
       t.string :country
       t.string :city
       t.string :phone
-      t.string :email
       t.string :types
       t.references :user, foreign_key: true
 

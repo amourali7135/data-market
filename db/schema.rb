@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2019_12_01_194157) do
     t.string "country"
     t.string "city"
     t.string "phone"
-    t.string "email"
     t.string "types"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -73,15 +72,16 @@ ActiveRecord::Schema.define(version: 2019_12_01_194157) do
     t.index ["seller_id"], name: "index_inquiries_on_seller_id"
   end
 
-  create_table "payments", force: :cascade do |t|
+  create_table "orders", force: :cascade do |t|
     t.integer "deposit"
     t.integer "amount"
+    t.string "status"
     t.bigint "buyer_id"
     t.bigint "transaction_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["buyer_id"], name: "index_payments_on_buyer_id"
-    t.index ["transaction_id"], name: "index_payments_on_transaction_id"
+    t.index ["buyer_id"], name: "index_orders_on_buyer_id"
+    t.index ["transaction_id"], name: "index_orders_on_transaction_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -149,8 +149,8 @@ ActiveRecord::Schema.define(version: 2019_12_01_194157) do
   add_foreign_key "inquiries", "buyers"
   add_foreign_key "inquiries", "data"
   add_foreign_key "inquiries", "sellers"
-  add_foreign_key "payments", "buyers"
-  add_foreign_key "payments", "transactions"
+  add_foreign_key "orders", "buyers"
+  add_foreign_key "orders", "transactions"
   add_foreign_key "reviews", "buyers"
   add_foreign_key "reviews", "transactions"
   add_foreign_key "sellers", "users"
