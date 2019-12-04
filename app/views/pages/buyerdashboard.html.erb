@@ -1,7 +1,6 @@
 Restrict access via dual account system.
 Inquiries, trades, success, etc.
 
-Restrict access via dual account system.  Inquiries.
 
 
 <div class="row align-items-center justify-content-center">
@@ -22,7 +21,13 @@ Restrict access via dual account system.  Inquiries.
 <div class="row align-items-center justify-content-center">
 <div class="row">
 <%# <p> See your conversations! <%= link_to 'Convos', conversation_path(@user), class: 'btn btn-primary' %>
-<p> See your conversations! <%= link_to 'Convos', conversations_path, class: 'btn btn-primary' %> </p>
+<p> See your conversations! <%#= link_to 'Convos', conversations_path, class: 'btn btn-primary' %> </p>
+  </div>
+</div>
+
+<div class="row align-items-center justify-content-center">
+<div class="row">
+<p>Make a new inquiry  <%= link_to 'New Inquiry', new_buyer_inquiry_path(@buyer.id), class: 'btn btn-primary'  %>   </p>
   </div>
 </div>
 

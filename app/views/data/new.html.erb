@@ -9,7 +9,7 @@ Do it right...
 <%= simple_form_for [@seller, @data] do |f|%>
 <%= f.input :format %>
 <%= f.input :content %>
-<%= f.input :types %>
+<%= f.input :types, collection: Datum.types, input_html: {multiple: true, id: "data_type_new"}, label: "What type of data is this?" %>
 <div style="text-align:center">
 <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
 </div>

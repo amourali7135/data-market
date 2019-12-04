@@ -3,7 +3,7 @@ class Datum < ApplicationRecord
   belongs_to :seller
   # has_one :data_types #Sure?
   has_one :order
-  has_many :trades, through: :data#, :source => :order #Is it one of seller or order?  Change if wrong.
+  has_many :trades, through: :data, :source => :seller #Is it one of seller or order?  Change if wrong.
 
 
   validates :format, presence: true

@@ -11,6 +11,7 @@ class InquiriesController < ApplicationController
   def create
     @inquiry = Inquiry.new(inquiry_params)
     @inquiry.user_id = current_user.id
+    @buyer = current_user.buyer
     if @inquiry.save
       flash[:notice] = "Your inquiry was successfully created!"
       redirect_to @inquiry
