@@ -1,6 +1,6 @@
 class Seller < ApplicationRecord
   belongs_to :user
-  has_many :data
+  has_many :data, dependent: :destroy
 
   # validate presence of anything?
   #above age 18!!!

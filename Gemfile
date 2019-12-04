@@ -19,7 +19,7 @@ gem 'country_select'
 gem 'country_state_select'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
-
+gem 'pg_search'
 
 
 group :development do

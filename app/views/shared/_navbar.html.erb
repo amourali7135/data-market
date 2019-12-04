@@ -10,10 +10,35 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+          <%= link_to "Home", root_path, class: "nav-link" %>
+        </li>
+    <li class="nav-item active">
+          <%= link_to "Inquiries", inquiries_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "Sellers", sellers_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "Buyers", buyers_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "About Us", about_path, class: "nav-link" %>
+        </li>
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
+          <%= link_to "Redundantfill", "#", class: "nav-link" %>
         </li>
+        <% if current_user.buyer %>
+        <li class="nav-item active">
+          <%= link_to "Buyer Dashboard", buyerdashboard_path, class: "nav-link" %>
+        </li>
+        <% end %>
+        <% if current_user.seller %>
+        <li class="nav-item active">
+          <%= link_to "Seller Dashboard", sellerdashboard_path, class: "nav-link" %>
+        </li>
+        <% end %>
         <li class="nav-item">
           <%= link_to "Messages", "#", class: "nav-link" %>
         </li>

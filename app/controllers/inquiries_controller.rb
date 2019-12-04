@@ -1,5 +1,6 @@
 class InquiriesController < ApplicationController
   def index
+    @buyers = Buyer.all  #MEMORY WILL KILL, OH well...
     @inquiries = Inquiry.all
   end
 

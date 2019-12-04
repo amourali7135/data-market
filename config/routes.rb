@@ -52,8 +52,10 @@ Rails.application.routes.draw do
   end
 
   resources :buyers do
-    resources :inquiries
+    resources :inquiries, except: [:index]
   end
+
+  resources :inquiries, only: [:index]
 
   resources :orders, except: [:index]
 

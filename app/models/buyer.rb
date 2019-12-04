@@ -4,8 +4,9 @@ class Buyer < ApplicationRecord
   belongs_to :user
   has_many :inquiries, dependent: :destroy
   has_many :transactions, dependent: :destroy
+  # has_many :transactions, through: :orders,  dependent: :destroy
   has_many :reviews
-  has_many :orders, through: :transactions, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   validates :name, presence: true
   validates :biography, presence: true

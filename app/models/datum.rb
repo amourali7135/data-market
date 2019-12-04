@@ -1,8 +1,8 @@
-class Data < ApplicationRecord
+class Datum < ApplicationRecord
 
   belongs_to :seller
-  has_one :data_types #Sure?
-  has_one :payment
+  # has_one :data_types #Sure?
+  has_one :order
 
   validates :format, presence: true
   validates :content, presence: true

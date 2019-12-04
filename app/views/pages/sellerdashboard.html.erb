@@ -1,1 +1,24 @@
-Restrict access via dual account system.
+Restrict access via dual account system.  Inquiries.
+
+
+<div class="row align-items-center justify-content-center">
+  <div class="row">
+    <p>Edit your seller profile  <%= link_to 'Edit', edit_seller_path(@seller.id), class: 'btn btn-primary'  %>   </p>
+  </div>
+</div>
+
+
+<div class="row align-items-center justify-content-center">
+<div class="row">
+<p>Change your username or password  <%= link_to 'Change', edit_user_registration_path(@current_user.id), class: 'btn btn-primary'  %>   </p>
+  </div>
+</div>
+
+
+
+<div class="row align-items-center justify-content-center">
+<div class="row">
+<%# <p> See your conversations! <%= link_to 'Convos', conversation_path(@user), class: 'btn btn-primary' %>
+<p> See your conversations! <%= link_to 'Convos', conversations_path, class: 'btn btn-primary' %> </p>
+  </div>
+</div>
