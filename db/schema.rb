@@ -76,22 +76,22 @@ ActiveRecord::Schema.define(version: 2019_12_01_194157) do
     t.integer "amount"
     t.string "status"
     t.bigint "buyer_id"
-    t.bigint "transaction_id"
+    t.bigint "trade_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["buyer_id"], name: "index_orders_on_buyer_id"
-    t.index ["transaction_id"], name: "index_orders_on_transaction_id"
+    t.index ["trade_id"], name: "index_orders_on_trade_id"
   end
 
   create_table "reviews", force: :cascade do |t|
     t.text "writeup"
     t.integer "rating"
     t.bigint "buyer_id"
-    t.bigint "transaction_id"
+    t.bigint "trade_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["buyer_id"], name: "index_reviews_on_buyer_id"
-    t.index ["transaction_id"], name: "index_reviews_on_transaction_id"
+    t.index ["trade_id"], name: "index_reviews_on_trade_id"
   end
 
   create_table "sellers", force: :cascade do |t|
@@ -119,15 +119,15 @@ ActiveRecord::Schema.define(version: 2019_12_01_194157) do
     t.index ["user_id"], name: "index_sellers_on_user_id"
   end
 
-  create_table "transactions", force: :cascade do |t|
+  create_table "trades", force: :cascade do |t|
     t.date "date"
     t.integer "price"
     t.bigint "datum_id"
     t.bigint "inquiry_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["datum_id"], name: "index_transactions_on_datum_id"
-    t.index ["inquiry_id"], name: "index_transactions_on_inquiry_id"
+    t.index ["datum_id"], name: "index_trades_on_datum_id"
+    t.index ["inquiry_id"], name: "index_trades_on_inquiry_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -149,11 +149,10 @@ ActiveRecord::Schema.define(version: 2019_12_01_194157) do
   add_foreign_key "inquiries", "data"
   add_foreign_key "inquiries", "sellers"
   add_foreign_key "orders", "buyers"
-  add_foreign_key "orders", "transactions"
+  add_foreign_key "orders", "trades"
   add_foreign_key "reviews", "buyers"
-  add_foreign_key "reviews", "transactions"
+  add_foreign_key "reviews", "trades"
   add_foreign_key "sellers", "users"
-  add_foreign_key "transactions", "data"
-  add_foreign_key "transactions", "inquiries"
+  add_foreign_key "trades", "data"
+  add_foreign_key "trades", "inquiries"
 end
-uyer

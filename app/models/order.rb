@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :buyer
-  belongs_to :transaction
+  belongs_to :trade
 
   validates :amount, presence: true
 
