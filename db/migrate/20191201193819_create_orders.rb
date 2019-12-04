@@ -5,7 +5,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.integer :amount
       t.string :status
       t.references :buyer, foreign_key: true
-      t.references :transaction, foreign_key: true
+      t.references :trade, foreign_key: true
 
       t.timestamps
     end

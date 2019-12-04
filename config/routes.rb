@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'orders/new'
+  get 'orders/create'
+  get 'orders/show'
+  get 'orders/update'
+  get 'orders/destroy'
+  get 'orders/edit'
+  get 'trades/new'
+  get 'trades/create'
+  get 'trades/show'
+  get 'trades/update'
+  get 'trades/destroy'
+  get 'trades/edit'
   # get 'search/index'
   # get 'reviews/new'
   # get 'reviews/create'
@@ -59,7 +71,7 @@ Rails.application.routes.draw do
 
   resources :orders, except: [:index]
 
-  resources :transactions, except: [:index]
+  resources :trades, except: [:index]
 
   resources :reviews, except: [:index]
 

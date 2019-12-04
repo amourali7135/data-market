@@ -1,4 +1,4 @@
-class Transaction < ApplicationRecord
+class Trade < ApplicationRecord
   has_one :data
   has_one :inquiry
 

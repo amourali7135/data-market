@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :data, through: :seller, dependent: :destroy
   has_many :inquiries, through: :buyer, dependent: :destroy
   has_many :orders, through: :buyer, dependent: :destroy
-  has_many :transactions, through: :data, dependent: :destroy
+  has_many :trades, through: :data, dependent: :destroy
 
   Datum = 'test'
 end

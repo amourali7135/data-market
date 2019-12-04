@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @buyer = Buyer.find(params[:id])
-    @transaction = Transaction.find(params[:id])
+    @trade = Trade.find(params[:id])
     if @order.save
       flash[:notice] = "Your order was successfully created!"
       redirect_to @order

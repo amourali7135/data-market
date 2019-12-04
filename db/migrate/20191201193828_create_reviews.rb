@@ -4,7 +4,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.text :writeup
       t.integer :rating
       t.references :buyer, foreign_key: true
-      t.references :transaction, foreign_key: true
+      t.references :trade, foreign_key: true
 
       t.timestamps
     end
