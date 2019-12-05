@@ -1,10 +1,9 @@
 class Inquiry < ApplicationRecord
   belongs_to :buyer
-  belongs_to :seller
-  belongs_to :data
+  belongs_to :seller, optional: true
+  belongs_to :data, optional: true
 
   validates :requirements, presence: true
-  validates :usage, presence: true
   validates :reward, presence: true
   validates :anonymous, presence: true
   validates :total, presence: true
