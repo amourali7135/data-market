@@ -1,2 +1,5 @@
-Make an index to show outsiders how many buyers are on here.  Searchable MAYBE.
-Buyer partial card to render here too.
+<% @buyers.each do |buyer| %>
+  <div>
+    <%= render partial: 'shared/buyer_index_card', locals: {buyer: buyer} %>
+  </div>
+<% end %>

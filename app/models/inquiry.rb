@@ -1,6 +1,6 @@
 class Inquiry < ApplicationRecord
   belongs_to :buyer
-  belongs_to :seller, optional: true
+  belongs_to :seller, optional: true #how to have multiple?
   belongs_to :data, optional: true
 
   validates :requirements, presence: true

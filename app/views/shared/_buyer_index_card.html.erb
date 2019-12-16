@@ -1,0 +1,19 @@
+<div class="buyer-index-card">
+  <img src=<%= buyer.photo %> />
+  <div class="buyer-index-card-infos">
+    <p><strong><%= buyer.name %></strong></p>
+    <p><strong>Biography: </strong><%= buyer.biography.truncate(150) %></p>
+    <p><strong>Intentions: </strong><%= buyer.intentions %></p>
+    <%= link_to "#{buyer.website}", "https://buyer.website" %>
+    <br>
+    <%= link_to 'See this buyer!', buyer_path(buyer.id), method: :get, class: 'btn btn-primary'  %>
+  </div>
+
+  <div class="d-flex justify-content-between w-100">
+    <p> </p>
+    <p>    </p>
+    <p>  </p>
+  </div>
+</div>
+
+

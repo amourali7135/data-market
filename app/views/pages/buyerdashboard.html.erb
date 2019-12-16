@@ -33,8 +33,25 @@ Inquiries, trades, success, etc.
 
 <div class="row align-items-center justify-content-center">
 <div class="row">
-
-<p> See your inquiries! <%= link_to 'Your Inquiries', buyer_inquiries_path(@buyer.id), class: 'btn btn-primary' %> </p>
+<p> See your inquiries page! <%= link_to 'Your Inquiries', buyer_inquiries_path(@buyer.id), class: 'btn btn-primary' %> </p>
   </div>
+</div>
+
+
+<div class="dashboard_container mt-4">
+<p class="grid-headers">Edit or delete your inquiries below</p>
+<div class="row align-items-center justify-content-center ">
+      <div class="container front-page-grid">
+<% @buyer.inquiries.each do |inquiry| %>
+    <div class="row">
+    <div class=" products pl-5 card-grid-3c">
+   <div>
+    <%= render partial: 'shared/art_card_dashboard', locals: {art: art} %>
+  </div>
+<% end %>
+  </div>
+</div>
+</div>
+</div>
 </div>
 

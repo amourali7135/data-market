@@ -1,3 +1,10 @@
-test
+Make card fatter/taller to show more info...pic needed?
 
+<% @inquiries.each do |inquiry| %>
+   <div class="row align-items-center justify-content-center">
+      <div class="col-sm-6">
+   <%= render partial: 'shared/inquiry_index_card', locals: {inquiry: inquiry, buyer: inquiry.buyer} %>
+ </div>
+ </div>
+<% end %>
 
