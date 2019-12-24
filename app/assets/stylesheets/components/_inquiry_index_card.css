@@ -1,6 +1,6 @@
 .inquiry-index-card {
   overflow: hidden;
-  height: 140px;
+  height: 150px;
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -23,6 +23,6 @@
   margin-bottom: 0;
   margin-top: 4px;
 }
-.inquiry-index-card buyer-index-card-infos {
+.inquiry-index-card .inquiry-index-card-infos {
   padding: 16px;
 }

@@ -12,6 +12,16 @@ class Inquiry < ApplicationRecord
 
   #How the fuck to make this not be a spam like result?  Shit.
 
+  include PgSearch::Model
+  pg_search_scope :global_search,
+  against: [ :information_usage, :requirements, :reward, :types,  ],
+  # associated_against: {
+  #   director: [ :first_name, :last_name ]
+  # },
+  using: {
+    tsearch: { prefix: true }
+  }
+
   def self.types #Try here and calling data.types both!
     ['Medical', 'Financial', 'Personal', 'Business', 'Political', 'Internet', 'Phone', 'Google', 'Social Media', 'Life', 'Academic', 'Survey' ].sort
   end

@@ -39,11 +39,11 @@ class InquiriesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @inquiry = Inquiry.find(params[:id])
     @inquiry.destroy
     flash[:notice] = "Your inquiry was successfully deleted!"
-    redirect_to root_path
+    redirect_to buyerdashboard_path
   end
 
   def edit

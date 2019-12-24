@@ -2,7 +2,7 @@ Restrict access via dual account system.
 Inquiries, trades, success, etc.
 
 
-
+<div class="dashboard_container">
 <div class="row align-items-center justify-content-center">
   <div class="row">
     <p>Edit your buyer profile  <%= link_to 'Edit', edit_buyer_path(@buyer.id), class: 'btn btn-primary'  %>   </p>
@@ -36,6 +36,7 @@ Inquiries, trades, success, etc.
 <p> See your inquiries page! <%= link_to 'Your Inquiries', buyer_inquiries_path(@buyer.id), class: 'btn btn-primary' %> </p>
   </div>
 </div>
+</div>
 
 
 <div class="dashboard_container mt-4">
@@ -43,14 +44,12 @@ Inquiries, trades, success, etc.
 <div class="row align-items-center justify-content-center ">
       <div class="container front-page-grid">
 <% @buyer.inquiries.each do |inquiry| %>
-    <div class="row">
-    <div class=" products pl-5 card-grid-3c">
-   <div>
-    <%= render partial: 'shared/art_card_dashboard', locals: {art: art} %>
+    <div class="row align-items-center justify-content-center">
+      <div class="col-sm-4">
+    <%= render partial: 'shared/inquiry_dashboard_card', locals: {inquiry: inquiry, buyer: inquiry.buyer} %>
   </div>
 <% end %>
   </div>
-</div>
 </div>
 </div>
 </div>

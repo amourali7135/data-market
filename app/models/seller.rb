@@ -7,6 +7,16 @@ class Seller < ApplicationRecord
   validates :age, presence: true
   validates :types, presence: true
 
+  include PgSearch::Model
+  pg_search_scope :global_search,
+  against: [ :age, :country, :sex, :occupation, :city, :income, :ethnicity, :race, :religion, :sexuality, :politics, :relationship_status, :children, :verified, :birth_country, :smoker, :education_level, :types  ],
+  # associated_against: {
+  #   director: [ :first_name, :last_name ]
+  # },
+  using: {
+    tsearch: { prefix: true }
+  }
+
   def self.sexes
     ['Male', 'Female', 'Other', ]
   end
