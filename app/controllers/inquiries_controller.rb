@@ -1,7 +1,14 @@
 class InquiriesController < ApplicationController
   def index
-    @buyers = Buyer.all  #MEMORY WILL KILL, OH well...
-    @inquiries = Inquiry.all
+    if params["search"] #reject '' in middle added 112619
+      @filter = params["search"]
+      @filter = params["search"]["information_usage"].concat([params['requirements']]).concat([params["search"]["reward"]]).concat([params["search"]["types"]]).concat([params["search"]["information_usage"]])flatten.reject(&:blank?)
+      @buyers = Buyer.global_search(@filter)
+      @inquiries = Inquiry.global_search(@filter)
+    else #112619 I added this while trying to get sort to work.
+      @buyers = Buyer.all
+      @inquiries = Inquiry.all
+    end
   end
 
   def new

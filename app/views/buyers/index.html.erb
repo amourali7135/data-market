@@ -4,16 +4,17 @@
       <h2 class="text-dark row align-items-center justify-content-center py-2">Browse those seeking to buy data!</h2>
           </div>
 
-   <%#= simple_form_for :search, url: browse_path, method: "GET" do |f| %>
-    <%#= f.input :tag_ids, collection: Tag.art_kinds, input_html: {multiple: true}, label: "What kind of artist do you do want?", required: false %>
+<div class="container">
+   <%= simple_form_for :search, url: buyers_path, method: "GET" do |f| %>
+    <%#= f.input :name, collection: Tag.art_kinds, input_html: {multiple: true}, label: "What kind of artist do you do want?", required: false %>
     <%#= f.input :tag_ids, collection: Tag.art_types, input_html: {multiple: true, id: 'browse_genre_tags'}, label: "What genre of art do you want?", required: false%>
     <%#= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: { id: "browse_country"} %>
     <%#= f.input :city, id:"artist_city2", required: false %>
     <%#= f.input :sorted_by, :collection => %w[most_comments most_likes most_viewed most_recent], required: false %>
-    <%#= link_to "Reset", browse_path  %>
-    <%#= f.submit 'Submit', class: 'btn btn-primary'%>
-  <%# end %>
-
+    <%= link_to "Reset", buyers_path  %>
+    <%= f.submit 'Submit', class: 'btn btn-primary'%>
+  <% end %>
+</div>
 
    <div class="content">
       <div class="products pl-5 card-grid-3c">

@@ -13,6 +13,7 @@ const initSelect2 = () => {
   $("#seller_type_edit").select2();
   $("#seller_type_new").select2();
   $("#buyers_country").select2();
+  $("#buyer_search_type").select2();
 }
 
 
