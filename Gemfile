@@ -23,6 +23,8 @@ gem 'pg_search'
 gem "select2-rails"
 gem "algoliasearch-rails"
 gem 'geocoder'
+gem 'acts_as_votable'
+
 
 
 group :development do

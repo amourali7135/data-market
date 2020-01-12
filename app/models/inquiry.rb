@@ -3,6 +3,8 @@ class Inquiry < ApplicationRecord
   belongs_to :seller, optional: true #how to have multiple?
   belongs_to :data, optional: true
 
+  acts_as_votable
+
   validates :requirements, presence: true
   validates :reward, presence: true
   validates :anonymous, presence: true

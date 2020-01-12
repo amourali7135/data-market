@@ -13,6 +13,7 @@ class Buyer < ApplicationRecord
   validates :intentions, presence: true
   validates :types, presence: true
   validates :country, presence: true
+  #validates :website, presence: true
 
   include PgSearch::Model
   pg_search_scope :global_search,

@@ -10,12 +10,12 @@ Have booleans/select 2/everything done right bro.  Warning on top properly.
 <div class="row align-items-center justify-content-center">
 <%= simple_form_for @seller do |f|%>
 <%= f.input :age %>
-<%= f.input :types, collection: Seller.types, input_html: {multiple: true, id: "seller_type_edit"}, label: "What types of data would you be interested in selling?" %>
+<%= f.input :types, collection: Seller.types, input_html: {multiple: true, id: "seller_type_new"}, label: "What types of data would you be interested in selling?" %>
 <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, input_html: {id: "buyers_country"} %>
 <%= f.input :birth_country, collection: CountryStateSelect.countries_collection.sort, input_html: {id: "buyers_country"}, label: "Birth country if different than current country" %>
-<%= f.input :city, input_html: {id: "sellers_city"} %>
 <%= f.input :sex, collection: Seller.sexes %>
-<%= f.input :occupation, collection: Seller.occupation %>
+<%= f.input :city, input_html: {id: "sellers_city"} %>
+<%= f.input :occupation, collection: Seller.occupation, input_html: {id: "sellers_occupation"} %>
 <%= f.input :income %>
 <%= f.input :ethnicity, collection: Seller.ethnicity %>
 <%= f.input :race, collection: Seller.race %>

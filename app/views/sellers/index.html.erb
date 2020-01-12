@@ -5,15 +5,15 @@ Show vital info!  Can do grids...
       <h2 class="text-dark row align-items-center justify-content-center py-2">Browse sellers from around the world whom you can obtain data from!</h2>
           </div>
 
-   <%#= simple_form_for :search, url: browse_path, method: "GET" do |f| %>
-    <%#= f.input :tag_ids, collection: Tag.art_kinds, input_html: {multiple: true}, label: "What kind of artist do you do want?", required: false %>
+   <%= simple_form_for :search, url: browse_path, method: "GET" do |f| %>
+    <%#= f.input :types, collection: Seller.types, input_html: {multiple: true}, label: "What kind of data do you want to buy?", required: false %>
     <%#= f.input :tag_ids, collection: Tag.art_types, input_html: {multiple: true, id: 'browse_genre_tags'}, label: "What genre of art do you want?", required: false%>
     <%#= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: { id: "browse_country"} %>
     <%#= f.input :city, id:"artist_city2", required: false %>
     <%#= f.input :sorted_by, :collection => %w[most_comments most_likes most_viewed most_recent], required: false %>
-    <%#= link_to "Reset", browse_path  %>
-    <%#= f.submit 'Submit', class: 'btn btn-primary'%>
-  <%# end %>
+    <%= link_to "Reset", browse_path  %>
+    <%= f.submit 'Submit', class: 'btn btn-primary'%>
+  <% end %>
 
 
    <div class="content">

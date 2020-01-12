@@ -8,7 +8,7 @@
 <%= f.input :name %>
 <%= f.input :biography %>
 <%= f.input :types, collection: Buyer.types, input_html: {multiple: true, id: "buyer_types_new"}, label: "What types of data are you interested in purchasing?" %>
-<%= f.input :intentions, label: "What do you seek to do with the data you are after?" %>
+<%= f.input :intentions, label: "What do you seek to do with the data you are after?", placeholder: "We need this data/survey/information/etc. for our startup/research/business/etc." %>
 <%= f.input :website, label: "Please provide the full URL of your website.", placeholder: "www.yourwebsite.com" %>
 <%= f.input :contact, label: "How can you be contacted?", placeholder: "Email, phone number, etc." %>
 <%= f.input :size, label: "How many people are associated with your data seeking group?" %>
