@@ -11,6 +11,7 @@ class Inquiry < ApplicationRecord
   validates :total, presence: true
   validates :types, presence: true
   validates :information_usage, presence: true
+  validates :format, presence: true
 
   #How the fuck to make this not be a spam like result?  Shit.
 
@@ -25,6 +26,10 @@ class Inquiry < ApplicationRecord
   }
 
   def self.types #Try here and calling data.types both!
-    ['Medical', 'Financial', 'Personal', 'Business', 'Political', 'Internet', 'Phone', 'Google', 'Social Media', 'Life', 'Academic', 'Survey', 'Questionnaire', 'Poll',  ].sort
+    ['Medical', 'Financial', 'Personal', 'Business', 'Political', 'Internet', 'Phone', 'Google', 'Social Media', 'Life', 'Academic', 'Survey', 'Questionnaire', 'Poll', 'Photo', 'Software', 'Psychological',  ].sort
+  end
+
+  def self.format
+    ['Document', 'Photo' 'PDF', 'File', 'Bills', 'Software', 'Online', 'Paperwork', 'Spreadsheet', 'Numbers', 'Questionannaire',  ].sort
   end
 end

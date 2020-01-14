@@ -32,7 +32,7 @@ class Seller < ApplicationRecord
     ['White', 'Black/African-American', 'Hispanic/Latin American', 'Asian', 'Middle Eastern', 'Native American', 'Pacific Islander', 'Multiracial' ].sort
   end
 
-  def self.religion #Should I get specific with sects?  
+  def self.religion #Should I get specific with sects?
     ['Catholic', 'Protestant', 'Sunni Islam','Shiia Islam', 'Jewish', 'Hindu', 'Buddhist', 'Atheist', 'Agnostic', 'Spiritual', 'Areligious', 'Folk Medicine', 'Pagan', 'Wiccan', 'Chinese traditional medicine', 'Confucian', 'Shinto', 'Tao', 'Primal-Indigenous', 'African', 'Bahai', 'Sikh',  ].sort
   end
 
@@ -52,7 +52,7 @@ class Seller < ApplicationRecord
     ['Did not finish high school', 'High School Graduate', 'Some College', 'Undergraduate Degree', 'Associates Degree', 'Graduate/Masters Degree', 'Professional Degree', 'Doctorate Degree', 'Technical/Trade School', 'In College', 'In Grad School', 'In Trade/Tech School', 'In Professional School', 'In A Doctorate Program'  ].sort
   end
 
-  def self.occupation 
+  def self.occupation
     ["accountant",
 		"actor",
 		"actuary",
@@ -1021,7 +1021,7 @@ class Seller < ApplicationRecord
   end
 
   def self.types #Try here and calling data.types both!
-    ['Medical', 'Financial', 'Personal', 'Business', 'Political', 'Internet', 'Phone', 'Google', 'Social Media', 'Life', 'Academic', 'Survey', 'Questionnaire', 'Poll', 'Photo', ''  ].sort
+    ['Medical', 'Financial', 'Personal', 'Business', 'Political', 'Internet', 'Phone', 'Google', 'Social Media', 'Life', 'Academic', 'Survey', 'Questionnaire', 'Poll', 'Photo', 'Software', 'Psychological',  ].sort
   end
 
 end
