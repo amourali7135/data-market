@@ -27,7 +27,7 @@ class TradesController < ApplicationController
     @trade = Trade.find(params[:id])
     if @trade.update(trade_params)
       flash[:notice] = "Your trade profile was successfully updated!"
-      redirect_to buyer_dashboard_path
+      redirect_to buyerdashboard_path
     else
       flash[:error] = "There was an error, please try again!"
       render 'edit'

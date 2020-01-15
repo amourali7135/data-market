@@ -39,7 +39,7 @@ class InquiriesController < ApplicationController
     @inquiry = Inquiry.find(params[:id])
     if @inquiry.update(inquiry_params)
       flash[:notice] = "Your inquiry profile was successfully updated!"
-      redirect_to dashboard_path
+      redirect_to buyerdashboard_path
     else
       flash[:error] = "There was an error, please try again!"
       render 'edit'

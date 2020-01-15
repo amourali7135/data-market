@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     if @order.update(order_params)
       flash[:notice] = "Your order profile was successfully updated!"
-      redirect_to buyer_dashboard_path
+      redirect_to buyerdashboard_path
     else
       flash[:error] = "There was an error, please try again!"
       render 'edit'

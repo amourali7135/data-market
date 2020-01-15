@@ -12,7 +12,7 @@ class BuyersController < ApplicationController
     @buyer.user_id = current_user.id
     if @buyer.save
       flash[:notice] = "Your buyer profile was successfully created!"
-      redirect_to buyer_dashboard_path
+      redirect_to buyerdashboard_path
     else
       flash[:notice] = "There was an error, please try again!"
       render "new"
@@ -29,7 +29,7 @@ class BuyersController < ApplicationController
     @buyer = Buyer.find(params[:id])
     if @buyer.update(buyer_params)
       flash[:notice] = "Your buyer profile was successfully updated!"
-      redirect_to buyer_dashboard_path
+      redirect_to buyerdashboard_path
     else
       flash[:error] = "There was an error, please try again!"
       render 'edit'

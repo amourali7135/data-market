@@ -15,6 +15,10 @@ const initSelect2 = () => {
   $("#buyers_country").select2();
   $("#buyer_search_type").select2();
   $("#sellers_occupation").select2();
+  $("#sellers_income").select2();
+  $('#sellers_country_edit').select2();
+  $('#seller_index_sex').select2();
+  $('#seller_index_occupation').select2();
 }
 
 

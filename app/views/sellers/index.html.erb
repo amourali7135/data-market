@@ -5,13 +5,28 @@ Show vital info!  Can do grids...
       <h2 class="text-dark row align-items-center justify-content-center py-2">Browse sellers from around the world whom you can obtain data from!</h2>
           </div>
 
-   <%= simple_form_for :search, url: browse_path, method: "GET" do |f| %>
-    <%#= f.input :types, collection: Seller.types, input_html: {multiple: true}, label: "What kind of data do you want to buy?", required: false %>
-    <%#= f.input :tag_ids, collection: Tag.art_types, input_html: {multiple: true, id: 'browse_genre_tags'}, label: "What genre of art do you want?", required: false%>
-    <%#= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: { id: "browse_country"} %>
-    <%#= f.input :city, id:"artist_city2", required: false %>
+   <% #Put conditional so this shows only if buyers logged in, and do select 2 right for the multiple options, and make it a hidden menu, ranges for age + income, booleans how? Get rid of verified for now... %>
+   <%= simple_form_for :search, url: sellers_path, method: "GET" do |f| %>
+    <%= f.input :types, collection: Seller.types, label: "What type of data are you seeking to buy?", required: false %>
+    <%= f.input :age, as: :range, label: "What age do you want the sellers to be?", required: false %>
+    <%= f.input :sex, collection: Seller.sexes, input_html: { id: 'seller_index_sex'}, label: "Do you want data from only a certain sex?  Leave blank if not.", required: false%>
+    <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: { id: "browse_country"}, label: "Do you want data from people in a certain country?", required: false %>
+    <%= f.input :occupation, collection: Seller.occupation, input_html: {multiple: true, id: 'seller_index_occupation'}, label: "Do you want data from sellers of a certain occupation or several?", required: false %>
+    <%= f.input :city, input_html: { id: 'seller_index_search' }, label: "Do you want data from sellers in a certain city?", required: false %>
+    <%= f.input :income, collection: Seller.income, label: "Do you want data from sellers of certain incomes?", input_html: { multiple: true}, required: false %>
+    <%= f.input :ethnicity, collection: Seller.ethnicity, label: "Do you want data from sellers of a certain ethnic group?",  required: false %>
+    <%= f.input :race, collection: Seller.race, label: "Do you want data from sellers of a certain racial group?", required: false %>
+    <%= f.input :religion, collection: Seller.religion, label: "Do you want data from sellers of a certain religious group?", required: false %>
+    <%= f.input :sexuality, collection: Seller.sexuality, label: "Do you want data from sellers of a certain sexuality?", required: false %>
+    <%= f.input :politics, collection: Seller.politics, label: "Do you want data from sellers of a certain political orientation?", required: false %>
+    <%= f.input :relationship_status, collection: Seller.relationship_status, label: "Do you want data from sellers of a certain relationship status?", required: false %>
+    <%= f.input :children, as: :radio_buttons, label: "Do you want data from sellers with children?", required: false %> 
+    <%= f.input :verified, as: :radio_buttons, label: "Do you only want data from sellers who are verified?", required: false %>
+    <%= f.input :birth_country, collection: CountryStateSelect.countries_collection.sort, label: "Do you want data from sellers who were born in a certain country?", required: false %>
+    <%= f.input :smoker, as: :radio_buttons, label: "Do you want data from sellers who are smokers?", required: false %>
+    <%= f.input :education_level, label: "Do you want data from sellers whom possess a certain educational level?", required: false %>
     <%#= f.input :sorted_by, :collection => %w[most_comments most_likes most_viewed most_recent], required: false %>
-    <%= link_to "Reset", browse_path  %>
+    <%= link_to "Reset", sellers_path  %>
     <%= f.submit 'Submit', class: 'btn btn-primary'%>
   <% end %>
 

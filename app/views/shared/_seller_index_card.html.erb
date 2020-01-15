@@ -12,8 +12,8 @@
     <%= link_to 'View Seller', seller_path(seller.id), method: :get, class: 'btn btn-primary'  %>
   </div>
   <div class="d-flex justify-content-between w-100">
-    <p>Location: $<%= seller.country %></p>
-    <p>Sex: <%= seller.sex %></p>
-    <p>Income: <%= seller.income %></p>
+    <p><strong>Location: </strong><%= seller.country %></p>
+    <p><strong>Sex: </strong><%= seller.sex %></p>
+    <p><strong>Income: </strong><%= seller.income %></p>
   </div>
 </div>

@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     if @review.update(review_params)
       flash[:notice] = "Your review profile was successfully updated!"
-      redirect_to dashboard_path
+      redirect_to sellerdashboard_path #Change later.
     else
       flash[:error] = "There was an error, please try again!"
       render 'edit'
