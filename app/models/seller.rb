@@ -16,6 +16,7 @@ class Seller < ApplicationRecord
   # associated_against: {
   #   director: [ :first_name, :last_name ]
   # },
+  # lambda { |record| record.age {{CONDITION HERE}} }
   using: {
     tsearch: { prefix: true }
   }
