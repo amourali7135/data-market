@@ -1,11 +1,13 @@
 class SellersController < ApplicationController
   def index
     if params["search"]
-      @filter = params["search"]["tag_ids"].reject { |tag| tag == '' }.concat([params['country']]).concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)
+      @filter = params["search"]["types"].reject { |type| type == '' }.concat([params["search"]['age']]).concat([params["search"]["country"]]).concat([params["search"]["sex"]]).concat([params["search"]["occupation"]]).concat([params["search"]["city"]]).concat([params["search"]["income"]]).concat([params["search"]["ethnicity"]]).concat([params["search"]["race"]]).concat([params["search"]["religion"]]).concat([params["search"]["sexuality"]]).concat([params["search"]["politics"]]).concat([params["search"]["relationship_status"]]).concat([params["search"]["children"]]).concat([params["search"]["verified"]]).concat([params["search"]["birth_country"]]).concat([params["search"]["smoker"]]).concat([params["search"]["education_level"]]).flatten.reject(&:blank?)
+      # @filter = params["search"]#["search"]
       @sellers = Seller.global_search(@filter)
     else
       @sellers = Seller.all
     end
+    # raise
   end
   
   def new
@@ -17,7 +19,7 @@ class SellersController < ApplicationController
     @seller.user_id = current_user.id
     if @seller.save
       flash[:notice] = "Your seller profile was successfully created!"
-      redirect_to @seller
+      redirect_to sellerdashboard_path
     else
       flash[:notice] = "There was an error, please try again!"
       render "new"

@@ -19,6 +19,8 @@ const initSelect2 = () => {
   $('#sellers_country_edit').select2();
   $('#seller_index_sex').select2();
   $('#seller_index_occupation').select2();
+  $('#seller_index_types').select2();
+  $('#seller_index_incomes').select2();
 }
 
 

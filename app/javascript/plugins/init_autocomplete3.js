@@ -10,5 +10,5 @@ const initAutocomplete3 = () => {
 };
 
 export {
-  initAutocomplete2
+  initAutocomplete3
 };
