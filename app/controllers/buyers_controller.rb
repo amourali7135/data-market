@@ -23,6 +23,7 @@ class BuyersController < ApplicationController
     @user = current_user
     # @user = User.find(params[:user_id])
     @buyer = Buyer.find(params[:id])
+    # @conversation = Conversation.find_by(author: @user, receiver: @artist)
   end
 
   def update

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_14_223431) do
+ActiveRecord::Schema.define(version: 2020_01_17_113109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 2020_01_14_223431) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_buyers_on_user_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "author_id"
+    t.bigint "conversation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_conversations_on_author_id"
+    t.index ["conversation_id"], name: "index_conversations_on_conversation_id"
   end
 
   create_table "data", force: :cascade do |t|
@@ -71,6 +80,19 @@ ActiveRecord::Schema.define(version: 2020_01_14_223431) do
     t.index ["buyer_id"], name: "index_inquiries_on_buyer_id"
     t.index ["datum_id"], name: "index_inquiries_on_datum_id"
     t.index ["seller_id"], name: "index_inquiries_on_seller_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.boolean "read"
+    t.bigint "buyer_id"
+    t.bigint "seller_id"
+    t.bigint "conversation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_messages_on_buyer_id"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["seller_id"], name: "index_messages_on_seller_id"
   end
 
   create_table "orders", force: :cascade do |t|

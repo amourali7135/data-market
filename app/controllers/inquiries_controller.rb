@@ -33,6 +33,7 @@ class InquiriesController < ApplicationController
   def show
     @user = current_user
     @inquiry = Inquiry.find(params[:id])
+    # @conversation = Conversation.find_by(author: @user, receiver: @artist)
   end
   
   def update
