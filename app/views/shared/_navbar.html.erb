@@ -39,8 +39,26 @@
           <%= link_to "Seller Dashboard", sellerdashboard_path, class: "nav-link" %>
         </li>
         <% end %>
+        <li class="nav-item active">
+        <% counter = 0 %>
+        <% Conversation.where('author_id = ? OR receiver_id = ?', current_user.id, current_user.id).each do |conversation| %>
+
+          <% if Message.where(conversation: conversation).where.not(user_id: current_user.id).where(read: false).length > 0 %>
+            <% counter += Message.where(conversation: conversation).where.not(user_id: current_user.id).where(read: false).length %>
+          <% end %>
+        <% end %>
+        <div class="position-relative">
+        <% if counter > 0  %>
+                    <div class="notification-badge">
+                      <i class="fas fa-circle"></i>
+                      <p id="badge-count"><%= counter %></p>
+                    </div>
+          <% end %>
+          <%= link_to "Messages", conversations_path, class: "nav-link" %>
+        </div>
+        </li>
         <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
+          <%= link_to "Blank", "#", class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
