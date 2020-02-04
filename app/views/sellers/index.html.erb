@@ -1,4 +1,4 @@
-Show vital info!  Can do grid cards...
+Show vital info!  Can do grid cards...Put share inquiry option if buyer.
 <section class="clean-block clean-catalog dark">
   <div class="container">
     <div class="block-heading">
@@ -20,7 +20,7 @@ Show vital info!  Can do grid cards...
     <%= f.input :sexuality, collection: Seller.sexuality, label: "Do you want data from sellers of a certain sexuality? Leave blank if not.", required: false %>
     <%= f.input :politics, collection: Seller.politics, label: "Do you want data from sellers of a certain political orientation? Leave blank if not.", required: false %>
     <%= f.input :relationship_status, collection: Seller.relationship_status, label: "Do you want data from sellers of a certain relationship status? Leave blank if not.", required: false %>
-    <%= f.input :children, as: :radio_buttons, label: "Do you want data from sellers with children? Leave blank if not.", required: false %> 
+    <%= f.input :children, as: :radio_buttons, label: "Do you want data from sellers with children? Leave blank if not.", required: false %>
     <%= f.input :verified, as: :radio_buttons, label: "Do you only want data from sellers who are verified? Leave blank if not.", required: false %>
     <%= f.input :birth_country, collection: CountryStateSelect.countries_collection.sort, label: "Do you want data from sellers who were born in a certain country? Leave blank if not.", required: false %>
     <%= f.input :smoker, as: :radio_buttons, label: "Do you want data from sellers who are smokers? Leave blank if not.", required: false %>
@@ -30,19 +30,28 @@ Show vital info!  Can do grid cards...
     <%= f.submit 'Submit', class: 'btn btn-primary'%>
   <% end %>
 
-
-   <div class="content">
-      <div class="products pl-5 card-grid-3c">
-<% @sellers.each do |seller| %>
-   <div class="row align-items-center justify-content-center">
-      <div class="col-sm-6">
-   <%= render partial: 'shared/seller_index_card', locals: {seller: seller} %>
- </div>
- </div>
-<% end %>
- </div>
+  <% if current_user.buyer #do I hide this?  Why?    %>
+  <% checkedones = [] %>
+    <div class="container">
+        <input type="checkbox" id="selectAll" value="selectAll"> Select / Deselect All<br/><br/>
+        <%= f.button :submit, 'Submit',  method: "post", class: 'btn btn-primary', %>
+        <% #Send an inquiry to every selected seller!  How though?   %>
     </div>
-  </div>
+  <% end %>
+
+
+  <div class="content">
+    <div class="products pl-5 card-grid-3c">
+      <% @sellers.each do |seller| %>
+   <div class="row align-items-center justify-content-center">
+   <div class="col-sm-6">
+   <%= render partial: 'shared/seller_index_card', locals: {seller: seller} %>
+    </div>
+    </div>
+    <% end %>
+   </div>
+    </div>
+    </div>
 </section>
 
 

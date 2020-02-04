@@ -5,6 +5,7 @@
 
 <div class="row align-items-center justify-content-center">
 <%= simple_form_for [@buyer, @inquiry] do |f|%>
+<%= f.input :title, label: "Please provide a descriptive title for your inquiry." %>
 <%= f.input :types, collection: Inquiry.types, input_html: {multiple: true, id: "inquiry_new"}, label: "What type of data are you seeking?" %>
 <%= f.input :information_usage, label: "Why are you seeking this data?  What do you seek to do with this data after you obtain it?" %>
 <%= f.input :requirements, label: "What is required of the seller that's providing their data?" %>

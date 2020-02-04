@@ -24,6 +24,10 @@ gem "select2-rails"
 gem "algoliasearch-rails"
 gem 'geocoder'
 gem 'acts_as_votable'
+gem 'faker'
+
+
+
 
 
 
@@ -38,4 +42,7 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
+  gem 'factory_bot_rails'
+  gem 'better_errors' #Don't use with RSPEC.
+  gem 'binding_of_caller' #REPL for better errors.
 end

@@ -2,7 +2,7 @@ class InquiriesController < ApplicationController
   def index
     if params["search"] #reject '' in middle added 112619
       @filter = params["search"]
-      @filter = params["search"]["information_usage"].concat([params['requirements']]).concat([params["search"]["reward"]]).concat([params["search"]["types"]]).concat([params["search"]["information_usage"]])flatten.reject(&:blank?)
+      @filter = params["search"]["information_usage"].concat([params['requirements']]).concat([params["search"]["reward"]]).concat([params["search"]["types"]]).concat([params["search"]["information_usage"]]).flatten.reject(&:blank?)
       @buyers = Buyer.global_search(@filter)
       @inquiries = Inquiry.global_search(@filter)
     else #112619 I added this while trying to get sort to work.
@@ -10,12 +10,12 @@ class InquiriesController < ApplicationController
       @inquiries = Inquiry.all
     end
   end
-  
+
   def new
     @buyer = Buyer.find(params[:buyer_id])
     @inquiry = Inquiry.new
   end
-  
+
   def create
     @inquiry = Inquiry.new(inquiry_params)
     # @inquiry.user_id = @buyer.user_id
@@ -29,13 +29,13 @@ class InquiriesController < ApplicationController
       render "new"
     end
   end
-  
+
   def show
     @user = current_user
     @inquiry = Inquiry.find(params[:id])
     # @conversation = Conversation.find_by(author: @user, receiver: @artist)
   end
-  
+
   def update
     @inquiry = Inquiry.find(params[:id])
     if @inquiry.update(inquiry_params)
@@ -46,34 +46,34 @@ class InquiriesController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def destroy
     @inquiry = Inquiry.find(params[:id])
     @inquiry.destroy
     flash[:notice] = "Your inquiry was successfully deleted!"
     redirect_to buyerdashboard_path
   end
-  
+
   def edit
     @inquiry = Inquiry.find(params[:id])
   end
-  
+
   def like
     @user = current_user # before_action :authenticate_user, only: [:likes]
     @inquiry = Inquiry.find(params[:id])
     @inquiry.liked_by @user
     redirect_to @inquiry, notice: "Liked this inquiry successfully!"
   end
-  
+
   def unlike
     @user = current_user # before_action :authenticate_user, only: [:likes]
     @inquiry = Inquiry.find(params[:id])
     @inquiry.unliked_by @user
     redirect_to @inquiry, notice: "Unliked this inquiry successfully!"
   end
-  
+
   private
-  
+
   def inquiry_params
     params.require(:inquiry).permit(:information_usage, :requirements, :reward, :anonymous, :total, :accept?,  :types, types: [], )
   end
