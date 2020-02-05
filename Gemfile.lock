@@ -75,6 +75,13 @@ GEM
       aws_cf_signer
       rest-client
     coderay (1.1.2)
+    coffee-rails (5.0.0)
+      coffee-script (>= 2.2.0)
+      railties (>= 5.2.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     countries (3.0.0)
       i18n_data (~> 0.8.0)
@@ -220,6 +227,8 @@ GEM
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     sixarm_ruby_unaccent (1.2.0)
+    social-share-button (1.2.1)
+      coffee-rails
     sort_alphabetical (1.1.0)
       unicode_utils (>= 1.2.2)
     spring (2.1.0)
@@ -291,6 +300,7 @@ DEPENDENCIES
   sassc-rails
   select2-rails
   simple_form
+  social-share-button
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier

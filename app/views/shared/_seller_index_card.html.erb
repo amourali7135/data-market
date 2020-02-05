@@ -10,7 +10,8 @@
     <p><strong>Age: </strong><%= seller.age %></p>
     <p><strong>Willing to sell: </strong><%= seller.types %></p>
     <% if current_user.buyer %>
-    <p><%= check_box("seller", seller.id, {checked: false}) %></p>
+    <%#= check_box("seller", seller.id, {checked: false}) %>
+    <p><%= check_box("seller", "id", {}, seller.id) %></p>
     <% end %>
     <%= link_to 'View Seller', seller_path(seller.id), method: :get, class: 'btn btn-primary'  %>
     <% if current_user.buyer %>

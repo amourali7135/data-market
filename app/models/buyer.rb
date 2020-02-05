@@ -14,6 +14,7 @@ class Buyer < ApplicationRecord
   validates :intentions, presence: true
   validates :types, presence: true
   validates :country, presence: true
+  validates :photo, presence: true
   #validates :website, presence: true
 
   has_many :sent_conversations, class_name: 'Conversation', foreign_key: 'author_id'

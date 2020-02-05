@@ -1,0 +1,76 @@
+All their information and inquiries,obviously, if not hidden I mean.
+Should I make it all public though?  I mean...
+
+<div class="card mb-3 col-sm-6 card align-items-center", id="buyer-card-show">
+  <%= cl_image_tag @buyer.photo,
+    width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %>
+  <div class="card-body">
+  <% if @buyer.artist_name %>
+	  <h3 class="title row align-items-center justify-content-center"><%= @buyer.first_name %> <%= @buyer.last_name %>, also known as <%= @buyer.artist_name %></h3>
+  <% else %>
+    <h3 class="title"><%= @buyer.first_name %><%= @buyer.last_name %></h3>
+   <% end %>
+    <p class="card-text row align-items-center justify-content-center"><%= @buyer.bio %></p>
+    <p class="card-text row align-items-center justify-content-center"><small class="text-muted"><%=  %></small></p>
+
+
+    <div class="d-flex justify-content-center" >
+    <p class="card-text row align-items-center justify-content-center align-items-center" >
+    <%= link_to_image('FB.svg', "https://www.facebook.com/#{@buyer.facebook}", class: "logos")%>
+    <%= link_to_image('instagram.svg', "https://www.instagram.com/#{@buyer.instagram}", class: "logos")%>
+    </div>
+
+
+    <p class="card-text row align-items-center justify-content-center"><%= @buyer.age %> Years old</p>
+    <p class="card-text row align-items-center justify-content-center"><%= @buyer.city %>, <%= @buyer.country %> <%= flag_icon(@buyer.country.to_sym.downcase) %></p>
+    <p class="card-text row align-items-center justify-content-center">Originally from <%= @buyer.birth_place %></p>
+    <p class="card-text row align-items-center justify-content-center"><small>Tags: <%= raw @buyer.tags.map(&:name).map { |t| link_to t, "/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
+  </div>
+
+<div class="d-flex justify-content-between w-100">
+<p>Has <%=@buyer.get_likes.size %> likes! </p>
+<p>Followers: <%= @buyer.followers_count %></p>
+<p> Viewed <%= @buyer.hits %> times </p>
+</div>
+</div>
+
+
+
+<div class="row align-items-center justify-content-center py-3">
+<div class="row">
+<% if !current_user %>
+<p><strong>Create an account to send this buyer a message!</strong></p>
+<% end %>
+<% if @seller || @buyer && current_user%>
+  <%= link_to "Message #{@buyer.name}", conversations_path(author_id: current_user.id, receiver_id: @buyer.user_id), method: "post", class: 'btn btn-primary' %>
+  <% elsif current_user%>
+  <%= link_to "Message #{@buyer.name}", conversations_path(author_id: current_user.id, receiver_id: @buyer.user_id), method: "post", class: 'btn btn-primary' %>
+  <% end %>
+</div>
+</div>
+
+
+ <div class="row align-items-center justify-content-center py-1">
+    <p><strong>Share: </strong><%= social_share_button_tag(@buyer.name) %>
+  </div>
+
+
+     <p class="grid-headers">  Here are some of their inquiries...</p>
+     <div class="container front-page-grid">
+     <% @buyer.inquiries.sample(3).each do |inquiry| %>
+     <div class="row">
+      <div class="products pl-5 card-grid-3c">
+    <%= render partial: 'shared/inquiry_card_show', locals: {inquiry: inquiry} %>
+    </div>
+    </div>
+    <% end %>
+    </div>
+
+<br>
+   <div class="row align-items-center justify-content-center">
+     <div class="row">
+        <%= link_to 'See all of their public inquiries!', buyer_inquiries_path(@buyer.id), class: 'btn btn-primary'  %>
+     </div>
+   </div>
+
+

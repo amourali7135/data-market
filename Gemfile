@@ -25,8 +25,7 @@ gem "algoliasearch-rails"
 gem 'geocoder'
 gem 'acts_as_votable'
 gem 'faker'
-
-
+gem 'social-share-button'
 
 
 

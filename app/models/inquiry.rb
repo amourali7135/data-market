@@ -12,6 +12,9 @@ class Inquiry < ApplicationRecord
   validates :types, presence: true
   validates :information_usage, presence: true
   validates :format, presence: true
+  validates :title, presence: true
+  validates :title, uniqueness: true
+  validates :instructions, presence: true
 
   #How the fuck to make this not be a spam like result?  Shit.
 

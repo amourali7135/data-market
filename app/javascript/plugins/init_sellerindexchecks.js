@@ -10,6 +10,6 @@ $('#selectAll').click(function () {
   }
 });
 
-export {
-  initsellerindexchecks
-}
+// export {
+//   initsellerindexchecks
+// }

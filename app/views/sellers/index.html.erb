@@ -30,12 +30,16 @@ Show vital info!  Can do grid cards...Put share inquiry option if buyer.
     <%= f.submit 'Submit', class: 'btn btn-primary'%>
   <% end %>
 
-  <% if current_user.buyer #do I hide this?  Why?    %>
+  <% if current_user.buyer   %>
   <% checkedones = [] %>
-    <div class="container">
-        <input type="checkbox" id="selectAll" value="selectAll"> Select / Deselect All<br/><br/>
-        <%= f.button :submit, 'Submit',  method: "post", class: 'btn btn-primary', %>
-        <% #Send an inquiry to every selected seller!  How though?   %>
+    <div class="container mt-2">
+      <p>After you've searched for the sellers you want to send your inquiry to, select them all and send it here!</p>
+      <form>
+      <form action="/<sellers>" method="POST">
+      <input type="checkbox" id="selectAll" value="selectAll"> Select / Deselect All<br/><br/>
+      <input type='Submit', class: 'btn btn-primary'>
+      <% #Send an inquiry to every selected seller!  How though?   %>
+      </form>
     </div>
   <% end %>
 
@@ -53,5 +57,6 @@ Show vital info!  Can do grid cards...Put share inquiry option if buyer.
     </div>
     </div>
 </section>
+
 
 
