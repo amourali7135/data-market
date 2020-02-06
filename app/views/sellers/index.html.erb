@@ -34,8 +34,7 @@ Show vital info!  Can do grid cards...Put share inquiry option if buyer.
   <% checkedones = [] %>
     <div class="container mt-2">
       <p>After you've searched for the sellers you want to send your inquiry to, select them all and send it here!</p>
-      <form>
-      <form action="/<sellers>" method="POST">
+      <form action="/submit" method="POST">
       <input type="checkbox" id="selectAll" value="selectAll"> Select / Deselect All<br/><br/>
       <input type='Submit', class: 'btn btn-primary'>
       <% #Send an inquiry to every selected seller!  How though?   %>

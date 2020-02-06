@@ -32,6 +32,7 @@ class InquiriesController < ApplicationController
 
   def show
     @user = current_user
+    @buyer = Buyer.find(params[:buyer_id])
     @inquiry = Inquiry.find(params[:id])
     # @conversation = Conversation.find_by(author: @user, receiver: @artist)
   end

@@ -1,1 +1,37 @@
 All of their available information, generic stock photos.  Number of inquiries done.
+
+All their information and inquiries,obviously, if not hidden I mean.
+Should I make it all public though?  I mean...
+Inquiries done?
+
+<div class="card mb-3 col-sm-6 card align-items-center", id="seller-card-show">
+  <% if @seller.sex == "Male" %>
+    <%= image_tag "https://previews.123rf.com/images/apoev/apoev1806/apoev180600175/103284768-default-placeholder-businessman-half-length-portrait-photo-avatar-man-gray-color.jpg" %>
+  <% elsif @seller.sex == "Female" %>
+    <%= image_tag "https://previews.123rf.com/images/apoev/apoev1806/apoev180600137/103284730-default-placeholder-businesswoman-half-length-portrait-photo-avatar-woman-gray-color.jpg" %>
+  <% else  %>
+    <%= image_tag "https://usergroups.anaplan.com/static/images/placeholder_avatar.png" %>
+<% end %>,
+    width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %>
+  <div class="card-body">
+	  <h3 class="title row align-items-center justify-content-center"><%= @seller.age %></h3>
+    <p class="card-text row align-items-center justify-content-center"><%= @seller.country %></p>
+    <p class="card-text row align-items-center justify-content-center"><%= @seller.city %>, <%= @seller.country %> <%= flag_icon(@seller.country.to_sym.downcase) %></p>
+    <p class="card-text row align-items-center justify-content-center"><%= @seller.sex %></p>
+    <p class="card-text row align-items-center justify-content-center"><%= @seller.occupation %></p>
+    <p class="card-text row align-items-center justify-content-center"><%= @seller.income %></p>
+    <p class="card-text row align-items-center justify-content-center"><%= @seller.ethnicity %></p>
+    <p class="card-text row align-items-center justify-content-center"><%= @seller.race %></p>
+    <p class="card-text row align-items-center justify-content-center"><%= @seller.religion %></p>
+    <p class="card-text row align-items-center justify-content-center"><%= @seller.sexuality %></p>
+    <p class="card-text row align-items-center justify-content-center"><%= @seller.politics %></p>
+    <p class="card-text row align-items-center justify-content-center"><%= @seller.relationship_status %></p>
+    <p class="card-text row align-items-center justify-content-center"><%= @seller.children %></p>
+    <p class="card-text row align-items-center justify-content-center"><%= @seller.verified %></p>
+    <p class="card-text row align-items-center justify-content-center"><%= @seller.birth_country %></p>
+    <p class="card-text row align-items-center justify-content-center"><%= @seller.smoker %></p>
+    <p class="card-text row align-items-center justify-content-center"><%= @seller.education_level %></p>
+    <p class="card-text row align-items-center justify-content-center"><%= @seller.types %></p>
+
+  </div>
+</div>

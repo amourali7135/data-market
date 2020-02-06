@@ -38,6 +38,6 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-  post 'submit', to: 'sellers#index', as: :submit
+  post 'submit', to: 'sellers#submit', as: :submit
 
 end

@@ -1,5 +1,23 @@
-All info.  Buyer show.  Request to join if current user is a seller.  Instructions hidden.
+All info.  Buyer show.  Request to join if current user is a seller.
+Instructions hidden on bottom...Or a hidden page?
 
-Put it in here and elsewhere!
-<%= link_to 'like', inquiry_likes_path(@inquiry), class: 'btn btn-primary' %>
-    <%= link_to 'unlike', inquiry_unlikes_path(@inquiry), class: 'btn btn-primary' %>
+<div class="container justify-content-center">
+<div class="row">
+<p class="card-text row align-items-center justify-content-center"><%= @buyer.name %></p>
+<p class="card-text row align-items-center justify-content-center"><%= @inquiry.title %></p>
+<p class="card-text row align-items-center justify-content-center"><%= @inquiry.requirements %></p>
+<p class="card-text row align-items-center justify-content-center"><%= @inquiry.information_usage %></p>
+<p class="card-text row align-items-center justify-content-center"><%= @inquiry.reward %></p>
+<p class="card-text row align-items-center justify-content-center"><%= @inquiry.anonymous %></p>
+<p class="card-text row align-items-center justify-content-center"><%= @inquiry.total %></p>
+<p class="card-text row align-items-center justify-content-center"><%= @inquiry.types %></p>
+<p class="card-text row align-items-center justify-content-center"><%= @inquiry.information_usage %></p>
+<p class="card-text row align-items-center justify-content-center"><%= @inquiry.format %></p>
+</div>
+</div>
+
+<div class="container">
+<div class="row">
+<p class="card-text row align-items-center justify-content-center"><%= @inquiry.instructions %></p>
+</div>
+</div>

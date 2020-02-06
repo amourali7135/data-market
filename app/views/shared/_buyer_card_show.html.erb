@@ -5,32 +5,29 @@ Should I make it all public though?  I mean...
   <%= cl_image_tag @buyer.photo,
     width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %>
   <div class="card-body">
-  <% if @buyer.artist_name %>
-	  <h3 class="title row align-items-center justify-content-center"><%= @buyer.first_name %> <%= @buyer.last_name %>, also known as <%= @buyer.artist_name %></h3>
-  <% else %>
-    <h3 class="title"><%= @buyer.first_name %><%= @buyer.last_name %></h3>
-   <% end %>
-    <p class="card-text row align-items-center justify-content-center"><%= @buyer.bio %></p>
+	  <h3 class="title row align-items-center justify-content-center"><%= @buyer.name %></h3>
+    <p class="card-text row align-items-center justify-content-center"><%= @buyer.biography %></p>
     <p class="card-text row align-items-center justify-content-center"><small class="text-muted"><%=  %></small></p>
 
 
     <div class="d-flex justify-content-center" >
     <p class="card-text row align-items-center justify-content-center align-items-center" >
-    <%= link_to_image('FB.svg', "https://www.facebook.com/#{@buyer.facebook}", class: "logos")%>
-    <%= link_to_image('instagram.svg', "https://www.instagram.com/#{@buyer.instagram}", class: "logos")%>
+    <%#= link_to_image('FB.svg', "https://www.facebook.com/#{@buyer.facebook}", class: "logos")%>
+    <%#= link_to_image('instagram.svg', "https://www.instagram.com/#{@buyer.instagram}", class: "logos")%>
     </div>
 
 
-    <p class="card-text row align-items-center justify-content-center"><%= @buyer.age %> Years old</p>
+    <p class="card-text row align-items-center justify-content-center"><%= @buyer.biography %> Years old</p>
     <p class="card-text row align-items-center justify-content-center"><%= @buyer.city %>, <%= @buyer.country %> <%= flag_icon(@buyer.country.to_sym.downcase) %></p>
-    <p class="card-text row align-items-center justify-content-center">Originally from <%= @buyer.birth_place %></p>
-    <p class="card-text row align-items-center justify-content-center"><small>Tags: <%= raw @buyer.tags.map(&:name).map { |t| link_to t, "/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
+    <p class="card-text row align-items-center justify-content-center">Originally from <%= @buyer.country %></p>
+    # <p class="card-text row align-items-center justify-content-center"><small>Tags: <%#= raw @buyer.tags.map(&:name).map { |t| link_to t, "/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
   </div>
+</div>
 
 <div class="d-flex justify-content-between w-100">
-<p>Has <%=@buyer.get_likes.size %> likes! </p>
-<p>Followers: <%= @buyer.followers_count %></p>
-<p> Viewed <%= @buyer.hits %> times </p>
+<p>Has <%#=@buyer.get_likes.size %> likes! </p>
+<p>Followers: <%#= @buyer.followers_count %></p>
+<p> Viewed <%#= @buyer.hits %> times </p>
 </div>
 </div>
 
