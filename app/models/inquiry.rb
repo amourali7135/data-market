@@ -15,6 +15,8 @@ class Inquiry < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   validates :instructions, presence: true
 
+  groupify :group_member
+
   #How the fuck to make this not be a spam like result?  Shit.
 
   include PgSearch::Model

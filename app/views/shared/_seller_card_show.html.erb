@@ -6,13 +6,12 @@ Inquiries done?
 
 <div class="card mb-3 col-sm-6 card align-items-center", id="seller-card-show">
   <% if @seller.sex == "Male" %>
-    <%= image_tag "https://previews.123rf.com/images/apoev/apoev1806/apoev180600175/103284768-default-placeholder-businessman-half-length-portrait-photo-avatar-man-gray-color.jpg" %>
+    <%= image_tag "https://previews.123rf.com/images/apoev/apoev1806/apoev180600175/103284768-default-placeholder-businessman-half-length-portrait-photo-avatar-man-gray-color.jpg", width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %>
   <% elsif @seller.sex == "Female" %>
-    <%= image_tag "https://previews.123rf.com/images/apoev/apoev1806/apoev180600137/103284730-default-placeholder-businesswoman-half-length-portrait-photo-avatar-woman-gray-color.jpg" %>
+    <%= image_tag "https://previews.123rf.com/images/apoev/apoev1806/apoev180600137/103284730-default-placeholder-businesswoman-half-length-portrait-photo-avatar-woman-gray-color.jpg", width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %>
   <% else  %>
-    <%= image_tag "https://usergroups.anaplan.com/static/images/placeholder_avatar.png" %>
-<% end %>,
-    width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %>
+    <%= image_tag "https://usergroups.anaplan.com/static/images/placeholder_avatar.png", width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %>
+<% end %>
   <div class="card-body">
 	  <h3 class="title row align-items-center justify-content-center"><%= @seller.age %></h3>
     <p class="card-text row align-items-center justify-content-center"><%= @seller.country %></p>

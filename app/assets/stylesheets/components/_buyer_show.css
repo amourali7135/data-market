@@ -1,0 +1,8 @@
+.logos {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: medium;
+  border-color: white;
+}

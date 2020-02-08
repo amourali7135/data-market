@@ -29,6 +29,7 @@ gem 'social-share-button'
 gem 'flag-icons-rails'
 gem 'country_select'
 gem 'country_state_select'
+gem 'groupify'
 
 
 

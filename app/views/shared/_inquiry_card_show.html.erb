@@ -1,8 +1,11 @@
 All info.  Buyer show.  Request to join if current user is a seller.
 Instructions hidden on bottom...Or a hidden page?
 
+<div class="card mb-3 col-sm-6 card align-items-center", id="seller-card-show">
 <div class="container justify-content-center">
-<div class="row">
+
+<p class="card-text row align-items-center justify-content-center"><%= cl_image_tag @buyer.photo,
+    width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %></p>
 <p class="card-text row align-items-center justify-content-center"><%= @buyer.name %></p>
 <p class="card-text row align-items-center justify-content-center"><%= @inquiry.title %></p>
 <p class="card-text row align-items-center justify-content-center"><%= @inquiry.requirements %></p>
@@ -16,8 +19,29 @@ Instructions hidden on bottom...Or a hidden page?
 </div>
 </div>
 
+<div class="row align-items-center justify-content-center py-1">
+  <p><strong>Share: </strong><%= social_share_button_tag(@buyer.name) %>
+</div>
+
+<div class="row align-items-center justify-content-center py-1">
+<% if @inquiry.accept? && current_user.seller? %>
+  <%= form_for inquiries_path do |f| %>
+    <%= f.hidden_field :accept, value: false %>
+    <%= f.submit 'Unaccept' %>
+  <% end %>
+<% else %>
+  <%= form_for inquiries_path do |f| %>
+    <%= f.hidden_field :accept, value: true %>
+    <%= f.submit 'Accept' %>
+  <% end %>
+<% end %>
+</div>
+
+<%# if current_user.seller.inquiry.id == @inquiry.id || current_user.buyer.id = @inquiry.buyer.id %>
+<%# if  current_user.buyer.id = @inquiry.buyer.id %>
 <div class="container">
 <div class="row">
 <p class="card-text row align-items-center justify-content-center"><%= @inquiry.instructions %></p>
 </div>
 </div>
+<%# end %>

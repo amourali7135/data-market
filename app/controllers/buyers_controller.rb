@@ -23,6 +23,8 @@ class BuyersController < ApplicationController
     @user = current_user
     # @user = User.find(params[:user_id])
     @buyer = Buyer.find(params[:id])
+    @inquiries = @buyer.inquiries
+    # @inquiry = @buyer.inquiries.all
     # @conversation = Conversation.find_by(author: @user, receiver: @artist)
   end
 

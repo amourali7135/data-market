@@ -1,6 +1,3 @@
-All their information and inquiries,obviously, if not hidden I mean.
-Should I make it all public though?  I mean...
-
 <div class="card mb-3 col-sm-6 card align-items-center", id="buyer-card-show">
   <%= cl_image_tag @buyer.photo,
     width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %>
@@ -12,10 +9,8 @@ Should I make it all public though?  I mean...
 
     <div class="d-flex justify-content-center" >
     <p class="card-text row align-items-center justify-content-center align-items-center" >
-    <%#= link_to_image('FB.svg', "https://www.facebook.com/#{@buyer.facebook}", class: "logos")%>
-    <%#= link_to_image('instagram.svg', "https://www.instagram.com/#{@buyer.instagram}", class: "logos")%>
+    <%= link_to image_tag('placeholder.jpeg', class:"logos"), "https://#{@buyer.website}" %>
     </div>
-
 
     <p class="card-text row align-items-center justify-content-center"><%= @buyer.biography %> Years old</p>
     <p class="card-text row align-items-center justify-content-center"><%= @buyer.city %>, <%= @buyer.country %> <%= flag_icon(@buyer.country.to_sym.downcase) %></p>
@@ -47,21 +42,9 @@ Should I make it all public though?  I mean...
 </div>
 
 
- <div class="row align-items-center justify-content-center py-1">
+  <div class="row align-items-center justify-content-center py-1">
     <p><strong>Share: </strong><%= social_share_button_tag(@buyer.name) %>
   </div>
-
-
-     <p class="grid-headers">  Here are some of their inquiries...</p>
-     <div class="container front-page-grid">
-     <% @buyer.inquiries.sample(3).each do |inquiry| %>
-     <div class="row">
-      <div class="products pl-5 card-grid-3c">
-    <%= render partial: 'shared/inquiry_card_show', locals: {inquiry: inquiry} %>
-    </div>
-    </div>
-    <% end %>
-    </div>
 
 <br>
    <div class="row align-items-center justify-content-center">

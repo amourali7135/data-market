@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_06_001723) do
+ActiveRecord::Schema.define(version: 2020_02_08_120828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,26 @@ ActiveRecord::Schema.define(version: 2020_02_06_001723) do
     t.index ["datum_id"], name: "index_data_types_on_datum_id"
   end
 
+  create_table "group_memberships", force: :cascade do |t|
+    t.string "member_type", null: false
+    t.bigint "member_id", null: false
+    t.string "group_type"
+    t.bigint "group_id"
+    t.string "group_name"
+    t.string "membership_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_name"], name: "index_group_memberships_on_group_name"
+    t.index ["group_type", "group_id"], name: "index_group_memberships_on_group_type_and_group_id"
+    t.index ["member_type", "member_id"], name: "index_group_memberships_on_member_type_and_member_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "inquiries", force: :cascade do |t|
     t.text "information_usage"
     t.text "requirements"
@@ -69,7 +89,7 @@ ActiveRecord::Schema.define(version: 2020_02_06_001723) do
     t.boolean "anonymous"
     t.integer "total"
     t.string "types"
-    t.boolean "accept?"
+    t.boolean "accept"
     t.bigint "buyer_id"
     t.bigint "seller_id"
     t.bigint "datum_id"
