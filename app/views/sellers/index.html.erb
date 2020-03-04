@@ -34,13 +34,28 @@ Show vital info!  Can do grid cards...Put share inquiry option if buyer.
   <% checkedones = [] %>
     <div class="container mt-2">
       <p>After you've searched for the sellers you want to send your inquiry to, select them all and send it here!</p>
-      <form action="/submit" method="POST">
+      <form action="/submit" method="POST"> #new form pointing to different controller.  do not modify it.  new form will say action whatever.
+      it must match with route that I define, and the controller name.  Must point to anew action/method in the controlle.r
+      will be a post request to sellers controller, but a different action.
       <input type="checkbox" id="selectAll" value="selectAll"> Select / Deselect All<br/><br/>
       <input type='Submit', class: 'btn btn-primary'>
       <% #Send an inquiry to every selected seller!  How though?   %>
       </form>
     </div>
   <% end %>
+
+make new form here, inputs, list, whatever.
+<% @buyer.inquiries.each do |inquiry| %>
+<div class="container">
+<div class="row">
+<%= simple_form_for( inquiry, method: :post, url: buyers_path) do |f| %>
+  <%= f.input :inquiry.name, as: :radio_buttons %>
+  <%= f.submit 'New user' %>
+<% end %>
+</div>
+</div>
+<% end %>
+
 
 
   <div class="content">

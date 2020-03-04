@@ -33,12 +33,16 @@ class Inquiry < ApplicationRecord
     ['Medical', 'Financial', 'Personal', 'Business', 'Political', 'Internet', 'Phone', 'Google', 'Social Media', 'Life', 'Academic', 'Survey', 'Questionnaire', 'Poll', 'Photo', 'Software', 'Psychological', 'DNA/Genetic'  ].sort
   end
 
-  def self.format
+  def self.formats
     ['Document', 'Photo' 'PDF', 'File', 'Bills', 'Software', 'Online', 'Paperwork', 'Spreadsheet', 'Numbers', 'Questionannaire',  ].sort
   end
 
   def self.purpose
     ['Academic Research', 'Medical Research', 'Start-up Research', 'Business Research', 'Political Research', '']
+  end
+
+  def maximum
+    @max = self.total
   end
 
 end

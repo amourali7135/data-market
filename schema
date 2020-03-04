@@ -91,7 +91,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="296" y="110" name="sellers">
+<table x="274" y="108" name="sellers">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -160,7 +160,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="141" y="16" name="data">
+<table x="106" y="18" name="data">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -313,7 +313,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="573" y="263" name="trade">
+<table x="453" y="417" name="trade">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -330,6 +330,22 @@
 <row name="id_inquiries" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="inquiries" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="553" y="251" name="sellers_inquiries">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="id_inquiries" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="inquiries" row="id" />
+</row>
+<row name="id_sellers" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="sellers" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>

@@ -35,6 +35,7 @@ class InquiriesController < ApplicationController
     @buyer = Buyer.find(params[:buyer_id])
     @inquiry = Inquiry.find(params[:id])
     # @conversation = Conversation.find_by(author: @user, receiver: @artist)
+
   end
 
   def update
@@ -56,6 +57,7 @@ class InquiriesController < ApplicationController
   end
 
   def edit
+    @buyer = Buyer.find(params[:buyer_id])
     @inquiry = Inquiry.find(params[:id])
   end
 
