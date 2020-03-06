@@ -25,12 +25,12 @@ Instructions hidden on bottom...Or a hidden page?
 
 
 
-<% if current_user.seller %>
+<% if current_user.seller && !current_user.seller.inquiry_ids == @inquiry.id %>
 <div class="row align-items-center justify-content-center">
   <p><strong>Would you like to join this inquiry? </strong>
   <%= simple_form_for @sellerinquiry do |f|%>
-<%= f.input :seller_id, as: :hidden %>
-<%= f.input :inquiry_id, as: :hidden %>
+<%= f.input :seller_id, as: :hidden, :input_html => { :value => current_user.seller.id } %>
+<%= f.input :inquiry_id, as: :hidden, :input_html => { :value => @inquiry.id } %>
 <div style="text-align:center">
 <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
 </div>
@@ -38,10 +38,15 @@ Instructions hidden on bottom...Or a hidden page?
 </div>
 <% end %>
 
-<%# <% if current_user.seller.inquiry.id = @inquiry.id %> %>
+<% if current_user.seller.inquiry_ids = @inquiry.id %>
 <p class="card-text row align-items-center justify-content-center"><%= @inquiry.instructions %></p>
 <p class="card-text row align-items-center justify-content-center">After you have completed the instructions to submit your data, hit the complete button below!</p>
-<%# <% end %> %>
+<%= simple_form_for @sellerinquiry do |f|%>
+<%= f.input :completed, as: :hidden, :input_html => { :value => DateTime.current  } %>
+<div style="text-align:center">
+<%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+<% end %>
+<% end %>
 
 <%# if current_user.seller.inquiry.id == @inquiry.id || current_user.buyer.id = @inquiry.buyer.id %>
 <%# if  current_user.buyer.id = @inquiry.buyer.id %>

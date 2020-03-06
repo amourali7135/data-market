@@ -6,11 +6,12 @@ class Seller < ApplicationRecord
   has_many :inquiries, through: :sellerinquiries
 
   # validate presence of anything?
-  #above age 18!!!
+  #above age 18!!!  Actually, nevermind.  
   validates :age, presence: true
   validates :types, presence: true
   validates :sex, presence: true
   validates :country, presence: true
+  # validates :seller_id, uniqueness: true
 
   has_many :sent_conversations, class_name: 'Conversation', foreign_key: 'author_id'
   has_many :received_conversations, class_name: 'Conversation', foreign_key: 'receiver_id'

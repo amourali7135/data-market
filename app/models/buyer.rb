@@ -7,6 +7,7 @@ class Buyer < ApplicationRecord
   # has_many :trades, through: :orders,  dependent: :destroy
   has_many :reviews
   has_many :orders, dependent: :destroy #source order?
+  has_many :sellerinquiries, through: :inquiries
 
   validates :name, presence: true
   validates :name, uniqueness: true

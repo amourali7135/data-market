@@ -37,7 +37,7 @@ class InquiriesController < ApplicationController
     @inquiry = Inquiry.find(params[:id])
     @sellerinquiry = Sellerinquiry.new
     # @conversation = Conversation.find_by(author: @user, receiver: @artist)
-    
+    # raise
   end
   
   def update

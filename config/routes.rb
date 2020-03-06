@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :buyers do
-    resources :inquiries#, except: [:index]
+    resources :inquiries #, except: [:index]
   end
 
   resources :inquiries, only: [:index]
