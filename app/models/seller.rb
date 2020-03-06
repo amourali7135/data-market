@@ -1,7 +1,9 @@
 class Seller < ApplicationRecord
   belongs_to :user
   has_many :data, dependent: :destroy
-  has_many :inquiries#, optional: :true
+  # has_many :inquiries#, optional: :true
+  has_many :sellerinquiries, dependent: :destroy
+  has_many :inquiries, through: :sellerinquiries
 
   # validate presence of anything?
   #above age 18!!!

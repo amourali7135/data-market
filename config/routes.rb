@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   resources :reviews, except: [:index]
 
+  resources :sellerinquiries, only: [:create, :update] # :show
+
   # resources :data_types
 
   get 'about', to: 'pages#about', as: 'about'

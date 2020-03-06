@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_08_120828) do
+ActiveRecord::Schema.define(version: 2020_03_05_082346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 2020_02_08_120828) do
     t.string "types"
     t.boolean "accept"
     t.bigint "buyer_id"
-    t.bigint "seller_id"
     t.bigint "datum_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -102,7 +101,6 @@ ActiveRecord::Schema.define(version: 2020_02_08_120828) do
     t.boolean "active"
     t.index ["buyer_id"], name: "index_inquiries_on_buyer_id"
     t.index ["datum_id"], name: "index_inquiries_on_datum_id"
-    t.index ["seller_id"], name: "index_inquiries_on_seller_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -139,6 +137,16 @@ ActiveRecord::Schema.define(version: 2020_02_08_120828) do
     t.datetime "updated_at", null: false
     t.index ["buyer_id"], name: "index_reviews_on_buyer_id"
     t.index ["trade_id"], name: "index_reviews_on_trade_id"
+  end
+
+  create_table "sellerinquiries", force: :cascade do |t|
+    t.datetime "completed"
+    t.bigint "seller_id"
+    t.bigint "inquiry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["inquiry_id"], name: "index_sellerinquiries_on_inquiry_id"
+    t.index ["seller_id"], name: "index_sellerinquiries_on_seller_id"
   end
 
   create_table "sellers", force: :cascade do |t|
@@ -208,11 +216,12 @@ ActiveRecord::Schema.define(version: 2020_02_08_120828) do
   add_foreign_key "data_types", "data"
   add_foreign_key "inquiries", "buyers"
   add_foreign_key "inquiries", "data"
-  add_foreign_key "inquiries", "sellers"
   add_foreign_key "orders", "buyers"
   add_foreign_key "orders", "trades"
   add_foreign_key "reviews", "buyers"
   add_foreign_key "reviews", "trades"
+  add_foreign_key "sellerinquiries", "inquiries"
+  add_foreign_key "sellerinquiries", "sellers"
   add_foreign_key "sellers", "users"
   add_foreign_key "trades", "data"
   add_foreign_key "trades", "inquiries"

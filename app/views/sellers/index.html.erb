@@ -45,15 +45,34 @@ Show vital info!  Can do grid cards...Put share inquiry option if buyer.
   <% end %>
 
 make new form here, inputs, list, whatever.
-<% @buyer.inquiries.each do |inquiry| %>
+<% @buyer.inquiries.each do |f| %>
 <div class="container">
 <div class="row">
 <%= simple_form_for( inquiry, method: :post, url: buyers_path) do |f| %>
-  <%= f.input :inquiry.name, as: :radio_buttons %>
+  <%= f.input :inquiry.title, as: :radio_buttons %>
   <%= f.submit 'New user' %>
 <% end %>
 </div>
 </div>
+<% end %>
+
+<% @buyer.inquiries.each do |f| %>
+<%= form_for(@buyer.inquiries) do |f| %>
+  <%= f.collection_radio_buttons :inquiry_id, @inquiries, :id, :name %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<% end %>
+
+<% @buyer.inquiries.each do |f| %>
+  <%= f.radio_button :inquiry_id, inquiry.id %>
+  <%= f.label :inquiry_id, inquiry.title %>
+<% end %>
+
+<%= form_for @buyer.inquiries.each do |f| %>
+  <%= f.collection_radio_buttons :buyer_id, Buyer.all, :id, :name_with_initial %>
+  <%= f.submit %>
 <% end %>
 
 

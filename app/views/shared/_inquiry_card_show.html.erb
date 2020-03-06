@@ -23,19 +23,25 @@ Instructions hidden on bottom...Or a hidden page?
   <p><strong>Share: </strong><%= social_share_button_tag(@buyer.name) %>
 </div>
 
-<div class="row align-items-center justify-content-center py-1">
-<% if @inquiry.accept? && current_user.seller? %>
-  <%= form_for inquiries_path do |f| %>
-    <%= f.hidden_field :accept, value: false %>
-    <%= f.submit 'Unaccept' %>
-  <% end %>
-<% else %>
-  <%= form_for inquiries_path do |f| %>
-    <%= f.hidden_field :accept, value: true %>
-    <%= f.submit 'Accept' %>
-  <% end %>
+
+
+<% if current_user.seller %>
+<div class="row align-items-center justify-content-center">
+  <p><strong>Would you like to join this inquiry? </strong>
+  <%= simple_form_for @sellerinquiry do |f|%>
+<%= f.input :seller_id, as: :hidden %>
+<%= f.input :inquiry_id, as: :hidden %>
+<div style="text-align:center">
+<%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+</div>
 <% end %>
 </div>
+<% end %>
+
+<%# <% if current_user.seller.inquiry.id = @inquiry.id %> %>
+<p class="card-text row align-items-center justify-content-center"><%= @inquiry.instructions %></p>
+<p class="card-text row align-items-center justify-content-center">After you have completed the instructions to submit your data, hit the complete button below!</p>
+<%# <% end %> %>
 
 <%# if current_user.seller.inquiry.id == @inquiry.id || current_user.buyer.id = @inquiry.buyer.id %>
 <%# if  current_user.buyer.id = @inquiry.buyer.id %>
