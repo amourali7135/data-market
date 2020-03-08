@@ -21,7 +21,7 @@ class SellerinquiriesController < ApplicationController
   def update
     @seller = current_user.seller if current_user.seller
     @inquiry = Inquiry.find(params[:sellerinquiry][:inquiry_id])
-    @sellerinquiry = Sellerinquiry.where(seller_id: current_user.seller.id & inquiry_id: @inquiry.id) #It'll go to update action automatically via this line ala Rayhan.  
+    @sellerinquiry = Sellerinquiry.where(seller_id: @seller.id, inquiry_id: @inquiry.id)[0] #It'll go to update action automatically via this line ala Rayhan.  Why not console working?   IT GIVES AN ARRAY!  LOOK AT THER RESULTS AND ADD [0]
     @sellerinquiry.completed = DateTime.current
     if @sellerinquiry.completed.save
       flash[:notice] = "You've successfully completed this inquiry"
