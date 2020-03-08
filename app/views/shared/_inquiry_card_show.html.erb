@@ -38,10 +38,11 @@ Instructions hidden on bottom...Or a hidden page?
 </div>
 <% end %>
 
-<% if current_user.seller.inquiry_ids = @inquiry.id %>
+
+<%# current_user.seller.inquiry_ids This is an array, must check array for matching integer %>  
+<% if current_user.seller.inquiry_ids.include?(@inquiry.id) && !@sellerinquiry.completed %>  
 <p class="card-text row align-items-center justify-content-center"><%= @inquiry.instructions %></p>
-<p class="card-text row align-items-center justify-content-center">After you have completed the instructions to submit your data, hit the complete button below!</p>
-<%# <%= simple_form_for(@sellerinquiry, url: sellerinquiry_path, :method => :patch) do |f| %> 
+<p class="card-text row align-items-center justify-content-center">After you have completed the instructions to submit your data, hit the complete button below!</p> 
 <%= simple_form_for @sellerinquiry do |f| %>
 <%= f.input :completed, as: :hidden, :input_html => { :value => DateTime.current  } %>
 <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => @inquiry.id } %>
@@ -50,11 +51,3 @@ Instructions hidden on bottom...Or a hidden page?
 <% end %>
 <% end %>
 
-<%# if current_user.seller.inquiry.id == @inquiry.id || current_user.buyer.id = @inquiry.buyer.id %>
-<%# if  current_user.buyer.id = @inquiry.buyer.id %>
-<div class="container">
-<div class="row">
-<p class="card-text row align-items-center justify-content-center"><%= @inquiry.instructions %></p>
-</div>
-</div>
-<%# end %>
