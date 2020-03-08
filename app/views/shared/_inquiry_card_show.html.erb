@@ -43,7 +43,8 @@ Instructions hidden on bottom...Or a hidden page?
 <p class="card-text row align-items-center justify-content-center">After you have completed the instructions to submit your data, hit the complete button below!</p>
 <%# <%= simple_form_for(@sellerinquiry, url: sellerinquiry_path, :method => :patch) do |f| %> 
 <%= simple_form_for @sellerinquiry do |f| %>
-<%= f.input :completed, as: :hidden, :method => :patch, :input_html => { :value => DateTime.current  } %>
+<%= f.input :completed, as: :hidden, :input_html => { :value => DateTime.current  } %>
+<%= f.input :inquiry_id, as: :hidden, :input_html => { :value => @inquiry.id } %>
 <div style="text-align:center">
 <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
 <% end %>

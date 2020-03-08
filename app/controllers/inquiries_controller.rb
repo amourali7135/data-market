@@ -35,7 +35,8 @@ class InquiriesController < ApplicationController
     @seller = current_user.seller if current_user.seller
     @buyer = Buyer.find(params[:buyer_id])
     @inquiry = Inquiry.find(params[:id])
-    @sellerinquiry = Sellerinquiry.new
+    # @sellerinquiry = Sellerinquiry.new
+    @sellerinquiry = Sellerinquiry.find_by(seller_id: current_user.seller.id, inquiry_id: @inquiry.id)
     # @conversation = Conversation.find_by(author: @user, receiver: @artist)
     # raise
   end
