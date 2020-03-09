@@ -52,6 +52,9 @@ make new form here, inputs, list, whatever.
 <% end %>
 </div>
 
+<%= link_to 'Invite Sellers!', Inquiry_Mailer.invite(@seller).deliver_now %>
+
+
   <div class="content">
     <div class="products pl-5 card-grid-3c">
       <% @sellers.each do |seller| %>

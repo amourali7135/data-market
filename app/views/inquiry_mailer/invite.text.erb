@@ -1,3 +1,7 @@
-Inquiry#invite
+Hello, <%= @seller.email %>!
 
-<%= @greeting %>, find me in app/views/inquiry_mailer/invite.text.erb
+You have been invited to sell your data to <%=@buyer.name%>!
+
+Their data inquiry is titled <%= @inquiry.title %>, it can be found a
+
+<%= link_to 'See this inquiry!', buyer_inquiry_path(@buyer, @inquiry) %
