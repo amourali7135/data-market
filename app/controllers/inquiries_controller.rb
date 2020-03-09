@@ -35,10 +35,8 @@ class InquiriesController < ApplicationController
     @seller = current_user.seller if current_user.seller
     @buyer = Buyer.find(params[:buyer_id])
     @inquiry = Inquiry.find(params[:id])
-    # @sellerinquiry = Sellerinquiry.new
-    @sellerinquiry = Sellerinquiry.find_by(seller_id: current_user.seller.id, inquiry_id: @inquiry.id)
+    @sellerinquiry = Sellerinquiry.find_by(seller_id: current_user.seller.id, inquiry_id: @inquiry.id) || Sellerinquiry.new
     # @conversation = Conversation.find_by(author: @user, receiver: @artist)
-    # raise
   end
   
   def update
@@ -84,7 +82,5 @@ class InquiriesController < ApplicationController
     params.require(:inquiry).permit(:information_usage, :requirements, :reward, :anonymous, :total, :accept?, :title, :format, :instructions, :active, :types, types: [] )
   end
 
-  def inquiry_params
-    params.require(:sellerinquiry).permit(:completed, :inquiry_id, :seller_id )
-  end
+
 end

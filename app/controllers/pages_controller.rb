@@ -4,11 +4,12 @@ class PagesController < ApplicationController
   def home
     # @buyers = Buyer.all
     # @sellers = Seller.all
-    # @inquiries = Inquiry.all
-    if current_user
+    # @inquiries = Inquiry.all  Not yet.  
+    # if current_user
       @user = current_user
-      @buyer = Buyer.find_by(user_id: @user.id) || @seller = Seller.find_by(user_id: @user.id)
-    end
+      # @buyer = Buyer.find_by(user_id: @user.id) 
+      # @seller = Seller.find_by(user_id: @user.id)
+    # end
   end
   
   def about

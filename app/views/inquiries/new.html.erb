@@ -9,11 +9,11 @@
 <%= f.input :types, collection: Inquiry.types, input_html: {multiple: true, id: "inquiry_new"}, label: "What type of data are you seeking?" %>
 <%= f.input :information_usage, label: "Why are you seeking this data?  What do you seek to do with this data after you obtain it?" %>
 <%= f.input :requirements, label: "What is required of the seller that's providing their data?" %>
-<%= f.input :reward, label: "How much are you offering for this data?" %>
+<%= f.input :reward, label: "How much are you offering for this data?  If you are not offering money, then what are you offering" %>
 <%= f.input :format, collection: Inquiry.formats, input_html: {id: "inquiry_format"}, label: "What format must the data be submitted as?" %>
 <%= f.input :anonymous, label: "Does the identity of the seller of the data need to be provided as well?" %>
 <%= f.input :total, label: "How many people do you need data from?" %>
-<%#= f.input :hidden, label: "Do you want to hide this inquiry from the public?  If so, potential sellers will not be able to search for it, you'll have to send it to them." %>
+<%= f.input :hidden, label: "Do you want to hide this inquiry from the public?  If so, potential sellers will not be able to search for it, you'll have to send it to them." %>
 <%= f.input :instructions, label: "Please provide the instructions that will be shown to the seller when they accept this inquiry in order for them to send you the data" %>
 <div style="text-align:center">
 <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>

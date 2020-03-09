@@ -1,7 +1,17 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.idgesg.net/images/article/2019/06/encryption_rollout_encrypted_data_by_matejmo_gettyimages-913069656_2400x1600-100800555-large.jpg);">
   <div class="container">
-    <strong><h1>Your data is worth more than you think.</h1></strong>
-    <p>Get what you are worth. Register now to buy data to use or to sell your data!</p>
+   <% if !current_user %>
+      <strong><h1>Your data is worth more than you think.</h1></strong>
+      <p>Get what you are worth. Register now to buy data to use or to sell your data!</p>
       <%= link_to "Register", new_user_registration_path, class: 'btn btn-primary' %>
+      <% elsif current_user.seller %>
+      <strong><h1>Welcome back!  Browse through inquiries or head to your dashboard</h1></strong>
+      <%= link_to "Inquiries", inquiries_path, class: 'btn btn-primary' %>
+      <%= link_to "Dashboard", sellerdashboard_path, class: 'btn btn-primary' %>
+      <% elsif current_user.buyer %>
+      <strong><h1>Welcome back!  Post a new inquiry or head to your dashboard</h1></strong>
+      <%= link_to "New Inquiry", new_buyer_inquiry_path(current_user.buyer), class: 'btn btn-primary' %>
+      <%= link_to "Dashbaord", buyerdashboard_path, class: 'btn btn-primary' %>
+<% end %>
   </div>
 </div>

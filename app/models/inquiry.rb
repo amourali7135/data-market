@@ -1,6 +1,5 @@
 class Inquiry < ApplicationRecord
   belongs_to :buyer
-  # belongs_to :seller, optional: true #how to have multiple?
   belongs_to :data, optional: true
   has_many :sellerinquiries, dependent: :destroy
   has_many :sellers, through: :sellerinquiries
@@ -9,16 +8,15 @@ class Inquiry < ApplicationRecord
   
   validates :requirements, presence: true
   validates :reward, presence: true
-  validates :anonymous, presence: true
-  validates :total, presence: true, numericality: true
+  # validates :anonymous, presence: true
+  validates :total, presence: true #numericality: true
   validates :types, presence: true
   validates :information_usage, presence: true
   validates :format, presence: true
   validates :title, presence: true, uniqueness: true
   validates :instructions, presence: true
   
-  # groupify :group_member
-  
+
   #How the fuck to make this not be a spam like result?  Shit.
   
   include PgSearch::Model

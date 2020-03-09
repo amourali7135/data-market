@@ -1,9 +1,9 @@
-All info.  Buyer show.  Request to join if current user is a seller.
-Instructions hidden on bottom...Or a hidden page?
+<% if current_user.seller.inquiry_ids.include?(@inquiry.id) && @sellerinquiry.completed %>  
+<h3 class="card-text container align-items-center justify-content-center">Thank you for participating in this inquiry!</h3>
+<% end %>
 
 <div class="card mb-3 col-sm-6 card align-items-center", id="seller-card-show">
 <div class="container justify-content-center">
-
 <p class="card-text row align-items-center justify-content-center"><%= cl_image_tag @buyer.photo,
     width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %></p>
 <p class="card-text row align-items-center justify-content-center"><%= @buyer.name %></p>
@@ -19,20 +19,20 @@ Instructions hidden on bottom...Or a hidden page?
 </div>
 </div>
 
-<div class="row align-items-center justify-content-center py-1">
+<div class="container align-items-center justify-content-center py-1">
   <p><strong>Share: </strong><%= social_share_button_tag(@buyer.name) %>
 </div>
 
 
 
-<% if current_user.seller && !current_user.seller.inquiry_ids == @inquiry.id %>
-<div class="row align-items-center justify-content-center">
+<% if current_user.seller && !current_user.seller.inquiry_ids.include?(@inquiry.id) %>
+<div class="container align-items-center justify-content-center">
   <p><strong>Would you like to join this inquiry? </strong>
   <%= simple_form_for @sellerinquiry do |f|%>
 <%= f.input :seller_id, as: :hidden, :input_html => { :value => current_user.seller.id } %>
 <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => @inquiry.id } %>
 <div style="text-align:center">
-<%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+<%= f.button :submit, 'Join Inquiry', class: 'btn btn-primary'%>
 </div>
 <% end %>
 </div>
@@ -47,7 +47,7 @@ Instructions hidden on bottom...Or a hidden page?
 <%= f.input :completed, as: :hidden, :input_html => { :value => DateTime.current  } %>
 <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => @inquiry.id } %>
 <div style="text-align:center">
-<%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+<%= f.button :submit, 'Completed', class: 'btn btn-primary'%>
 <% end %>
 <% end %>
 
