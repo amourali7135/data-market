@@ -1,10 +1,10 @@
 <% if current_user.seller.inquiry_ids.include?(@inquiry.id) && @sellerinquiry.completed %>  
-<h3 class="card-text container align-items-center justify-content-center">Thank you for participating in this inquiry!</h3>
+<h3 class="card-text container align-items-center justify-content-center">Thank you for participating in this inquiry! :)</h3>
 <% end %>
 
 <div class="card mb-3 col-sm-6 card align-items-center", id="seller-card-show">
 <div class="container justify-content-center">
-<p class="card-text row align-items-center justify-content-center"><%= cl_image_tag @buyer.photo,
+<p class="card-text row align-items-center justify-content-center pt-2"><%= cl_image_tag @buyer.photo,
     width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %></p>
 <p class="card-text row align-items-center justify-content-center"><%= @buyer.name %></p>
 <p class="card-text row align-items-center justify-content-center"><%= @inquiry.title %></p>

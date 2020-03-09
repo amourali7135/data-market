@@ -6,4 +6,6 @@ class Sellerinquiry < ApplicationRecord
   # validates :seller_id, presence: true    #uniqueness: true
   # validates :inquiry_id, presence: true    #uniqueness: true
   # validates :seller_id, :inquiry_id, uniqueness: true
+  # validates :zipcode, :uniqueness => {:scope => [:recorded_at, :something_else]}
+  
 end

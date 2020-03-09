@@ -1,0 +1,7 @@
+<p>Hello, <%= @seller.email %>!</p>
+
+<p>You have been invited to sell your data to <%=@buyer.name%>!</p>
+
+<p>Their data inquiry is titled <%= @inquiry.title %>, it can be found at<p>
+
+<p><%= link_to 'See this inquiry!', buyer_inquiry_path(@buyer, @inquiry) %><p>
