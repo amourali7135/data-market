@@ -47,13 +47,13 @@ Show vital info!  Can do grid cards...Put share inquiry option if buyer.
 make new form here, inputs, list, whatever.
 
 <div class="container">
-<%= simple_form_for @inquiry do |f|%>
+<%= simple_form_for @Inquiry_Mailer do |f|%>
   <%= f.input :inquiry, as: :radio_buttons, collection: Buyer::INQUIRY %>
 <% end %>
 </div>
 
-<%= link_to 'Invite Sellers!', Inquiry_Mailer.invite(@seller).deliver_now %>
-
+<%= link_to 'Invite Sellers!', Inquiry_Mailer.invite(@seller).deliver_now %> 
+What do I do for the controller though?  Shit.  
 
   <div class="content">
     <div class="products pl-5 card-grid-3c">

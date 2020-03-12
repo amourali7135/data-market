@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_082346) do
+ActiveRecord::Schema.define(version: 2020_03_11_222650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,34 +52,6 @@ ActiveRecord::Schema.define(version: 2020_03_05_082346) do
     t.bigint "payment_id"
     t.index ["payment_id"], name: "index_data_on_payment_id"
     t.index ["seller_id"], name: "index_data_on_seller_id"
-  end
-
-  create_table "data_types", force: :cascade do |t|
-    t.string "name"
-    t.bigint "datum_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["datum_id"], name: "index_data_types_on_datum_id"
-  end
-
-  create_table "group_memberships", force: :cascade do |t|
-    t.string "member_type", null: false
-    t.bigint "member_id", null: false
-    t.string "group_type"
-    t.bigint "group_id"
-    t.string "group_name"
-    t.string "membership_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_name"], name: "index_group_memberships_on_group_name"
-    t.index ["group_type", "group_id"], name: "index_group_memberships_on_group_type_and_group_id"
-    t.index ["member_type", "member_id"], name: "index_group_memberships_on_member_type_and_member_id"
-  end
-
-  create_table "groups", force: :cascade do |t|
-    t.string "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "inquiries", force: :cascade do |t|
@@ -197,23 +169,8 @@ ActiveRecord::Schema.define(version: 2020_03_05_082346) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "votes", id: :serial, force: :cascade do |t|
-    t.string "votable_type"
-    t.integer "votable_id"
-    t.string "voter_type"
-    t.integer "voter_id"
-    t.boolean "vote_flag"
-    t.string "vote_scope"
-    t.integer "vote_weight"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
-    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
-  end
-
   add_foreign_key "buyers", "users"
   add_foreign_key "data", "sellers"
-  add_foreign_key "data_types", "data"
   add_foreign_key "inquiries", "buyers"
   add_foreign_key "inquiries", "data"
   add_foreign_key "orders", "buyers"
