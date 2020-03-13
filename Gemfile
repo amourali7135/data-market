@@ -23,7 +23,6 @@ gem 'pg_search'
 gem "select2-rails"
 gem "algoliasearch-rails"
 gem 'geocoder'
-gem 'acts_as_votable'
 gem 'faker'
 gem 'social-share-button'
 gem 'flag-icons-rails'

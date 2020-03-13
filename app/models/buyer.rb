@@ -3,7 +3,7 @@ class Buyer < ApplicationRecord
 
   belongs_to :user
   has_many :inquiries, dependent: :destroy
-  has_many :trades, dependent: :destroy
+  # has_many :trades, dependent: :destroy
   # has_many :trades, through: :orders,  dependent: :destroy
   has_many :reviews
   has_many :orders, dependent: :destroy #source order?

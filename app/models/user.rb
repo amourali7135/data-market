@@ -12,7 +12,5 @@ class User < ApplicationRecord
   has_many :orders, through: :buyer, dependent: :destroy #source needed?
   # has_many :trades, through: :data, dependent: :destroy  #I couldn't delete a user till I commented this out, why?
 
-  acts_as_voter
-
   Datum = 'test'
 end

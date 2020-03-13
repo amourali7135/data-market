@@ -19,8 +19,7 @@ class Seller < ApplicationRecord
 
   attr_reader :age_min, :age_max
 
-  groupify :group_member
-  groupify :named_group_member
+
 
   include PgSearch::Model
   pg_search_scope :global_search,

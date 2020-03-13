@@ -4,8 +4,6 @@ class Inquiry < ApplicationRecord
   has_many :sellerinquiries, dependent: :destroy
   has_many :sellers, through: :sellerinquiries
   
-  acts_as_votable
-  
   validates :requirements, presence: true
   validates :reward, presence: true
   # validates :anonymous, presence: true
