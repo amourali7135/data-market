@@ -11,12 +11,12 @@
     <p><strong>Willing to sell: </strong><%= seller.types %></p>
     <% if current_user.buyer %>
     <%#= check_box("seller", seller.id, {checked: false}) %>
-    <p><%= check_box("seller", "id", {}, seller.id) %></p>
+    <p><%= check_box("seller", "id", {}, seller.id) %></p> <%#Is this even right?  %>
     <% end %>
     <%= link_to 'View Seller', seller_path(seller.id), method: :get, class: 'btn btn-primary'  %>
-    <% if current_user.buyer %>
+    <%# if current_user.buyer %>
     <% #do the share inquiry present here...but how?   %>
-    <% end %>
+    <%# end %>
   </div>
   <div class="d-flex justify-content-between w-100">
     <p><strong>Location: </strong><%= seller.country %></p>
@@ -24,3 +24,5 @@
     <p><strong>Income: </strong><%= seller.income %></p>
   </div>
 </div>
+
+

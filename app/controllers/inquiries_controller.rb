@@ -1,4 +1,6 @@
 class InquiriesController < ApplicationController
+skip_before_action :authenticate_user!, only: [:index, :show ]
+
   def index
     if params["search"] #reject '' in middle added 112619
       @filter = params["search"]

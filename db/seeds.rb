@@ -67,8 +67,8 @@ puts 'Finished!'
 
 
 
-puts 'Creating 10 fake users/sellers...'
-20.times do
+puts 'Creating 40 fake users/sellers...'
+40.times do
   user = User.new(
   email: Faker::Internet.unique.email,
   # username: Faker::Alphanumeric.alpha(number: 10),
@@ -83,7 +83,7 @@ puts 'Creating 10 fake users/sellers...'
   age:    Faker::Number.between(from: 0, to: 100),
   country:  CountryStateSelect.countries_collection.map { |country| country[1].to_s }.sample,
   sex:    Faker::Gender.binary_type,
-  occupation:    Faker::Name.name,
+  occupation:    Seller.occupation.sample(1),
   city:  Faker::Address.city,
   income:    Seller.income.sample(1),
   ethnicity:    Seller.ethnicity.sample(1),
@@ -97,7 +97,7 @@ puts 'Creating 10 fake users/sellers...'
   verified:    Faker::Boolean.boolean,
   birth_country:    CountryStateSelect.countries_collection.map { |country| country[1].to_s }.sample,
   education_level:    Seller.education_level.sample(1),
-  types:    Seller.types.sample(1),
+  types:    Seller.types.sample(2),
   )
   seller.user = user
   seller.save!

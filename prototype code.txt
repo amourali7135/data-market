@@ -1,0 +1,19 @@
+
+<%= simple_form_for(@inquiry) do |f| %>
+  <%= f.association :buyers %>
+<% end %>
+
+
+
+<% @buyer.inquiries.each do |inquiry| %>
+<div class="container">
+<div class="row">
+<%= simple_form_for [@buyer, @inquiries], method: :post  do |f| %> 
+  <%= f.input :inquiry.title, collection: @inquiries, as: :radio_buttons
+  <%= f.text_field :inquiry_id, value: inquiry.id, type: "hidden"  %>
+  <%= f.submit 'New user' %>
+<% end %>
+</div>
+</div> %> 
+<% end %>
+
