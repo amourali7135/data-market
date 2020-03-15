@@ -48,7 +48,8 @@ make new form here, inputs, list, whatever.
 
 
 <div class="container">
-<div class="row align-items-center justify-content-center" >
+<div class="row align-items-center justify-content-center">
+<h4 class="text-dark row align-items-center justify-content-center pt-2">Hello <%= @buyer.name %>, select which of your inquiries that you want to share with your selected sellers</h4>
 <%= simple_form_for :inquiry, url: notify_sellers_path do |f| %>
   <%= f.input :ids, collection: @inquiries, as: :radio_buttons, label: false%>
 <%= f.submit %>

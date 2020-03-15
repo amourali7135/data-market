@@ -2,6 +2,12 @@ Hello, <%= @seller.email %>!
 
 You have been invited to sell your data to <%=@buyer.name%>!
 
-Their data inquiry is titled <%= @inquiry.title %>, it can be found a
+Their data inquiry is titled <%= @inquiry.title %>, it can be found at
 
-<%= link_to 'See this inquiry!', buyer_inquiry_path(@buyer, @inquiry) %
+They're offering you <%= @inquiry.reward %>. You can read more about the inquiry and join it at:
+
+<%= link_to 'See this inquiry!', buyer_inquiry_path(@buyer, @inquiry) %>
+
+Thank you!
+
+

@@ -20,10 +20,11 @@ class SellersController < ApplicationController
   end
   
   def notify
-    # inquiry_ids = params[:inquiry][:ids]
+    inquiry_ids = params[:inquiry][:ids]
     # do stuff
       # InquiryMailer.notify_seller(params[:inquiry][:ids])
-      # ...
+      # flash notice
+      # redirect to
     # end
   end
     

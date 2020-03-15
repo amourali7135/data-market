@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   resources :sellers do
     resources :data, except: [:index]
-    collection { post :notify }
+    collection { post :notify } #Interesting.  
   end
   
   resources :buyers do
@@ -42,9 +42,5 @@ Rails.application.routes.draw do
   end
   
   post 'submit', to: 'sellers#submit', as: :submit
-  
-  # resources :sellers do
-  #   collection { post :notify }
-  # end
   
 end
