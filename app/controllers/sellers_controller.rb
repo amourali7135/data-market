@@ -20,6 +20,7 @@ class SellersController < ApplicationController
   end
   
   def notify
+    # raise
     inquiry_ids = params[:inquiry][:ids]
     # do stuff
       # InquiryMailer.notify_seller(params[:inquiry][:ids])

@@ -76,6 +76,9 @@ make new form here, inputs, list, whatever.
 </div>
 </div>
 
+
+<%= simple_form_for :seller, url: notify_sellers_path do |f| %>
+<%= f.input :ids, collection: @sellers, hidden: :true%>
   <div class="content">
     <div class="products pl-5 card-grid-3c">
       <% @sellers.each do |seller| %>
@@ -84,6 +87,8 @@ make new form here, inputs, list, whatever.
    <%= render partial: 'shared/seller_index_card', locals: {seller: seller} %>
     </div>
     </div>
+    <% end %>
+   <%= f.submit %>
     <% end %>
    </div>
     </div>
