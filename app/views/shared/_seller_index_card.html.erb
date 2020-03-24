@@ -11,9 +11,9 @@
     <p><strong>Willing to sell: </strong><%= seller.types %></p>
     <% if current_user.buyer %>
     <%#= check_box("seller", seller.id, {checked: false}) %>
-    <p><%= check_box("seller", "id", {}, seller.id) %></p> <%#Is this even right?  %>
+    <p><%= check_box("seller", "id-#{seller.id}", {}, seller.id) %></p> <%#Is this even right?  %>
     <% end %>
-    <%= link_to 'View Seller', seller_path(seller.id), method: :get, class: 'btn btn-primary'  %>
+    <%# <%= link_to 'View Seller', seller_path(seller.id), method: :get, class: 'btn btn-primary'  %> 
     <%# if current_user.buyer %>
     <% #do the share inquiry present here...but how?   %>
     <%# end %>

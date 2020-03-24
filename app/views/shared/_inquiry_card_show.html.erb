@@ -19,7 +19,7 @@
 </div>
 </div>
 
-<div class="container align-items-center justify-content-center py-1">
+<div class="container row align-items-center justify-content-center py-1">
   <p><strong>Share: </strong><%= social_share_button_tag(@buyer.name) %>
 </div>
 
@@ -41,13 +41,15 @@
 
 <%# current_user.seller.inquiry_ids This is an array, must check array for matching integer %>  
 <% if current_user.seller.inquiry_ids.include?(@inquiry.id) && !@sellerinquiry.completed %>  
-<p class="card-text row align-items-center justify-content-center"><%= @inquiry.instructions %></p>
+<div class="container align-items-center justify-content-center">
+<p class="card-text row align-items-center justify-content-center"><strong>Data Submitting Instructions: </strong><%= @inquiry.instructions %></p>
 <p class="card-text row align-items-center justify-content-center">After you have completed the instructions to submit your data, hit the complete button below!</p> 
 <%= simple_form_for @sellerinquiry do |f| %>
 <%= f.input :completed, as: :hidden, :input_html => { :value => DateTime.current  } %>
 <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => @inquiry.id } %>
 <div style="text-align:center">
 <%= f.button :submit, 'Completed', class: 'btn btn-primary'%>
+</div>
 <% end %>
 <% end %>
 
