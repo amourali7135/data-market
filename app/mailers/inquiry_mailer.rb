@@ -5,14 +5,12 @@ class InquiryMailer < ApplicationMailer
   #
   #   en.inquiry_mailer.invite.subject
   #
-  def invite(seller)
+  def invite(buyer, seller)
     # @greeting = "Hi"
-    @buyer = current_user.buyer
+    @buyer = buyer
     @inquiries = @buyer.inquiries
-    @seller =  seller
+    @seller = seller
 
-    
-    mail(to: @seller.email, subject: 'You have been invited to sell your data!')
-    
+    mail(to: @seller.user.email, subject: 'You have been invited to sell your data!')
   end
 end

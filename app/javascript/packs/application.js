@@ -10,3 +10,5 @@ initAutocomplete2();
 initAutocomplete3();
 initSelect2();
 initsellerindexchecks();
+
+import "controllers"

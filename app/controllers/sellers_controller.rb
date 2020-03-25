@@ -20,15 +20,24 @@ class SellersController < ApplicationController
   end
   
   def notify
-    # raise
-    inquiry_ids = params[:inquiry][:ids]
-    seller_ids = params[:seller][:ids]
+    inquiry_id = params.dig(:sellers, :inquiry_id)
+    seller_ids = params.dig(:sellers, :ids) # return nil if sellers doesnt exist
+    raise
+    # find the inquiry, 
+    if seller_ids.present? #if inquiry.id is present and seller.id is present, then you do this action mailer method.  Both are needed to send email
+      # inquiry = Inquiry.find()
+      sellers = Seller.where(id: seller_ids.split(","))
+      sellers.each do |seller|
+        InquiryMailer.invite(current_user, seller).deliver_now #modify this to include the inquiry too, then modify mailer to accept all three, not only the firs ttwo
+      end    
+    end
     # do stuff
       # InquiryMailer.notify_seller(params[:inquiry][:ids])
       # flash notice
       # redirect to
     # end
-  end
+    redirect_to request.referrer
+  end 
     
     def new
       @seller = Seller.new
