@@ -29,67 +29,68 @@ class SellersController < ApplicationController
       sellers.each do |seller|
         InquiryMailer.invite(current_user.buyer, seller, inquiry).deliver_now #modify this to include the inquiry too, then modify mailer to accept all three, not only the first two, and do later instead of now
       end    
+      flash[:notice] = "Your invites are successfully being sent out!"
+      redirect to request.referrer
     end
     # do stuff
     # InquiryMailer.notify_seller(params[:inquiry][:ids])
-    # flash notice
-    # redirect to
+    # flash[:notice] = "Your invites are successfully being sent out!"
+    # redirect to request.referrer
     # end
     # raise
     redirect_to request.referrer
   end 
-    
-    def new
-      @seller = Seller.new
-    end
-    
-    def create
-      @seller = Seller.new(seller_params)
-      @seller.user_id = current_user.id
-      if @seller.save
-        flash[:notice] = "Your seller profile was successfully created!"
-        redirect_to sellerdashboard_path
-      else
-        flash[:notice] = "There was an error, please try again!"
-        render "new"
-      end
-    end
-    
-    def show
-      @user = current_user
-      @seller = Seller.find(params[:id])
-    end
-    
-    def update
-      @seller = Seller.find(params[:id])
-      if @seller.update(seller_params)
-        flash[:notice] = "Your seller profile was successfully updated!"
-        redirect_to sellerdashboard_path
-      else
-        flash[:error] = "There was an error, please try again!"
-        render 'edit'
-      end
-    end
-    
-    def delete
-      @seller = Seller.find(params[:id])
-      @seller.destroy
-      flash[:notice] = "Your seller profile was successfully deleted!"
-      redirect_to root_path
-    end
-    
-    def edit
-      @seller = Seller.find(params[:id])
-    end
-    
-    def submit
-      # raise
-    end
-    
-    private
-    
-    def seller_params
-      params.require(:seller).permit(:age, :country, :sex, :occupation, :city, :income, :ethnicity, :race, :religion, :sexuality, :politics, :relationship_status, :children, :verified, :birth_country, :smoker, :education_level, :types, :inquiry, types: [], income: [], )
+  
+  def new
+    @seller = Seller.new
+  end
+  
+  def create
+    @seller = Seller.new(seller_params)
+    @seller.user_id = current_user.id
+    if @seller.save
+      flash[:notice] = "Your seller profile was successfully created!"
+      redirect_to sellerdashboard_path
+    else
+      flash[:notice] = "There was an error, please try again!"
+      render "new"
     end
   end
   
+  def show
+    @user = current_user
+    @seller = Seller.find(params[:id])
+  end
+  
+  def update
+    @seller = Seller.find(params[:id])
+    if @seller.update(seller_params)
+      flash[:notice] = "Your seller profile was successfully updated!"
+      redirect_to sellerdashboard_path
+    else
+      flash[:error] = "There was an error, please try again!"
+      render 'edit'
+    end
+  end
+  
+  def delete
+    @seller = Seller.find(params[:id])
+    @seller.destroy
+    flash[:notice] = "Your seller profile was successfully deleted!"
+    redirect_to root_path
+  end
+  
+  def edit
+    @seller = Seller.find(params[:id])
+  end
+  
+  def submit
+    # raise
+  end
+  
+  private
+  
+  def seller_params
+    params.require(:seller).permit(:age, :country, :sex, :occupation, :city, :income, :ethnicity, :race, :religion, :sexuality, :politics, :relationship_status, :children, :verified, :birth_country, :smoker, :education_level, :types, :inquiry, types: [], income: [], )
+  end
+end
