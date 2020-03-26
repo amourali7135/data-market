@@ -1,11 +1,11 @@
-<p>Hello, <%= @seller.email %>!</p>
+<p>Hello, <%= @seller.user.email %>!</p>
 
-<p>You have been invited to sell your data to <%=@buyer.name%>!</p>
+<p>You have been invited to sell your data to <%= @buyer.name %>!</p>
 
 <p>Their data inquiry is titled <%= @inquiry.title %>, it can be found at<p>
 
 <p>They're offering you <%= @inquiry.reward %>. You can read more about the inquiry and join it at:<p>
 
-<p><%= link_to 'See this inquiry!', buyer_inquiry_path(@buyer, @inquiry) %><p>
+<p><%= link_to 'See this inquiry!', buyer_inquiry_path(@buyer, @inquiry), method: :get %><p>
 
 <p>Thank you!</p>

@@ -42,7 +42,6 @@
         <%= f.hidden_field :inquiry_id, value: "", data: { target: "invitation.inquiryInput"} %>
         <input type="checkbox" id="selectAll" value="selectAll" data-action="click->invitation#toggleAll"> Select / Deselect All<br/><br/>
         <%= f.submit class: "btn-primary"%>
-      <% #Send an inquiry to every selected seller!  How though?   %>
       <% end %>
     </div>
   <% end %>
@@ -51,23 +50,14 @@ make new form here, inputs, list, whatever.
 
 
 <div class="container">
-<div class="row align-items-center justify-content-center">
-<h4 class="text-dark row align-items-center justify-content-center pt-2">Hello <%= @buyer.name %>, select which of your inquiries that you want to share with your selected sellers</h4>
-<%= simple_form_for :inquiry, url: notify_sellers_path do |f| %>
-  <%# <%= f.input :ids, collection: @inquiries, as: :check_boxes, label: false This one sends in both options, not the seller though, interesting.  %> %>
-  <%= f.input :ids, collection: @inquiries, as: :radio_buttons, label: false, input_html: { data: { action: 'change->invitation#selectInquiry'}} %>
-<%= f.submit %>
-<% end %>
+  <div class="row align-items-center justify-content-center">
+    <h4 class="text-dark row align-items-center justify-content-center pt-2">Hello <%= @buyer.name %>, select which of your inquiries that you want to share with your selected sellers</h4>
+      <%= simple_form_for :inquiry, url: notify_sellers_path do |f| %>
+      <%= f.input :ids, collection: @inquiries, as: :radio_buttons, label: false, input_html: { data: { action: 'change->invitation#selectInquiry'}} %>
+      <%= f.submit %>
+      <% end %>
+  </div>
 </div>
-</div>
-
-<%# <div class="container">
-<%= simple_form_for @Inquiry_Mailer do |f|%>
-  <%#= f.input :inquiry, as: :radio_buttons, collection: Buyer::INQUIRY %>
-<%# end %>
-
-<%#= link_to 'Invite Sellers!', Inquiry_Mailer.invite(@seller).deliver_now %> 
-<%# What do I do for the controller though?  Shit.   %> 
 
 <div class="container">
 <div class="row align-items-center justify-content-center" >
