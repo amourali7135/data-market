@@ -6,6 +6,6 @@
 
 <p>They're offering you <%= @inquiry.reward %>. You can read more about the inquiry and join it at:<p>
 
-<p><%= link_to 'See this inquiry!', buyer_inquiry_path(@buyer, @inquiry), method: :get %><p>
+<p><%= link_to 'See this inquiry!', buyer_inquiry_url(@buyer, @inquiry), method: :get %><p>
 
 <p>Thank you!</p>

@@ -28,14 +28,14 @@ class SellersController < ApplicationController
       sellers = Seller.where(id: seller_ids.split(","))
       sellers.each do |seller|
         InquiryMailer.invite(current_user.buyer, seller, inquiry).deliver_now #modify this to include the inquiry too, then modify mailer to accept all three, not only the first two, and do later instead of now
-        raise
       end    
     end
     # do stuff
-      # InquiryMailer.notify_seller(params[:inquiry][:ids])
-      # flash notice
-      # redirect to
+    # InquiryMailer.notify_seller(params[:inquiry][:ids])
+    # flash notice
+    # redirect to
     # end
+    # raise
     redirect_to request.referrer
   end 
     
