@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     resources :messages
   end
   
-  post 'submit', to: 'sellers#submit', as: :submit
+  # post 'submit', to: 'sellers#submit', as: :submit
   
   # if Rails.env.development?
   #   mount LetterOpenerWeb::Engine, at: "/letter_opener"
