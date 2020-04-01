@@ -1,4 +1,4 @@
-<div class="container-small mt-3">
+<div class="container mt-3">
 <div class="row align-items-center justify-content-center">
 <h2>Please provide information about the data that you are seeking out!</h2>
 </div>
@@ -13,7 +13,7 @@
 <%= f.input :format, collection: Inquiry.formats, input_html: {id: "inquiry_format"}, label: "What format must the data be submitted as?" %>
 <%= f.input :anonymous, label: "Does the identity of the seller of the data need to be provided as well?" %>
 <%= f.input :total, label: "How many people do you need data from?" %>
-<%= f.input :hidden, label: "Do you want to hide this inquiry from the public?  If so, potential sellers will not be able to search for it, you'll have to send it to them." %>
+<%= f.input :hidden, label: "Do you want to hide this inquiry from the public?  If so, potential sellers will not be able to search for it, you'll have to send it to them yourself." %>
 <%= f.input :instructions, label: "Please provide the instructions that will be shown to the seller when they accept this inquiry in order for them to send you the data" %>
 <div style="text-align:center">
 <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>

@@ -4,9 +4,9 @@ You have been invited to sell your data to <%=@buyer.name%>!
 
 Their data inquiry is titled <%= @inquiry.title %>, it can be found at
 
-They're offering you <%= @inquiry.reward %>. You can read more about the inquiry and join it at:
+They're offering you <%= @inquiry.reward %> in exchange for your data. You can read more about the inquiry and join it at:
 
-<%= link_to 'See this inquiry!', buyer_inquiry_url(@buyer, @inquiry) %>
+<%= link_to 'See this inquiry!', buyer_inquiry_url(@buyer, @inquiry), method: :get %>
 
 Thank you!
 

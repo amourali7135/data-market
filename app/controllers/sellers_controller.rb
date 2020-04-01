@@ -1,11 +1,16 @@
 class SellersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:submit]
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :show]
   
   def index #do conditional for pagination versus searched.  
-    @buyer = current_user.buyer if current_user.buyer
-    @inquiries = @buyer.inquiries if current_user.buyer
-    @inquiry = Inquiry.where(buyer_id: @buyer.id )
+    @buyer = current_user.buyer if current_user #&& current_user.buyer
+    # if current_user.buyer
+    #   @buyer = current_user.buyer
+    # else
+    #   @buyer.nil?
+    # end
+    @inquiries = @buyer.inquiries if current_user #&& current_user.buyer
+    @inquiry = Inquiry.where(buyer_id: @buyer.id ) if current_user #&& current_user.buyer
     
     if params["search"]
       @filter = params["search"]["types"].reject { |type| type == '' }.concat([params["search"]['age']]).concat([params["search"]['min_age']]).concat([params["search"]["country"]]).concat([params["search"]["sex"]]).concat([params["search"]["occupation"]]).concat([params["search"]["city"]]).concat([params["search"]["income"]]).concat([params["search"]["ethnicity"]]).concat([params["search"]["race"]]).concat([params["search"]["religion"]]).concat([params["search"]["sexuality"]]).concat([params["search"]["politics"]]).concat([params["search"]["relationship_status"]]).concat([params["search"]["children"]]).concat([params["search"]["verified"]]).concat([params["search"]["birth_country"]]).concat([params["search"]["smoker"]]).concat([params["search"]["education_level"]]).flatten.reject(&:blank?)

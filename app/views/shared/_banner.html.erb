@@ -2,7 +2,7 @@
   <div class="container">
    <% if !current_user %>
       <strong><h1>Welcome to Datumine!  Your data is worth more than you think.</h1></strong>
-      <p>Take control of your data. Register now to buy data to use or to sell your data!</p>
+      <p>Take control of your data. Register now to sell your data or to buy data!</p>
       <%= link_to "Register", new_user_registration_path, class: 'btn btn-primary' %>
       <% elsif current_user.seller %>
       <strong><h1>Welcome back!  Browse through inquiries or head to your dashboard</h1></strong>

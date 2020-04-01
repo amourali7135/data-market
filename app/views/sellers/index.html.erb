@@ -32,7 +32,9 @@
 
 
 <div data-controller="invitation">
-  <% if current_user.buyer   %>
+   <% if current_user && current_user.buyer %> 
+  <%# if session[:buyer_id].nil? %>
+  <div id="welcomebuttons">
     <div class="container mt-2">
        <h4 class="text-dark row align-items-center justify-content-center pt-2">After you've searched for the sellers you want to invite to your inquiry, invite them here!</h4>
       <%= form_for :sellers, url: notify_sellers_path do |f| %>
@@ -45,6 +47,7 @@
   <% end %>
 
 
+<% if current_user && current_user.buyer %> 
 <div class="container">
   <div class="row align-items-center justify-content-center">
     <h4 class="text-dark row align-items-center justify-content-center pt-2">Hello <%= @buyer.name %>, now select which of your inquiries that you want to share with your selected sellers</h4>
@@ -54,12 +57,21 @@
       <% end %>
   </div>
 </div>
+<% end %>
 
+<% if current_user && current_user.buyer %> 
  <div class="container">
    <div class="row align-items-center justify-content-center" >
      <h4 class="text-dark row align-items-center justify-content-center pt-2">There are <%= @sellers.count %> matching sellers!  Select which ones to invite to your inquiry</h4>
    </div>
  </div>
+ <% else %>
+ <div class="container">
+   <div class="row align-items-center justify-content-center" >
+      <h4 class="text-dark row align-items-center justify-content-center pt-2">There are <%= @sellers.count %> matching sellers!  </h4>
+   </div>
+ </div>
+ <% end %>
 
 
   <div class="content">

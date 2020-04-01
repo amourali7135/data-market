@@ -46,4 +46,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'better_errors' #Don't use with RSPEC.
   gem 'binding_of_caller' #REPL for better errors.
+  gem 'shoulda-matchers'
+  gem 'rspec-rails'
+  gem 'capybara'
 end
