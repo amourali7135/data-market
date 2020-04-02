@@ -1,9 +1,8 @@
-Restrict access via dual account system.
 Inquiries, trades, success, total, etc.
 Inquiry active or not button.
 
-
 <div class="dashboard_container">
+
 <div class="row align-items-center justify-content-center mt-3">
   <div class="row">
     <p>Edit your buyer profile  <%= link_to 'Edit', edit_buyer_path(@buyer.id), class: 'btn btn-primary'  %>   </p>
@@ -12,46 +11,46 @@ Inquiry active or not button.
 
 
 <div class="row align-items-center justify-content-center">
-<div class="row">
-<p>Change your username or password  <%= link_to 'Change', edit_user_registration_path(@current_user.id), class: 'btn btn-primary'  %>   </p>
+  <div class="row">
+    <p>Change your username or password  <%= link_to 'Change', edit_user_registration_path(@current_user.id), class: 'btn btn-primary'  %>   </p>
   </div>
 </div>
 
 
 
 <div class="row align-items-center justify-content-center">
-<div class="row">
+  <div class="row">
 <%# <p> See your conversations! <%= link_to 'Convos', conversation_path(@user), class: 'btn btn-primary' %>
-<p> See your conversations! <%= link_to 'Convos', conversations_path, class: 'btn btn-primary' %> </p>
+    <p> See your conversations! <%= link_to 'Convos', conversations_path, class: 'btn btn-primary' %> </p>
   </div>
 </div>
 
 <div class="row align-items-center justify-content-center">
-<div class="row">
-<p>Make a new inquiry  <%= link_to 'New Inquiry', new_buyer_inquiry_path(@buyer.id), class: 'btn btn-primary'  %>   </p>
+  <div class="row">
+    <p>Make a new inquiry  <%= link_to 'New Inquiry', new_buyer_inquiry_path(@buyer.id), class: 'btn btn-primary'  %>   </p>
   </div>
 </div>
 
-<div class="row align-items-center justify-content-center">
-<div class="row">
-<p> See your inquiries page! <%= link_to 'Your Inquiries', buyer_inquiries_path(@buyer.id), class: 'btn btn-primary' %> </p>
+  <div class="row align-items-center justify-content-center">
+    <div class="row">
+      <p> See your inquiries page! <%= link_to 'Your Inquiries', buyer_inquiries_path(@buyer.id), class: 'btn btn-primary' %> </p>
+    </div>
   </div>
-</div>
 </div>
 
 
 <div class="dashboard_container mt-4">
-<p class="grid-headers">Edit or delete your inquiries below</p>
-<div class="row align-items-center justify-content-center ">
+  <h2 class="grid-headers">Edit or delete your inquiries below</h2>
+    <div class="row align-items-center justify-content-center ">
       <div class="container front-page-grid">
-<% @buyer.inquiries.each do |inquiry| %>
-    <div class="row align-items-center justify-content-center">
-      <div class="col-sm-4">
-    <%= render partial: 'shared/inquiry_dashboard_card', locals: {inquiry: inquiry, buyer: inquiry.buyer} %>
-  </div>
-<% end %>
-  </div>
-</div>
-</div>
+        <% @buyer.inquiries.each do |inquiry| %>
+          <div class="row align-items-center justify-content-center">
+            <div class="col-sm-4">
+              <%= render partial: 'shared/inquiry_dashboard_card', locals: {inquiry: inquiry, buyer: inquiry.buyer} %>
+            </div>
+              <% end %>
+          </div>
+      </div>
+    </div>
 </div>
 

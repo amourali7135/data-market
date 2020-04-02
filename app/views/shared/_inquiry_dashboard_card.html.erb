@@ -1,5 +1,7 @@
 <div class="card-trip">
-<img src=<%= buyer.photo %> />
+<%# <img src=<%= buyer.photo %>
+<%= cl_image_tag @buyer.photo,
+    width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %></p>
   <div class="card-trip-infos">
     <h2><%= inquiry.title %></h2>
     <p><%= inquiry.information_usage %></p>
