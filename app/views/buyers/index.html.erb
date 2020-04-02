@@ -2,6 +2,7 @@
   <div class="container">
     <div class="block-heading">
       <h2 class="text-dark row align-items-center justify-content-center py-2">Browse those seeking to buy data!</h2>
+      <p class="text-dark row align-items-center justify-content-center py-2">There are <%= @buyers.count %> buyers on Datumine.</p>
           </div>
 
 <div class="container">
@@ -16,16 +17,26 @@
   <% end %>
 </div>
 
-   <div class="content">
-      <div class="products pl-5 card-grid-3c">
-<% @buyers.each do |buyer| %>
-  <div class="row align-items-center justify-content-center">
-  <div class="col-sm-6">
-    <%= render partial: 'shared/buyer_index_card', locals: {buyer: buyer} %>
-  </div>
-  </div>
-<% end %>
-</div>
+   <div class="content", id="buyers-container">
+      <div class="products pl-5 card-grid-3c" id="buyers_table">
+        <% @buyers.each do |buyer| %>
+          <div class="row align-items-center justify-content-center">
+            <div class="col-sm-6">
+              <%= render partial: 'shared/buyer_index_card', locals: {buyer: buyer} %>
+            </div>
+          </div>
+              <% end %>
+        </div>
+      </div>
     </div>
-  </div>
+
+<%# <div class="container pt-4">
+  <div class="row justify-content-center">
+    <%= will_paginate @buyers %>
+
+
+<%= link_to "More", root_path(page: 2), id: 'more-btn', remote: true, class: "hidden" %>
+
+<%= javascript_pack_tag 'controllers/buyer_controller' %>
+
 </section>
