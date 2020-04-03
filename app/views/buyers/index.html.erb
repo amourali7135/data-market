@@ -37,9 +37,9 @@
 
 <%# <%= link_to "More", root_path(page: 2), id: 'more-btn', remote: true, class: "hidden" %>  <%# hidden button to trigger event. %>
 
-<%= link_to "More", buyers_path(page: 2), id: 'more-btn', remote: true, class: "hidden" %>
+<%= link_to "More", buyers_path(page: 2), id: 'more-btn', remote: true, class: "d-none" %>
 
-<%# <%= javascript_pack_tag 'controllers/buyer_controller' %>
+
 <%= javascript_pack_tag 'buyer_controller' %>
 
 </section>
