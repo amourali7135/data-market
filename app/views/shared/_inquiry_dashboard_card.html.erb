@@ -10,6 +10,7 @@
 
 
 
+
       <div class="d-flex justify-content-between w-100">
       <%= link_to 'See this inquiry!', buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary'  %>
       <%= link_to 'Edit this inquiry!', edit_buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary'  %>
@@ -18,8 +19,8 @@
 </div>
 
   <div class="d-flex justify-content-between w-100">
-    <h2 class="card-trip-pricing">$<%= inquiry.reward %></h2>
-    <p> </p>
+    <h4 class="card-trip-pricing"><strong><%= inquiry.reward %></strong></h4>
+    <h4><strong><%="#{inquiry.impressionist_count} views so far!" %></strong></h4>
       <p>  </p>
   </div>
 </div>

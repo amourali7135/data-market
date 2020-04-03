@@ -1,5 +1,7 @@
 class InquiriesController < ApplicationController
-skip_before_action :authenticate_user!, only: [:index, :show ]
+  skip_before_action :authenticate_user!, only: [:index, :show ]
+  impressionist actions: [:show]#, unique: [:session_hash]
+
 
   def index
     if params["search"] #reject '' in middle added 112619
@@ -8,16 +10,16 @@ skip_before_action :authenticate_user!, only: [:index, :show ]
       @buyers = Buyer.global_search(@filter)
       @inquiries = Inquiry.global_search(@filter)
     else #112619 I added this while trying to get sort to work.
-      @buyers = Buyer.all
-      @inquiries = Inquiry.all
+      # @buyers = Buyer.all        This was an N + 1, wow dude.
+      @inquiries = Inquiry.includes([:buyer])
     end
   end
-  
+
   def new
     @buyer = Buyer.find(params[:buyer_id])
     @inquiry = Inquiry.new
   end
-  
+
   def create
     @inquiry = Inquiry.new(inquiry_params)
     # @inquiry.user_id = @buyer.user_id
@@ -31,16 +33,16 @@ skip_before_action :authenticate_user!, only: [:index, :show ]
       render "new"
     end
   end
-  
+
   def show
     @user = current_user
     @seller = current_user.seller if current_user.seller
     @buyer = Buyer.find(params[:buyer_id])
     @inquiry = Inquiry.find(params[:id])
-    @sellerinquiry = Sellerinquiry.find_by(seller_id: current_user.seller.id, inquiry_id: @inquiry.id) || Sellerinquiry.new
+    @sellerinquiry =  Sellerinquiry.new || Sellerinquiry.find_by(seller_id: current_user.seller.id, inquiry_id: @inquiry.id)
     # @conversation = Conversation.find_by(author: @user, receiver: @artist)
   end
-  
+
   def update
     @inquiry = Inquiry.find(params[:id])
     if @inquiry.update(inquiry_params)
@@ -51,35 +53,35 @@ skip_before_action :authenticate_user!, only: [:index, :show ]
       render 'edit'
     end
   end
-  
+
   def destroy
     @inquiry = Inquiry.find(params[:id])
     @inquiry.destroy
     flash[:notice] = "Your inquiry was successfully deleted!"
     redirect_to buyerdashboard_path
   end
-  
+
   def edit
     @buyer = Buyer.find(params[:buyer_id])
     @inquiry = Inquiry.find(params[:id])
   end
-  
+
   def like
     @user = current_user # before_action :authenticate_user, only: [:likes]
     @inquiry = Inquiry.find(params[:id])
     @inquiry.liked_by @user
     redirect_to @inquiry, notice: "Liked this inquiry successfully!"
   end
-  
+
   def unlike
     @user = current_user # before_action :authenticate_user, only: [:likes]
     @inquiry = Inquiry.find(params[:id])
     @inquiry.unliked_by @user
     redirect_to @inquiry, notice: "Unliked this inquiry successfully!"
   end
-  
+
   private
-  
+
   def inquiry_params
     params.require(:inquiry).permit(:information_usage, :requirements, :reward, :anonymous, :total, :accept?, :title, :format, :instructions, :active, :types, types: [] )
   end

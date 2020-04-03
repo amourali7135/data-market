@@ -1,9 +1,10 @@
 class Inquiry < ApplicationRecord
+  is_impressionable
   belongs_to :buyer
   belongs_to :data, optional: true
   has_many :sellerinquiries, dependent: :destroy
   has_many :sellers, through: :sellerinquiries
-  
+
   validates :requirements, presence: true
   validates :reward, presence: true
   # validates :anonymous, presence: true
@@ -13,10 +14,13 @@ class Inquiry < ApplicationRecord
   validates :format, presence: true
   validates :title, presence: true, uniqueness: true
   validates :instructions, presence: true
-  
+
+
+
+
 
   #How the fuck to make this not be a spam like result?  Shit.
-  
+
   include PgSearch::Model
   pg_search_scope :global_search,
   against: [ :information_usage, :requirements, :reward, :types,  ],
