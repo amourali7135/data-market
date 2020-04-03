@@ -13,12 +13,14 @@ const buyerController = {
     this.moreBtn.setAttribute("href", url.search);
   },
   attachInfiniteScroll() {
+    console.log(this.moreBtn)
     if (this.moreBtn) {
-      this.container.addEventListener("scroll", () => {
+      document.addEventListener("scroll", () => {
         if (
-          this.container.scrollTop + this.container.clientHeight >=
-          this.container.scrollHeight
+          document.documentElement.scrollTop + document.documentElement.clientHeight >=
+          document.documentElement.scrollHeight
           ) {
+            console.log("hello")
             this.moreBtn.click();
           }
         });

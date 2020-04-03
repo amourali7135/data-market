@@ -7,7 +7,7 @@ class BuyersController < ApplicationController
     @buyers = Buyer.paginate(page: @current_page, per_page: 10)
     if @current_page > 1
       # @buyers = Buyer.includes(:name, :biography, :intentions, :website, :contact, :size, :photo, :country, :city, :phone, :email, :types, types: [],).paginate(page: @current_page, per_page: 8)
-      @buyers = Buyer.paginate(page: @current_page, per_page: 8)
+      # @buyers = Buyer.paginate(page: @current_page, per_page: 8)
       respond_to do |format|
         format.html
         format.js
