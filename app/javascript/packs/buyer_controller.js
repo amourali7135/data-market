@@ -19,12 +19,13 @@ const buyerController = {
       document.addEventListener("scroll", () => {
         if (
           document.documentElement.scrollTop + document.documentElement.clientHeight >=
-          document.documentElement.scrollHeight
+          document.documentElement.scrollHeight && document.location.pathname === '/buyer' //for only being used on the buyer path, add more later on
           ) {
             // console.log("hello")
             this.moreBtn.click();
           }
         });
+
       }
     }
   };
