@@ -1,13 +1,12 @@
-<div class="card-trip">
+<div class="card-trip ">
 <%# <img src=<%= buyer.photo %>
 <%= cl_image_tag @buyer.photo,
     width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %></p>
   <div class="card-trip-infos">
-    <h2><%= inquiry.title %></h2>
-    <p><%= inquiry.information_usage %></p>
-    <p><%= inquiry.requirements %></p>
-    <p><%= inquiry.types %></p>
-
+    <h2><strong>Title: </strong><%= inquiry.title %></h2>
+    <p><strong>Usage: </strong><%= inquiry.information_usage %></p>
+    <p><strong>Requirements: </strong><%= inquiry.requirements %></p>
+    <p><strong>Data types: </strong><%= inquiry.types %></p>
 
 
       <div class="d-flex justify-content-between w-100">
@@ -18,8 +17,8 @@
 </div>
 
   <div class="d-flex justify-content-between w-100">
-    <h2 class="card-trip-pricing">$<%= inquiry.reward %></h2>
-    <p> </p>
+    <h4 class="card-trip-pricing"><strong><%= inquiry.reward %></strong></h4>
+    <h4><strong><%="#{inquiry.impressionist_count} views so far!" %></strong></h4>
       <p>  </p>
   </div>
 </div>
@@ -27,3 +26,11 @@
     </div>
 </div>
 
+
+<%= simple_form_for [@buyer, @inquiry] do |f|%>
+<%= f.input :active, as: :hidden, :input_html => { :value => Datetime.current } %>
+<%= f.input :inquiry_id, as: :hidden, :input_html => { :value => inquiry.id } %>
+<div style="text-align:center">
+<%= f.button :submit, 'End Inquiry', class: 'btn btn-primary'%>
+</div>
+<% end %>

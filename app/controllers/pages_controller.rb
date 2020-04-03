@@ -22,6 +22,7 @@ class PagesController < ApplicationController
       flash[:notice] = "Only users with buyer profiles can access the buyer dashboard!"
       redirect_to root_path
     end
+    # @inquiry = Inquiry.where(buyer_id: @buyer.id)
   end
 
   def contact

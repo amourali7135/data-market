@@ -27,6 +27,7 @@ gem 'flag-icons-rails'
 gem 'country_select'
 gem 'country_state_select'
 gem 'will_paginate', '~> 3.1.7'
+gem 'impressionist'
 
 
 
@@ -37,6 +38,8 @@ gem 'will_paginate', '~> 3.1.7'
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'letter_opener'
+  gem 'bullet'
+  gem 'rack-mini-profiler'
 end
 
 group :development, :test do

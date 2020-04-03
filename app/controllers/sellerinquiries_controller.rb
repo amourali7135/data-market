@@ -1,5 +1,5 @@
 class SellerinquiriesController < ApplicationController
-  
+
   def create
     @sellerinquiry = Sellerinquiry.new(sellerinquiry_params)
     @seller = current_user.seller if current_user.seller
@@ -9,14 +9,14 @@ class SellerinquiriesController < ApplicationController
     @sellerinquiry.inquiry = @inquiry
     if @sellerinquiry.save
       flash[:notice] = "You've successfully joined this inquiry! Follow the instructions below and then hit complete"
-      redirect_to buyer_inquiry_path(@buyer, @inquiry) 
+      redirect_to buyer_inquiry_path(@buyer, @inquiry)
     else
       flash[:notice] = "There was an error, please try again!"
-      redirect_to buyer_inquiry_path(@buyer, @inquiry) 
+      redirect_to buyer_inquiry_path(@buyer, @inquiry)
     end
     # raise
   end
-  
+
   def update
     @seller = current_user.seller if current_user.seller
     @inquiry = Inquiry.find(params[:sellerinquiry][:inquiry_id])
@@ -26,15 +26,15 @@ class SellerinquiriesController < ApplicationController
     @sellerinquiry.completed = DateTime.current
     if @sellerinquiry.save
       flash[:notice] = "You've successfully completed this inquiry"
-      redirect_to buyer_inquiry_path(@buyer, @inquiry) 
+      redirect_to buyer_inquiry_path(@buyer, @inquiry)
     else
       flash[:notice] = "There was an error, please try again!"
-      redirect_to buyer_inquiry_path(@buyer, @inquiry) 
+      redirect_to buyer_inquiry_path(@buyer, @inquiry)
     end
     # raise
   end
-  
-  
+
+
   def sellerinquiry_params
     params.require(:sellerinquiry).permit(:completed, :inquiry_id, :seller_id, )
   end
