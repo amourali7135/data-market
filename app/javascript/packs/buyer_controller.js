@@ -5,6 +5,7 @@ const buyerController = {
   postsContainer: document.getElementById("buyers-container"),
   moreBtn: document.getElementById("more-btn"),
   insertItems(items) {
+    console.log(items)
     this.postsContainer.insertAdjacentHTML("beforeend", items);
   },
   setNextPage(nextPage) {
