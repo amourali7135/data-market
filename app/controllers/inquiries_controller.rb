@@ -1,5 +1,5 @@
 class InquiriesController < ApplicationController
-skip_before_action :authenticate_user!, only: [:index, :show ]
+  skip_before_action :authenticate_user!, only: [:index, :show ]
 
   def index
     if params["search"] #reject '' in middle added 112619
@@ -11,6 +11,15 @@ skip_before_action :authenticate_user!, only: [:index, :show ]
       @buyers = Buyer.all
       @inquiries = Inquiry.all
     end
+    #  @buyers = Buyer.paginate(page: @current_page, per_page: 15)
+    # if @current_page > 1
+    #   # binding.pry
+    #   # raise
+    #   respond_to do |format|
+    #     format.html
+    #     format.js
+    #   end
+    # end
   end
 
   def new
@@ -80,9 +89,12 @@ skip_before_action :authenticate_user!, only: [:index, :show ]
 
   private
 
+  def set_current_page
+    @current_page = params[:page]&.to_i || 1
+  end
+
   def inquiry_params
     params.require(:inquiry).permit(:information_usage, :requirements, :reward, :anonymous, :total, :accept?, :title, :format, :instructions, :active, :types, types: [] )
   end
-
 
 end
