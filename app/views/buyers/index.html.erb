@@ -35,8 +35,11 @@
     <%= will_paginate @buyers %>
 
 
-<%= link_to "More", root_path(page: 2), id: 'more-btn', remote: true, class: "hidden" %>
+<%# <%= link_to "More", root_path(page: 2), id: 'more-btn', remote: true, class: "hidden" %>  <%# hidden button to trigger event. %>
 
-<%= javascript_pack_tag 'controllers/buyer_controller' %>
+<%= link_to "More", buyers_path(page: 2), id: 'more-btn', remote: true, class: "hidden" %>
+
+<%# <%= javascript_pack_tag 'controllers/buyer_controller' %>
+<%= javascript_pack_tag 'buyer_controller' %>
 
 </section>

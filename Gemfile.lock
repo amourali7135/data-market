@@ -325,7 +325,6 @@ DEPENDENCIES
   capybara
   carrierwave (~> 1.2)
   cloudinary (~> 1.9.1)
-  coffee-rails
   country_select
   country_state_select
   devise

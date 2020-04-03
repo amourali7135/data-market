@@ -1,7 +1,7 @@
 
 // # Ray infinite pagination attempt
 const buyerController = {
-  container: document.querySelector(".container"),
+  container: document.documentElement,
   postsContainer: document.getElementById("buyers-container"),
   moreBtn: document.getElementById("more-btn"),
   insertItems(items) {
