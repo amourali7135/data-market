@@ -5,6 +5,12 @@ Inquiry active or not button.
 
 <div class="row align-items-center justify-content-center mt-3">
   <div class="row">
+    <h5><strong><%="Your buyer profile has #{@buyer.impressionist_count} views so far!" %></strong></h5>
+  </div>
+</div>
+
+<div class="row align-items-center justify-content-center mt-3">
+  <div class="row">
     <p>Edit your buyer profile  <%= link_to 'Edit', edit_buyer_path(@buyer.id), class: 'btn btn-primary'  %>   </p>
   </div>
 </div>
@@ -39,8 +45,8 @@ Inquiry active or not button.
 </div>
 
 
-<div class="dashboard_container mt-4">
-  <h2 class="grid-headers">Edit or delete your inquiries below</h2>
+<div class="dashboard_container mt-4 pb-4">
+  <h2 class="grid-headers pt-3">Edit or delete your inquiries below</h2>
     <div class="row align-items-center justify-content-center ">
       <div class="container front-page-grid">
         <% @buyer.inquiries.each do |inquiry| %>

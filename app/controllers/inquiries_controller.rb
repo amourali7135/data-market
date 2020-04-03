@@ -45,6 +45,7 @@ class InquiriesController < ApplicationController
 
   def update
     @inquiry = Inquiry.find(params[:id])
+    # @inquiry.active = DateTime.current
     if @inquiry.update(inquiry_params)
       flash[:notice] = "Your inquiry profile was successfully updated!"
       redirect_to buyerdashboard_path
