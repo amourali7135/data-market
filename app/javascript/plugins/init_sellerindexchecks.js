@@ -13,3 +13,5 @@ $('#selectAll').click(function () {
 // export {
 //   initsellerindexchecks
 // }
+
+// what does this file even do?

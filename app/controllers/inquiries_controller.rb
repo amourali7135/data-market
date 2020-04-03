@@ -2,7 +2,6 @@ class InquiriesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show ]
   impressionist actions: [:show]#, unique: [:session_hash]
 
-
   def index
     if params["search"] #reject '' in middle added 112619
       @filter = params["search"]
@@ -13,6 +12,15 @@ class InquiriesController < ApplicationController
       # @buyers = Buyer.all        This was an N + 1, wow dude.
       @inquiries = Inquiry.includes([:buyer])
     end
+    #  @buyers = Buyer.paginate(page: @current_page, per_page: 15)
+    # if @current_page > 1
+    #   # binding.pry
+    #   # raise
+    #   respond_to do |format|
+    #     format.html
+    #     format.js
+    #   end
+    # end
   end
 
   def new
@@ -40,6 +48,7 @@ class InquiriesController < ApplicationController
     @buyer = Buyer.find(params[:buyer_id])
     @inquiry = Inquiry.find(params[:id])
     @sellerinquiry =  Sellerinquiry.new || Sellerinquiry.find_by(seller_id: current_user.seller.id, inquiry_id: @inquiry.id)
+
     # @conversation = Conversation.find_by(author: @user, receiver: @artist)
   end
 
@@ -83,9 +92,13 @@ class InquiriesController < ApplicationController
 
   private
 
+
+  def set_current_page
+    @current_page = params[:page]&.to_i || 1
+  end
+
   def inquiry_params
     params.require(:inquiry).permit(:information_usage, :requirements, :reward, :anonymous, :total, :accept?, :title, :format, :instructions, :active, :types, types: [] )
   end
-
 
 end
