@@ -54,6 +54,9 @@ ActiveRecord::Schema.define(version: 2020_04_05_225438) do
     t.index ["seller_id"], name: "index_data_on_seller_id"
   end
 
+  create_table "impressions", force: :cascade do |t|
+  end
+
   create_table "inquiries", force: :cascade do |t|
     t.text "information_usage"
     t.text "requirements"
