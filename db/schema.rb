@@ -185,6 +185,9 @@ ActiveRecord::Schema.define(version: 2020_04_05_225438) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+  end
+
   add_foreign_key "buyers", "users"
   add_foreign_key "data", "sellers"
   add_foreign_key "inquiries", "buyers"
