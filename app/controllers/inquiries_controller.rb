@@ -1,6 +1,7 @@
 class InquiriesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show ]
-  impressionist actions: [:show]#, unique: [:session_hash]
+  before_action :set_current_page, only: :index
+
 
   def index
     if params["search"] #reject '' in middle added 112619
@@ -10,7 +11,7 @@ class InquiriesController < ApplicationController
       @inquiries = Inquiry.global_search(@filter)
     else #112619 I added this while trying to get sort to work.
       # @buyers = Buyer.all        This was an N + 1, wow dude.
-      @inquiries = Inquiry.includes([:buyer])
+      @inquiries = Inquiry.includes([:buyer]).paginate(page: @current_page, per_page: 20)
     end
     #  @buyers = Buyer.paginate(page: @current_page, per_page: 15)
     # if @current_page > 1
@@ -47,14 +48,13 @@ class InquiriesController < ApplicationController
     @seller = current_user.seller if current_user.seller
     @buyer = Buyer.find(params[:buyer_id])
     @inquiry = Inquiry.find(params[:id])
-    @sellerinquiry =  Sellerinquiry.new || Sellerinquiry.find_by(seller_id: current_user.seller.id, inquiry_id: @inquiry.id)
-
+    @sellerinquiry = Sellerinquiry.new || Sellerinquiry.find_by(seller_id: current_user.seller.id, inquiry_id: @inquiry.id)
+    @inquiry.punch(request)
     # @conversation = Conversation.find_by(author: @user, receiver: @artist)
   end
 
   def update
     @inquiry = Inquiry.find(params[:id])
-    # @inquiry.active = DateTime.current
     if @inquiry.update(inquiry_params)
       flash[:notice] = "Your inquiry profile was successfully updated!"
       redirect_to buyerdashboard_path
@@ -91,7 +91,6 @@ class InquiriesController < ApplicationController
   end
 
   private
-
 
   def set_current_page
     @current_page = params[:page]&.to_i || 1

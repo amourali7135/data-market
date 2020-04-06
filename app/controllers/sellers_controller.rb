@@ -1,6 +1,7 @@
 class SellersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:submit]
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_current_page, only: :index
 
   def index #do conditional for pagination versus searched.
     @buyer = current_user.buyer if current_user #&& current_user.buyer

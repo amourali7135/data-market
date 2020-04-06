@@ -1,7 +1,7 @@
 class BuyersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show ]
   before_action :set_current_page, only: :index
-  impressionist actions: [:show]#, unique: [:session_hash]
+
 
   def index
     # @buyers = Buyer.all
@@ -39,10 +39,11 @@ def create
 end
 
 def show
-  @user = current_user
+  # @user = current_user
   # @user = User.find(params[:user_id])
   @buyer = Buyer.find(params[:id])
   @inquiries = @buyer.inquiries
+  @buyer.punch(request)
   # @inquiry = @buyer.inquiries.all
   # @conversation = Conversation.find_by(author: @user, receiver: @artist)
 end

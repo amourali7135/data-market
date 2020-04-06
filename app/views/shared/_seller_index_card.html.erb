@@ -10,7 +10,7 @@
     <p><strong>Age: </strong><%= seller.age %></p>
     <p><strong>Willing to sell: </strong><%= seller.types %></p>
     <% if current_user && current_user.buyer %>
-    <p><%= check_box_tag("seller", "#{seller.id}", false, { data: { target: "invitation.seller", action: "click->invitation#toggleSeller" } }) %></p> 
+    <p><%= check_box_tag("seller", "#{seller.id}", false, { data: { target: "invitation.seller", action: "click->invitation#toggleSeller" } }) %></p>
     <% end %>
   </div>
   <div class="d-flex justify-content-between w-100">

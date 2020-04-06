@@ -1,5 +1,6 @@
 class Inquiry < ApplicationRecord
-  is_impressionable
+  acts_as_punchable
+
   belongs_to :buyer
   belongs_to :data, optional: true
   has_many :sellerinquiries, dependent: :destroy

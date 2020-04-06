@@ -1,5 +1,7 @@
 class Buyer < ApplicationRecord
-  is_impressionable
+  acts_as_punchable
+
+
   mount_uploader :photo, PhotoUploader
 
   belongs_to :user
@@ -9,6 +11,7 @@ class Buyer < ApplicationRecord
   has_many :reviews
   has_many :orders, dependent: :destroy #source order?
   has_many :sellerinquiries, through: :inquiries
+  has_one :photo, dependent: :destroy
 
   validates :name, presence: true
   validates :name, uniqueness: true

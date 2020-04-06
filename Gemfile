@@ -27,7 +27,8 @@ gem 'flag-icons-rails'
 gem 'country_select'
 gem 'country_state_select'
 gem 'will_paginate', '~> 3.1.7'
-gem 'impressionist'
+gem "punching_bag"
+
 
 
 
