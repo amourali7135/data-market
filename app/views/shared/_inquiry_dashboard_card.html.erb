@@ -27,8 +27,8 @@
 </div>
 
 
-<%= simple_form_for [@buyer, @inquiry] do |f|%>
-<%= f.input :active, as: :hidden, :input_html => { :value => Datetime.current } %>
+<%= simple_form_for [@buyer, inquiry] do |f|%>
+<%= f.input :active, as: :hidden, :input_html => { :value => DateTime.current } %>
 <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => inquiry.id } %>
 <div style="text-align:center">
 <%= f.button :submit, 'End Inquiry', class: 'btn btn-primary'%>

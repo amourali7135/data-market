@@ -48,11 +48,11 @@ Inquiry active or not button.
 
 <div class="dashboard_container mt-4 mb-4">
   <p class="grid-headers">Edit or delete your inquiries below</p>
+        <% @buyer.inquiries.each do |inquiry| %>
     <div class="row ">
       <div class="products pl-5 card-grid-3c">
-        <% @buyer.inquiries.each do |inquiry| %>
           <div class="row align-items-center justify-content-center">
-            <div class="col-sm-4">
+            <div class="">
               <%= render partial: 'shared/inquiry_dashboard_card', locals: {inquiry: inquiry, buyer: inquiry.buyer} %>
             </div>
               <% end %>
@@ -60,14 +60,5 @@ Inquiry active or not button.
       </div>
     </div>
 </div>
-
-<div class="dashboard_container mt-4 mb-4">
-  <p class="grid-headers">Edit or delete your inquiries below</p>
-    <div class="row align-items-center justify-content-center">
-        <% @buyer.inquiries.each do |inquiry| %>
-          <%= render partial: 'shared/inquiry_dashboard_card', locals: {inquiry: inquiry, buyer: inquiry.buyer} %>
-        <% end %>
-    </div>
 </div>
 
-</div>

@@ -44,7 +44,7 @@ class InquiriesController < ApplicationController
 
   def show
     @user = current_user
-    @seller = current_user.seller if current_user.seller
+    @seller = current_user.seller if user_signed_in? # current_user.seller  user_signed_in? is so fucking clutch!
     @buyer = Buyer.find(params[:buyer_id])
     @inquiry = Inquiry.find(params[:id])
     @sellerinquiry = Sellerinquiry.new || Sellerinquiry.find_by(seller_id: current_user.seller.id, inquiry_id: @inquiry.id)

@@ -1,4 +1,4 @@
-<% if current_user.seller && current_user.seller.inquiry_ids.include?(@inquiry.id) && @sellerinquiry.completed %>
+<% if user_signed_in? && current_user.seller && current_user.seller.inquiry_ids.include?(@inquiry.id) && @sellerinquiry.completed %>
 <h3 class="card-text container align-items-center justify-content-center">Thank you for participating in this inquiry! :)</h3>
 <% end %>
 
@@ -25,7 +25,7 @@
 
 
 
-<% if current_user.seller && !current_user.seller.inquiry_ids.include?(@inquiry.id) %>
+<% if user_signed_in? && current_user.seller && !current_user.seller.inquiry_ids.include?(@inquiry.id) %>
 <div class="container align-items-center justify-content-center">
   <p><strong>Would you like to join this inquiry? </strong>
   <%= simple_form_for @sellerinquiry do |f|%>
@@ -40,7 +40,7 @@
 
 
 <%# current_user.seller.inquiry_ids This is an array, must check array for matching integer %>
-<% if current_user.seller && current_user.seller.inquiry_ids.include?(@inquiry.id) && !@sellerinquiry.completed %>
+<% if user_signed_in? && current_user.seller && current_user.seller.inquiry_ids.include?(@inquiry.id) && !@sellerinquiry.completed %>
 <div class="container align-items-center justify-content-center">
 <p class="card-text row align-items-center justify-content-center"><strong>Data Submitting Instructions: </strong><%= @inquiry.instructions %></p>
 <p class="card-text row align-items-center justify-content-center">After you have completed the instructions to submit your data, hit the complete button below!</p>

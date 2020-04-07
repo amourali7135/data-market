@@ -88,7 +88,15 @@
   </div>
   </div>
 
-  <%= link_to "More", buyers_path(page: 2), id: 'more-btn', remote: true, class: "d-none" %>
+<% if !params["search"] %>
+  <div class="container pt-4">
+    <div class="row justify-content-center">
+      <%= will_paginate @sellers %>
+    </div>
+  </div>
+<% end %>
+
+  <%# <%= link_to "More", buyers_path(page: 2), id: 'more-btn', remote: true, class: "d-none" %>
 
 
   <%#= javascript_pack_tag 'seller_controller' %>

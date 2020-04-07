@@ -21,7 +21,7 @@ class SellersController < ApplicationController
       # @inquiries = current_user.inquiries #is this right to get buyer inquiries?
     else
       # @sellers = Seller.all
-      @sellers = Seller.paginate(page: params[:page], per_page: 30)
+      @sellers = Seller.paginate(page: params[:page], per_page: 15)
       # @inquiries = current_user.inquiries #is this right to get buyer inquiries?
     end
     # raise
