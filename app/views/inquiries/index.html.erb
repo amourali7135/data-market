@@ -17,23 +17,23 @@ Make card fatter/taller to show more info...pic needed?
   <% end %>
 
 
-   <div class="content">
-      <div class="products pl-5 card-grid-3c">
-<% @inquiries.each do |inquiry| %>
-   <div class="row align-items-center justify-content-center">
-      <div class="col-sm-6">
-   <%= render partial: 'shared/inquiry_index_card', locals: {inquiry: inquiry, buyer: inquiry.buyer} %>
- </div>
- </div>
-<% end %>
-</div>
+<div class="content", id="inquiries-container">
+  <div class="products pl-5 card-grid-3c">
+    <%@inquiries.each do |inquiry| %>
+      <div class="row align-items-center justify-content-center">
+        <div class="col-sm-6">
+          <%= render partial: 'shared/inquiry_index_card', locals: {inquiry: inquiry, buyer: inquiry.buyer} %>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
+</div>
 
-   <%= link_to "More", buyers_path(page: 2), id: 'more-btn', remote: true, class: "d-none" %>
+<%= link_to "More", inquiries_path(page: 2), id: 'more-btn', remote: true, class: "d-none" %>
 
 
-   <%#= javascript_pack_tag 'inquiry_controller' %>
+<%= javascript_pack_tag 'inquiry_controller' %>
 
 
 </section>

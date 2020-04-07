@@ -8,20 +8,19 @@ class InquiriesController < ApplicationController
       @filter = params["search"]
       @filter = params["search"]["information_usage"].concat([params['requirements']]).concat([params["search"]["reward"]]).concat([params["search"]["types"]]).concat([params["search"]["information_usage"]]).flatten.reject(&:blank?)
       @buyers = Buyer.global_search(@filter)
-      @inquiries = Inquiry.global_search(@filter)
+      @inquiries = Inquiry.global_search(@filter).paginate(page: @current_page, per_page: 15)
     else #112619 I added this while trying to get sort to work.
       # @buyers = Buyer.all        This was an N + 1, wow dude.
-      @inquiries = Inquiry.includes([:buyer]).paginate(page: @current_page, per_page: 20)
+      @inquiries = Inquiry.includes([:buyer]).paginate(page: @current_page, per_page: 15)
+      if @current_page > 1
+
+        respond_to do |format|
+          format.html
+          format.js
+        end
+      end
     end
-    #  @buyers = Buyer.paginate(page: @current_page, per_page: 15)
-    # if @current_page > 1
-    #   # binding.pry
-    #   # raise
-    #   respond_to do |format|
-    #     format.html
-    #     format.js
-    #   end
-    # end
+
   end
 
   def new

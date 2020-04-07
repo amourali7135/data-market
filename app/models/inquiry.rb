@@ -16,8 +16,7 @@ class Inquiry < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   validates :instructions, presence: true
 
-
-
+  scope :active, -> { where(Active = "nil") }  #is this even the right way?
 
 
   #How the fuck to make this not be a spam like result?  Shit.

@@ -1,0 +1,3 @@
+<% inquiries.each do |inquiry| %>
+  <%= render partial: 'inquiries/content', locals: { inquiry: inquiry, buyer: inquiry.buyer } %>
+<% end %>
