@@ -1,5 +1,16 @@
 <%= render partial: 'shared/banner'  %>
 
+<section>
+    <div
+
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+
+></div>
+</section>
 
   <!-- Icons Grid -->
   <section class="features-icons bg-light text-center">
@@ -116,5 +127,9 @@
         </div>
       </div>
     </div>
+
+
   </section>
+
+
 

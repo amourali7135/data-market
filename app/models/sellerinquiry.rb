@@ -9,6 +9,6 @@ class Sellerinquiry < ApplicationRecord
   # validates :zipcode, :uniqueness => {:scope => [:recorded_at, :something_else]}
 
   #HOW DO I LIMIT THE AMOUNT OF RECORDS FOR EACH INQUIRY TO THE TOTAL?
-
+  #  Sellerinquiry.inquiry.total
 
 end

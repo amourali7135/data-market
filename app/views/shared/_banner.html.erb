@@ -11,7 +11,7 @@
       <% elsif current_user.buyer %>
       <strong><h1>Welcome back!  Post a new inquiry or head to your dashboard</h1></strong>
       <%= link_to "New Inquiry", new_buyer_inquiry_path(current_user.buyer), class: 'btn btn-primary' %>
-      <%= link_to "Dashbaord", buyerdashboard_path, class: 'btn btn-primary' %>
+      <%= link_to "Dashboard", buyerdashboard_path, class: 'btn btn-primary' %>
 <% end %>
   </div>
 </div>

@@ -8,13 +8,13 @@
 <% @buyer.inquiries.each do |inquiry| %>
 <div class="container">
 <div class="row">
-<%= simple_form_for [@buyer, @inquiries], method: :post  do |f| %> 
+<%= simple_form_for [@buyer, @inquiries], method: :post  do |f| %>
   <%= f.input :inquiry.title, collection: @inquiries, as: :radio_buttons
   <%= f.text_field :inquiry_id, value: inquiry.id, type: "hidden"  %>
   <%= f.submit 'New user' %>
 <% end %>
 </div>
-</div> %> 
+</div> %>
 <% end %>
 
 
@@ -39,3 +39,14 @@
     </div>
     </div>
     </div>
+
+
+    class Order < ApplicationRecord
+  belongs_to :buyer
+  belongs_to :inquiry
+  monetize :amount_cents
+  mount_uploader :photo, PhotoUploader
+
+  validates :amount, presence: true
+
+end

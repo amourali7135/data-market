@@ -19,6 +19,7 @@
   </div>
 </div>
 
+
 <div class="d-flex justify-content-between w-100">
 <p>Has <%#=@buyer.get_likes.size %> likes! </p>
 <p>Followers: <%#= @buyer.followers_count %></p>
@@ -47,10 +48,22 @@
   </div>
 
 <br>
-   <div class="row align-items-center justify-content-center">
-     <div class="row">
-        <%= link_to 'See all of their public inquiries!', buyer_inquiries_path(@buyer.id), class: 'btn btn-primary'  %>
-     </div>
-   </div>
+
+   <div class="dashboard_container mt-4 mb-4">
+  <p class="grid-headers">Here are their public inquiries</p>
+    <div class="row align-items-center justify-content-center">
+      <div class="container front-page-grid">
+        <% @inquiries.each do |inquiry| %>
+        <% if inquiry.hidden.nil? %>
+          <div class="row ">
+            <div class="col-sm-4">
+              <%= render partial: 'shared/inquiry_buyer_show', locals: {inquiry: inquiry, buyer: @buyer} %>
+            </div>
+              <% end %>
+              <% end %>
+          </div>
+      </div>
+    </div>
+</div>
 
 

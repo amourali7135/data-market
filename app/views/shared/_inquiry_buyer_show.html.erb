@@ -1,0 +1,15 @@
+<div class="inquiry-index-card">
+  <img src=<%= buyer.photo %> />
+  <div class="inquiry-index-card-infos">
+    <p><strong>Information: </strong><%= inquiry.information_usage %></p>
+    <p><strong>Requirements: </strong><%= inquiry.requirements %></p>
+    <p><strong>Data Type: </strong><%= inquiry.types %></p>
+    <%= link_to 'View Inquiry', buyer_inquiry_path(buyer.id, inquiry), method: :get, class: 'btn btn-primary'  %>
+  </div>
+
+  <div class="d-flex justify-content-between w-100">
+    <p><strong>Reward: $<%= inquiry.reward %></p></strong>
+    <p>Anonymous? <%= inquiry.anonymous %>    </p>
+    <p>Total: <%= inquiry.total %> people </p>
+  </div>
+</div>

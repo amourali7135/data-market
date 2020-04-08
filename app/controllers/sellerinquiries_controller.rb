@@ -18,7 +18,7 @@ class SellerinquiriesController < ApplicationController
   end
 
   def update
-    @seller = current_user.seller if current_user.seller
+    @seller = current_user.seller if current_user.seller ##
     @inquiry = Inquiry.find(params[:sellerinquiry][:inquiry_id])
     @buyer = @inquiry.buyer
     # @sellerinquiry = Sellerinquiry.where(seller_id: @seller.id, inquiry_id: @inquiry.id)[0] #It'll go to update action automatically via this line ala Rayhan.  Why not console working?   IT GIVES AN ARRAY!  LOOK AT THER RESULTS AND ADD [0]  Find_by or [0] with where.

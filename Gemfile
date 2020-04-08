@@ -28,7 +28,10 @@ gem 'country_select'
 gem 'country_state_select'
 gem 'will_paginate', '~> 3.1.7'
 gem "punching_bag"
-
+gem 'geocoder'
+gem 'money-rails'
+gem 'stripe'
+gem 'stripe_event'
 
 
 

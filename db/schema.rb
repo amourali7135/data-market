@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_05_225438) do
+ActiveRecord::Schema.define(version: 2020_04_08_101555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 2020_04_05_225438) do
     t.text "title"
     t.text "instructions"
     t.datetime "active"
+    t.integer "price_cents", default: 0, null: false
+    t.string "sku"
     t.index ["buyer_id"], name: "index_inquiries_on_buyer_id"
     t.index ["datum_id"], name: "index_inquiries_on_datum_id"
   end
@@ -92,15 +94,16 @@ ActiveRecord::Schema.define(version: 2020_04_05_225438) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "deposit"
-    t.integer "amount"
-    t.string "status"
-    t.bigint "buyer_id"
-    t.bigint "trade_id"
+    t.string "state"
+    t.string "inquiry_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "checkout_session_id"
+    t.bigint "user_id"
+    t.bigint "inquiry_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["buyer_id"], name: "index_orders_on_buyer_id"
-    t.index ["trade_id"], name: "index_orders_on_trade_id"
+    t.index ["inquiry_id"], name: "index_orders_on_inquiry_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "punches", id: :serial, force: :cascade do |t|
@@ -157,6 +160,8 @@ ActiveRecord::Schema.define(version: 2020_04_05_225438) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_sellers_on_user_id"
   end
 
@@ -195,8 +200,8 @@ ActiveRecord::Schema.define(version: 2020_04_05_225438) do
   add_foreign_key "data", "sellers"
   add_foreign_key "inquiries", "buyers"
   add_foreign_key "inquiries", "data"
-  add_foreign_key "orders", "buyers"
-  add_foreign_key "orders", "trades"
+  add_foreign_key "orders", "inquiries"
+  add_foreign_key "orders", "users"
   add_foreign_key "reviews", "buyers"
   add_foreign_key "reviews", "trades"
   add_foreign_key "sellerinquiries", "inquiries"

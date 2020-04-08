@@ -1,7 +1,7 @@
-<div class="card-trip ">
-<%# <img src=<%= buyer.photo %>
-<%= cl_image_tag @buyer.photo,
-    width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %></p>
+<div class="card-trip mb-4">
+
+    <%= cl_image_tag @buyer.photo,
+    width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %>
   <div class="card-trip-infos">
     <h2><strong>Title: </strong><%= inquiry.title %></h2>
     <p><strong>Usage: </strong><%= inquiry.information_usage %></p>
@@ -10,27 +10,81 @@
 
 
       <div class="d-flex justify-content-between w-100">
-      <%= link_to 'See this inquiry!', buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary'  %>
-      <%= link_to 'Edit this inquiry!', edit_buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary'  %>
-      <%= link_to 'Delete this inquiry!', buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary', method: :delete, data: {confirm: "Are you sure?"}  %>
+        <%= link_to 'See this inquiry!', buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary'  %>
+        <%= link_to 'Edit this inquiry!', edit_buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary'  %>
+        <%= link_to 'Delete this inquiry!', buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary', method: :delete, data: {confirm: "Are you sure?"}  %>
+      </div>
   </div>
-</div>
 
   <div class="d-flex justify-content-between w-100">
     <h4 class="card-trip-pricing"><strong><%= inquiry.reward %></strong></h4>
     <h4><strong><%="#{inquiry.hits} views so far!" %></strong></h4>
-      <p>  </p>
   </div>
-</div>
+
+<% if inquiry.active.nil? %>
+  <div class="container pb-4">
+    <%= simple_form_for [@buyer, inquiry] do |f|%>
+    <%= f.input :active, as: :hidden, :input_html => { :value => DateTime.current } %>
+    <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => inquiry.id } %>
+  <div style="text-align:center">
+    <%= f.button :submit, 'End Inquiry', class: 'btn btn-primary'%>
+     </div>
+     <% end %>
+    </div>
+<% end %>
+
+
+<% if !inquiry.active.nil? %>
+  <div class="container pb-4">
+    <%= simple_form_for [@buyer, inquiry] do |f|%>
+    <%= f.input :active, as: :hidden, :input_html => { :value => nil } %>
+    <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => inquiry.id } %>
+  <div style="text-align:center">
+    <%= f.button :submit, 'Reactivate Inquiry', class: 'btn btn-primary'%>
+     </div>
+     <% end %>
+    </div>
+<% end %>
+
+
+
+<% if inquiry.hidden.nil? %>
+    <div class="container pb-4">
+     <%= simple_form_for [@buyer, inquiry] do |f|%>
+     <%= f.input :hidden, as: :hidden, :input_html => { :value => "true"   } %>
+     <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => inquiry.id } %>
+     <div style="text-align:center">
+     <%= f.button :submit, 'Hide Inquiry', class: 'btn btn-primary'%>
+     </div>
+     <% end %>
+    </div>
+<% end %>
+
+<% if !inquiry.hidden.nil? %>
+    <div class="container pb-4">
+     <%= simple_form_for [@buyer, inquiry] do |f|%>
+     <%= f.input :hidden, as: :hidden, :input_html => { :value => nil   } %>
+     <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => inquiry.id } %>
+     <div style="text-align:center">
+     <%= f.button :submit, 'Show Inquiry Publicly', class: 'btn btn-primary'%>
+     </div>
+     <% end %>
+    </div>
+<% end %>
+
+
+<%= form_tag orders_path do %>
+  <%= hidden_field_tag 'inquiry_id', inquiry.id %>
+  <%= submit_tag 'Deposit', class: 'btn btn-primary' %>
+<% end %>
+
 
     </div>
+    </div>
+
+
 </div>
 
 
-<%= simple_form_for [@buyer, inquiry] do |f|%>
-<%= f.input :active, as: :hidden, :input_html => { :value => DateTime.current } %>
-<%= f.input :inquiry_id, as: :hidden, :input_html => { :value => inquiry.id } %>
-<div style="text-align:center">
-<%= f.button :submit, 'End Inquiry', class: 'btn btn-primary'%>
-</div>
-<% end %>
+
+

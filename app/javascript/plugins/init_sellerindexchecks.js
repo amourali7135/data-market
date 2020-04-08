@@ -15,3 +15,4 @@ $('#selectAll').click(function () {
 // }
 
 // what does this file even do?
+// Ohhh, it's for the seller index checkbox shit!  Why does it not work uncommented out though?  Strange.
