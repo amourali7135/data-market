@@ -21,8 +21,8 @@
 <%= f.input :sexuality, collection: Seller.sexuality %>
 <%= f.input :politics, collection: Seller.politics %>
 <%= f.input :relationship_status, collection: Seller.relationship_status %>
-<%= f.input :children, as: :radio_buttons, label: "Do you have children?" %>
-<%= f.input :smoker, as: :radio_buttons, label: "Do you smoke?" %>
+<%= f.input :children, as: :radio_buttons, as: :radio_buttons, label: "Do you have children?" %>
+<%= f.input :smoker, as: :radio_buttons, as: :radio_buttons, label: "Do you smoke?" %>
 <%= f.input :education_level, collection: Seller.education_level %>
 <div style="text-align:center">
 <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>

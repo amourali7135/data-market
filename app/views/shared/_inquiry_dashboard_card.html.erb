@@ -10,9 +10,9 @@
 
 
       <div class="d-flex justify-content-between w-100">
-        <%= link_to 'See this inquiry!', buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary'  %>
-        <%= link_to 'Edit this inquiry!', edit_buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary'  %>
-        <%= link_to 'Delete this inquiry!', buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary', method: :delete, data: {confirm: "Are you sure?"}  %>
+        <%= link_to 'See this inquiry!', buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary btn-sm'  %>
+        <%= link_to 'Edit this inquiry!', edit_buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary btn-sm'  %>
+        <%= link_to 'Delete this inquiry!', buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary btn-sm', method: :delete, data: {confirm: "Are you sure?"}  %>
       </div>
   </div>
 
@@ -27,7 +27,7 @@
     <%= f.input :active, as: :hidden, :input_html => { :value => DateTime.current } %>
     <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => inquiry.id } %>
   <div style="text-align:center">
-    <%= f.button :submit, 'End Inquiry', class: 'btn btn-primary'%>
+    <%= f.button :submit, 'End Inquiry', class: 'btn btn-primary btn-sm'%>
      </div>
      <% end %>
     </div>
@@ -40,7 +40,7 @@
     <%= f.input :active, as: :hidden, :input_html => { :value => nil } %>
     <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => inquiry.id } %>
   <div style="text-align:center">
-    <%= f.button :submit, 'Reactivate Inquiry', class: 'btn btn-primary'%>
+    <%= f.button :submit, 'Reactivate Inquiry', class: 'btn btn-primary btn-sm'%>
      </div>
      <% end %>
     </div>
@@ -54,7 +54,7 @@
      <%= f.input :hidden, as: :hidden, :input_html => { :value => "true"   } %>
      <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => inquiry.id } %>
      <div style="text-align:center">
-     <%= f.button :submit, 'Hide Inquiry', class: 'btn btn-primary'%>
+     <%= f.button :submit, 'Hide Inquiry', class: 'btn btn-primary btn-sm'%>
      </div>
      <% end %>
     </div>
@@ -66,7 +66,7 @@
      <%= f.input :hidden, as: :hidden, :input_html => { :value => nil   } %>
      <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => inquiry.id } %>
      <div style="text-align:center">
-     <%= f.button :submit, 'Show Inquiry Publicly', class: 'btn btn-primary'%>
+     <%= f.button :submit, 'Show Inquiry Publicly', class: 'btn btn-primary btn-sm'%>
      </div>
      <% end %>
     </div>

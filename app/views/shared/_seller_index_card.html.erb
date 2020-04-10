@@ -9,7 +9,7 @@
   <div class="seller-index-card-infos">
     <p><strong>Age: </strong><%= seller.age %></p>
     <p><strong>Willing to sell: </strong><%= seller.types %></p>
-    <% if current_user && current_user.buyer %>
+    <% if user_signed_in? && current_user.buyer %>
     <p><%= check_box_tag("seller", "#{seller.id}", false, { data: { target: "invitation.seller", action: "click->invitation#toggleSeller" } }) %></p>
     <% end %>
   </div>

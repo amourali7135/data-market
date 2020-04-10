@@ -5,6 +5,7 @@ class Inquiry < ApplicationRecord
   belongs_to :data, optional: true
   has_many :sellerinquiries, dependent: :destroy
   has_many :sellers, through: :sellerinquiries
+  # has_many :orders     Maybe?
 
   validates :requirements, presence: true
   validates :reward, presence: true
