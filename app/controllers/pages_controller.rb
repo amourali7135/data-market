@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     # @buyer = Buyer.find_by(user_id: @user.id)
     # @seller = Seller.find_by(user_id: @user.id)
     @sellers = Seller.geocoded #returns sellers with coordinates, BRO THIS LINE MAKES SELLERS WITH GEO SHOW ONLY ON THE HOME PAGE!
-
+# raise  @sellers was empty, fucking Ray man.
     @markers = @sellers.map do |seller|
       {
       lat: seller.latitude,

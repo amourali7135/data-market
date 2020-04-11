@@ -39,7 +39,7 @@ puts 'Creating 20 fake users/buyers...'
   )
   buyer.user = user
   buyer.save!
-  
+
   # end
   # puts 'Finished!'
   # art_mediums = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ]
@@ -76,7 +76,7 @@ puts 'Creating 40 fake users/sellers...'
   )
   user.save!
   # artist_categories = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramics', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance']
-  # artist_cities = ['Chicago', 'Taipei', 'Moscow', 'Helsinki', 'Quito', 'New York', 'Rio De Janeiro', 'Melbourne', 'Geneva', 'Zurich', 'Almaty', 'Jakarta', 'Canggu', 'Singapore', 'Tunis', 'Copenhagen', 'Milan', 'Sydney', 'Cape Town', 'Vladivostok', 'Berlin', 'London', 'Paris', 'Stockholm', 'Algiers', 'Istanbul', 'Athens', 'Izmir', 'Osaka', 'Tokyo', 'Seoul', 'Beijing', 'Hanoi', 'Goa', 'Karachi', 'Kabul', 'Tehran', 'Tashkent', 'Dushanbe', 'Casablanca', 'Cairo', 'Beirut', 'Auckland', 'Santa Monica', 'Vancouver', 'Tijuana', 'Mexico', 'Khartoum', 'Kazan', 'Shiraz', 'Baghdad', 'Dhaka', 'Lisbon', 'Barcelona', 'Warsaw', 'Oslo', 'Havana', 'Salvador', 'Santiago', 'Lima', 'Manila', 'Bangkok', 'Lagos', 'Nairobi', 'Accra', 'Kinhasa', 'Toronto', 'Perth', 'Mexico City', 'Minsk', 'Kiev', 'Jerusalem', 'Riyadh', 'Dubai', 'Muscat']
+  seller_cities = ['Chicago', 'Taipei', 'Moscow', 'Helsinki', 'Quito', 'New York', 'Rio De Janeiro', 'Melbourne', 'Geneva', 'Zurich', 'Almaty', 'Jakarta', 'Canggu', 'Singapore', 'Tunis', 'Copenhagen', 'Milan', 'Sydney', 'Cape Town', 'Vladivostok', 'Berlin', 'London', 'Paris', 'Stockholm', 'Algiers', 'Istanbul', 'Athens', 'Izmir', 'Osaka', 'Tokyo', 'Seoul', 'Beijing', 'Hanoi', 'Goa', 'Karachi', 'Kabul', 'Tehran', 'Tashkent', 'Dushanbe', 'Casablanca', 'Cairo', 'Beirut', 'Auckland', 'Santa Monica', 'Vancouver', 'Tijuana', 'Mexico', 'Khartoum', 'Kazan', 'Shiraz', 'Baghdad', 'Dhaka', 'Lisbon', 'Barcelona', 'Warsaw', 'Oslo', 'Havana', 'Salvador', 'Santiago', 'Lima', 'Manila', 'Bangkok', 'Lagos', 'Nairobi', 'Accra', 'Kinhasa', 'Toronto', 'Perth', 'Mexico City', 'Minsk', 'Kiev', 'Jerusalem', 'Riyadh', 'Dubai', 'Muscat', 'Jakarta', 'Prague', 'Amsterdam', 'Mogadishu', 'Bishkek', 'Dushanbe', 'Wuhan', 'Caracas', 'Salvador', 'Belize City', 'Tijuana' 'Seattle', 'Portland', 'Goa',]
   # puts 'Creating 200 fake artists...'
   # 5.times do
   seller = Seller.new(
@@ -84,7 +84,7 @@ puts 'Creating 40 fake users/sellers...'
   country:  CountryStateSelect.countries_collection.map { |country| country[1].to_s }.sample,
   sex:    Faker::Gender.binary_type,
   occupation:    Seller.occupation.sample(1),
-  city:  Faker::Address.city,
+  city:  seller_cities.sample,
   income:    Seller.income.sample(1),
   ethnicity:    Seller.ethnicity.sample(1),
   race:    Seller.race.sample(1),
