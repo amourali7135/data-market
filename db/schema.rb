@@ -54,9 +54,6 @@ ActiveRecord::Schema.define(version: 2020_04_08_101555) do
     t.index ["seller_id"], name: "index_data_on_seller_id"
   end
 
-  create_table "impressions", force: :cascade do |t|
-  end
-
   create_table "inquiries", force: :cascade do |t|
     t.text "information_usage"
     t.text "requirements"
@@ -191,9 +188,6 @@ ActiveRecord::Schema.define(version: 2020_04_08_101555) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "votes", force: :cascade do |t|
   end
 
   add_foreign_key "buyers", "users"

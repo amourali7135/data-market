@@ -20,7 +20,6 @@ gem 'carrierwave', '~> 1.2'
 gem 'pg_search'
 gem "select2-rails"
 gem "algoliasearch-rails"
-gem 'geocoder'
 gem 'faker'
 gem 'social-share-button'
 gem 'flag-icons-rails'
