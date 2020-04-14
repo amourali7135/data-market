@@ -11,4 +11,8 @@ class Sellerinquiry < ApplicationRecord
   #HOW DO I LIMIT THE AMOUNT OF RECORDS FOR EACH INQUIRY TO THE TOTAL?
   #  Sellerinquiry.inquiry.total
 
+  def higher_limit
+    Sellerinquiry.inquiry.total
+  end
+
 end

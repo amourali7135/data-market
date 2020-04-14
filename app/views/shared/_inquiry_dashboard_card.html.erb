@@ -51,8 +51,8 @@
 <% if inquiry.hidden.nil? %>
     <div class="container pb-4">
      <%= simple_form_for [@buyer, inquiry] do |f|%>
-     <%= f.input :hidden, as: :hidden, :input_html => { :value => "true"   } %>
      <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => inquiry.id } %>
+     <%= f.input :hidden, as: :hidden, :input_html => { :value => "true"   } %>
      <div style="text-align:center">
      <%= f.button :submit, 'Hide Inquiry', class: 'btn btn-primary btn-sm'%>
      </div>
@@ -63,8 +63,8 @@
 <% if !inquiry.hidden.nil? %>
     <div class="container pb-4">
      <%= simple_form_for [@buyer, inquiry] do |f|%>
-     <%= f.input :hidden, as: :hidden, :input_html => { :value => nil   } %>
      <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => inquiry.id } %>
+     <%= f.input :hidden, as: :hidden, :input_html => { :value => nil   } %>
      <div style="text-align:center">
      <%= f.button :submit, 'Show Inquiry Publicly', class: 'btn btn-primary btn-sm'%>
      </div>

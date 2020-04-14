@@ -41,7 +41,7 @@ def self.types
 end
 
 def self.formats
-  ['Document', 'Photo' 'PDF', 'File', 'Bills', 'Software', 'Online', 'Paperwork', 'Spreadsheet', 'Numbers', 'Questionannaire',  ].sort
+  ['Document', 'Photo' 'PDF', 'File', 'Bill Statements', 'Software', 'Online history', 'Paperwork', 'Spreadsheet', 'Numbers', 'Questionannaire',  ].sort
 end
 
 def self.purpose
@@ -50,6 +50,10 @@ end
 
 def maximum
   @max = self.total
+end
+
+def percentage_done
+
 end
 
 end
