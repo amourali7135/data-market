@@ -49,4 +49,8 @@ Rails.application.routes.draw do
   #   mount LetterOpenerWeb::Engine, at: "/letter_opener"
   # end
 
+  # get '/tagged', to: "sellers#tagged", as: :sellertags
+  # get '/tagged', to: "inquiries#tagged", as: :inquirytags
+
+
 end

@@ -23,12 +23,13 @@ class Inquiry < ApplicationRecord
   scope :anonymous, -> { where(Anonymous = "false") }
 
   monetize :price_cents
+  acts_as_taggable_on :tags
 
   #How the fuck to make this not be a spam like result?  Shit.
 
   include PgSearch::Model
   pg_search_scope :global_search,
-  against: [ :information_usage, :requirements, :reward, :types,  ],
+  against: [ :information_usage, :requirements, :reward, :types, :tag_list ],
   # associated_against: {
   #   director: [ :first_name, :last_name ]
   # },
@@ -55,5 +56,10 @@ end
 def percentage_done
 
 end
+
+def self.tags
+  [ 'Obese', 'Anorexic', 'HIV+', 'Diabetic', 'Sickle Cell Anemia', 'COPD', 'Cancer', 'Stroke', 'Heart Attack', ''].sort
+end
+
 
 end

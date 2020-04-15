@@ -31,6 +31,7 @@ gem 'geocoder'
 gem 'money-rails'
 gem 'stripe'
 gem 'stripe_event'
+gem 'acts-as-taggable-on', '~> 6.0'
 
 
 

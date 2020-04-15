@@ -96,7 +96,7 @@ class InquiriesController < ApplicationController
   end
 
   def inquiry_params
-    params.require(:inquiry).permit(:information_usage, :requirements, :reward, :anonymous, :total, :accept?, :title, :format, :instructions, :price_cents, :active, :types, types: [] )
+    params.require(:inquiry).permit(:information_usage, :requirements, :reward, :anonymous, :total, :accept?, :title, :format, :instructions, :price_cents, :active, :types, types: [], tag_list: [],  )
   end
 
 end

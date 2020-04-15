@@ -24,6 +24,7 @@
 <%= f.input :children, as: :radio_buttons, as: :radio_buttons, label: "Do you have children?" %>
 <%= f.input :smoker, as: :radio_buttons, as: :radio_buttons, label: "Do you smoke?" %>
 <%= f.input :education_level, collection: Seller.education_level %>
+<%= f.input :tag_list, collection: Seller.tags, input_html: {multiple: true, id: "seller_tag_edit"}, label: "Attach some tags to yourself to better match with buyers and their data searching" %>
 <div style="text-align:center">
 <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
 </div>

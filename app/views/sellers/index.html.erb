@@ -24,6 +24,7 @@
     <%= f.input :birth_country, collection: CountryStateSelect.countries_collection.sort, label: "Do you want data from sellers who were born in a certain country? Leave blank if not.", required: false %>
     <%= f.input :smoker, as: :radio_buttons, label: "Do you want data from sellers who are smokers? Leave blank if not.", required: false %>
     <%= f.input :education_level, collection: Seller.education_level, label: "Do you want data from sellers whom possess a certain educational level? Leave blank if not.", required: false %>
+    <%= f.input :tag_list, collection: Seller.tags, input_html: {multiple: true, id: "seller_tag_index"}, label: "Use tags to search for more specific sellers.", required: false %>
     <%#= f.input :sorted_by, :collection => %w[most_comments most_likes most_viewed most_recent], required: false %>
     <%= link_to "Reset", sellers_path  %>
     <%= f.submit 'Submit', class: 'btn btn-primary'%>

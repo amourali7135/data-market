@@ -12,6 +12,7 @@
 <%= f.input :reward, label: "What are you offering for this data?  If you are not offering money, then what are you offering" %>
 <%= f.input :price_cents, label: "If you are offering a price reward, place the amount here." %>
 <%= f.input :format, collection: Inquiry.formats, input_html: {id: "inquiry_format"}, label: "What format must the data be submitted as?" %>
+<%= f.input :tag_list, collection: Inquiry.tags, input_html: {multiple: true, id: "inquiry_tag_edit"}, label: "Attach some tags to the inquiry if you'd like to allow for sellers to more easily match with it via searching" %>
 <%= f.input :anonymous, as: :radio_buttons, label: "Does the identity of the seller of the data need to be provided as well?" %>
 <%= f.input :total, label: "How many people do you need data from?" %>
 <%= f.input :hidden, as: :radio_buttons, label: "Do you want to hide this inquiry from the public?  If so, potential sellers will not be able to search for it, you'll have to send it to them yourself." %>

@@ -22,19 +22,21 @@ class Seller < ApplicationRecord
   has_many :received_conversations, class_name: 'Conversation', foreign_key: 'receiver_id'
   has_many :messages, dependent: :destroy
 
+  acts_as_taggable_on :tags
+
   attr_reader :age_min, :age_max
 
 
 
   include PgSearch::Model
   pg_search_scope :global_search,
-  against: [ :age, :country, :sex, :occupation, :city, :income, :ethnicity, :race, :religion, :sexuality, :politics, :relationship_status, :children, :verified, :birth_country, :smoker, :education_level, :types  ],
-  # associated_against: {
-  #   director: [ :first_name, :last_name ]
-  # },
-  # lambda { |record| record.age {{CONDITION HERE}} }
-  using: {
-  tsearch: { prefix: true }
+  against: [ :age, :country, :sex, :occupation, :city, :income, :ethnicity, :race, :religion, :sexuality, :politics, :relationship_status, :children, :verified, :birth_country, :smoker, :education_level, :types,  ],
+  associated_against: {
+  tags: [ :name ]
+},
+# lambda { |record| record.age {{CONDITION HERE}} }
+using: {
+tsearch: { prefix: true }
 }
 
 def self.sexes
@@ -1043,6 +1045,10 @@ end
 
 def self.income
   [ 'Less than $10,000', '$10,000-$14,999', '$15,000-$19,999','$20,000-$24,999', '$25,000-$29,999', '$30,000-$34,999', '$35,000-$39,999', '$40,000-$44,999', '$50,000-$54,999', '$55,000-$59,999', '$60,000-$64,999', '$65,000-$69,999', '$70,000-$74,999', '$75,000-$79,999', '$80,000-$84,999', '$85,000-$89,999', '$90,000-$94,999', '$95,000-$99,999', '$100,000-$104,999', '$105,000-$109,999', '$110,000-$114,999', '$115,000-$119,999', '$120,000-$124,999', '$125,000-$129,999', '$130,000-$134,999', '$135,000-$139,999', '$140,000-144,999', '$145,000-$149,999', '$150,000-$154,999', '$155,000-$159,999', '$160,000-$164,999', '$165,000-$169,999', '$170,000-$174,999', '$175,000-$179,999', '$180,000-$184,999', '$185,000-$189,999', '$190,000-$194,999', '$195,000-$199,999', '$200,000-$204,999', '$205,000-$209,999', '$210,000-$214,999', '$215,000-$219,999', '$220,000-$224,999', '$225,000-$229,999', '$230,000-$234,999', '$235,000-$239,999', '$240,000-$244,999', '$245,000-$249,999', '$250,000-$299,999', '$300,000-$349,999', '$350,000-$399,999', '$400,000-$449,999', '$450,000-$499,999', '$500,000-$999,999', "$1,000,000+"      ]
+end
+
+def self.tags
+  [ 'Obese', 'Anorexic', 'HIV+', 'Diabetic', 'Sickle Cell Anemia', 'COPD', 'Cancer', 'Stroke', 'Heart Attack', ''].sort
 end
 
 end

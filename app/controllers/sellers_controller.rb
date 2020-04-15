@@ -5,26 +5,16 @@ class SellersController < ApplicationController
 
   def index #do conditional for pagination versus searched.
     @buyer = current_user.buyer if current_user #&& current_user.buyer
-    # if current_user.buyer
-    #   @buyer = current_user.buyer
-    # else
-    #   @buyer.nil?
-    # end
     @inquiries = @buyer.inquiries if current_user #&& current_user.buyer
     @inquiry = Inquiry.where(buyer_id: @buyer.id ) if current_user #&& current_user.buyer
 
     if params["search"]
-      @filter = params["search"]["types"].reject { |type| type == '' }.concat([params["search"]['age']]).concat([params["search"]['min_age']]).concat([params["search"]["country"]]).concat([params["search"]["sex"]]).concat([params["search"]["occupation"]]).concat([params["search"]["city"]]).concat([params["search"]["income"]]).concat([params["search"]["ethnicity"]]).concat([params["search"]["race"]]).concat([params["search"]["religion"]]).concat([params["search"]["sexuality"]]).concat([params["search"]["politics"]]).concat([params["search"]["relationship_status"]]).concat([params["search"]["children"]]).concat([params["search"]["verified"]]).concat([params["search"]["birth_country"]]).concat([params["search"]["smoker"]]).concat([params["search"]["education_level"]]).flatten.reject(&:blank?)
-      # @filter = params["search"]#["search"]
+      @filter = params["search"]["types"].reject { |type| type == '' }.concat([params["search"]['age']]).concat([params["search"]['min_age']]).concat([params["search"]["country"]]).concat([params["search"]["sex"]]).concat([params["search"]["occupation"]]).concat([params["search"]["city"]]).concat([params["search"]["income"]]).concat([params["search"]["ethnicity"]]).concat([params["search"]["race"]]).concat([params["search"]["religion"]]).concat([params["search"]["sexuality"]]).concat([params["search"]["politics"]]).concat([params["search"]["relationship_status"]]).concat([params["search"]["children"]]).concat([params["search"]["verified"]]).concat([params["search"]["birth_country"]]).concat([params["search"]["smoker"]]).concat([params["search"]["education_level"]]).concat([params["search"]["tag_list"]]).flatten.reject(&:blank?)
       @sellers = Seller.global_search(@filter)
       # @sellers = Seller.global_search(@filter).paginate(page: params[:page], per_page: 10)  Cuts off mailer, fuck.
-      # @inquiries = current_user.inquiries #is this right to get buyer inquiries?
     else
-      # @sellers = Seller.all
       @sellers = Seller.paginate(page: params[:page], per_page: 15)
-      # @inquiries = current_user.inquiries #is this right to get buyer inquiries?
     end
-    # raise
   end
 
   def notify
@@ -96,7 +86,7 @@ class SellersController < ApplicationController
   end
 
   def seller_params
-    params.require(:seller).permit(:age, :country, :sex, :occupation, :city, :income, :ethnicity, :race, :religion, :sexuality, :politics, :relationship_status, :children, :verified, :birth_country, :smoker, :education_level, :types, :inquiry, types: [], income: [], )
+    params.require(:seller).permit(:age, :country, :sex, :occupation, :city, :income, :ethnicity, :race, :religion, :sexuality, :politics, :relationship_status, :children, :verified, :birth_country, :smoker, :education_level, :types, :inquiry, types: [], income: [], tag_list: [],  )
   end
 
 end
