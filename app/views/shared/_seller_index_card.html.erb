@@ -12,6 +12,9 @@
     <% if user_signed_in? && current_user.buyer %>
     <p><%= check_box_tag("seller", "#{seller.id}", false, { data: { target: "invitation.seller", action: "click->invitation#toggleSeller" } }) %></p>
     <% end %>
+    <% seller.tag_list.each do |tag| %>
+      <%= link_to tag, "/sellers?utf8=✓&search%5Btypes%5D%5B%5D=&search%5Bage_min%5D=&search%5Bage_max%5D=&search%5Bsex%5D=&search%5Bcountry%5D=&search%5Boccupation%5D%5B%5D=&search%5Bcity%5D=&search%5Bincome%5D%5B%5D=&search%5Bethnicity%5D=&search%5Brace%5D=&search%5Breligion%5D=&search%5Bsexuality%5D=&search%5Bpolitics%5D=&search%5Brelationship_status%5D=&search%5Bchildren%5D=&search%5Bverified%5D=&search%5Bbirth_country%5D=&search%5Bsmoker%5D=&search%5Beducation_level%5D=&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}%2B&commit=Submit" %>
+    <% end %>
   </div>
   <div class="d-flex justify-content-between w-100">
     <p><strong>Location: </strong><%= seller.country %></p>
