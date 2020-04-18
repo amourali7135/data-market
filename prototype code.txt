@@ -116,3 +116,4 @@ end
 
 
 
+@filter = params["search"]["tag_list"].concat([params["search"]['types']]).flatten.reject(&:blank?)

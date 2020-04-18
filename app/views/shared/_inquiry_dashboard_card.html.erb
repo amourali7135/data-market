@@ -9,11 +9,11 @@
     <p><strong>Data types: </strong><%= inquiry.types %></p>
 
 
-      <div class="d-flex justify-content-between w-100">
-        <%= link_to 'See this inquiry!', buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary btn-sm'  %>
-        <%= link_to 'Edit this inquiry!', edit_buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary btn-sm'  %>
-        <%= link_to 'Delete this inquiry!', buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary btn-sm', method: :delete, data: {confirm: "Are you sure?"}  %>
-      </div>
+    <div class="d-flex justify-content-between w-100">
+      <%= link_to 'See this inquiry!', buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary btn-sm'  %>
+      <%= link_to 'Edit this inquiry!', edit_buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary btn-sm'  %>
+      <%= link_to 'Delete this inquiry!', buyer_inquiry_path(@buyer, inquiry), class: 'btn btn-primary btn-sm', method: :delete, data: {confirm: "Are you sure?"}  %>
+    </div>
   </div>
 
   <div class="d-flex justify-content-between w-100">
@@ -21,6 +21,8 @@
     <h4><strong><%="#{inquiry.hits} views so far!" %></strong></h4>
   </div>
 
+
+<section>
 <% if inquiry.active.nil? %>
   <div class="container pb-4">
     <%= simple_form_for [@buyer, inquiry] do |f|%>
@@ -45,9 +47,10 @@
      <% end %>
     </div>
 <% end %>
+</section>
 
 
-
+<section>
 <% if inquiry.hidden.nil? %>
     <div class="container pb-4">
      <%= simple_form_for [@buyer, inquiry] do |f|%>
@@ -71,6 +74,9 @@
      <% end %>
     </div>
 <% end %>
+<%= inquiry.percentage_done %>
+<%= inquiry.full_house %>
+</section>
 
 
 <%= form_tag orders_path do %>

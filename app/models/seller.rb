@@ -34,7 +34,6 @@ class Seller < ApplicationRecord
   associated_against: {
   tags: [ :name ]
 },
-# lambda { |record| record.age {{CONDITION HERE}} }
 using: {
 tsearch: { prefix: true }
 }
@@ -1048,7 +1047,7 @@ def self.income
 end
 
 def self.tags
-  [ 'Obese', 'Anorexic', 'HIV+', 'Diabetic', 'Sickle Cell Anemia', 'COPD', 'Cancer', 'Stroke', 'Heart Attack', ''].sort
+  [ 'Obese', 'Anorexic', 'HIV+', 'Diabetic', 'Sickle Cell Anemia', 'COPD', 'Cancer', 'Stroke', 'Heart Attack', 'Bankrupt', ].sort
 end
 
 end

@@ -17,7 +17,8 @@ class Inquiry < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   validates :instructions, presence: true
 
-  scope :active, -> { where(Active = "nil") }  #is this even the right way?
+  scope :active, -> { where(Active = nil ) }  #is this even the right way?
+  scope :finished, -> { where(Active = !nil ) }
   scope :hidden, -> { where(Hidden = "true") }
   scope :open, -> { where(Hidden = nil ) }
   scope :anonymous, -> { where(Anonymous = "false") }
@@ -29,12 +30,12 @@ class Inquiry < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :global_search,
-  against: [ :information_usage, :requirements, :reward, :types, :tag_list ],
-  # associated_against: {
-  #   director: [ :first_name, :last_name ]
-  # },
-  using: {
-  tsearch: { prefix: true }
+  against: [ :information_usage, :requirements, :reward, :types, ],
+  associated_against: {
+  tags: [ :name ]
+},
+using: {
+tsearch: { prefix: true }
 }
 
 def self.types
@@ -42,24 +43,30 @@ def self.types
 end
 
 def self.formats
-  ['Document', 'Photo' 'PDF', 'File', 'Bill Statements', 'Software', 'Online history', 'Paperwork', 'Spreadsheet', 'Numbers', 'Questionannaire',  ].sort
+  ['Document', 'Photo', 'PDF', 'File', 'Bill Statements', 'Software', 'Online history', 'Paperwork', 'Computer Data', 'Spreadsheet', 'Numbers', 'Questionannaire', 'Photocopy', 'Poll', 'Fitbit/Wearable', '' ].sort
 end
 
 def self.purpose
-  ['Academic Research', 'Medical Research', 'Start-up Research', 'Business Research', 'Political Research', '']
-end
-
-def maximum
-  @max = self.total
+  ['Academic Research', 'Medical Research', 'Start-up Related Research', 'Business Research', 'Political Research', 'Scientific Research', 'Personal Use', 'Other', 'Curiosity', 'Advertising/Marketing Related Reasons', 'Product Development', 'Business Development', 'Sentiment Analysis', 'Transportation Research', 'Cultural Analysis', 'Financial Research', 'Consumer Sentiment', '']
 end
 
 def percentage_done
-
+  @percentage = Sellerinquiry.where(inquiry_id: self.id).count / self.total
+  @percentage
 end
 
 def self.tags
-  [ 'Obese', 'Anorexic', 'HIV+', 'Diabetic', 'Sickle Cell Anemia', 'COPD', 'Cancer', 'Stroke', 'Heart Attack', ''].sort
+  [ 'Obese', 'Anorexic', 'HIV+', 'Diabetic', 'Sickle Cell Anemia', 'COPD', 'Cancer', 'Stroke', 'Heart Attack', 'Bankrupt Previously', 'Scoliosis', 'High Debt', 'Psychiatric Disorders', 'STD', 'Nationalist', 'Overweight', 'Auto-immune Disorder', 'Artist', 'Musician', ''].sort
 end
 
+# private
+
+def full_house  #Where do I call this though for it to work?  Wait, do I need a button?
+  if Sellerinquiry.where(inquiry_id: self.id).count = self.total
+    self.inquiry.active = false #&& Sellerinquiry.where(inquiry_id: self.id).last.destroy
+    self.save
+    puts "Your inquiry is full now!"
+  end
+end  #callback
 
 end

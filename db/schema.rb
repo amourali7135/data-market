@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_111253) do
+ActiveRecord::Schema.define(version: 2020_04_15_100559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2020_04_14_111253) do
     t.text "biography"
     t.text "intentions"
     t.string "website"
-    t.text "contact"
     t.integer "size"
     t.string "photo"
     t.string "country"
@@ -61,14 +60,13 @@ ActiveRecord::Schema.define(version: 2020_04_14_111253) do
     t.boolean "anonymous"
     t.integer "total"
     t.string "types"
-    t.boolean "accept"
     t.bigint "buyer_id"
     t.bigint "datum_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "hidden", #default: false
+    t.boolean "hidden"
     t.string "format"
-    t.text "title"
+    t.string "title"
     t.text "instructions"
     t.datetime "active"
     t.integer "price_cents", default: 0, null: false

@@ -57,6 +57,7 @@ puts 'Creating 20 fake users/buyers...'
     hidden: Faker::Boolean.boolean,
     format: Inquiry.formats.sample(1),
     instructions: Faker::Lorem.sentences(number: 1),
+    tag_list: Inquiry.tags.sample(3),
     buyer: buyer
     )
     inquiry.save!
@@ -98,6 +99,7 @@ puts 'Creating 40 fake users/sellers...'
   birth_country:    CountryStateSelect.countries_collection.map { |country| country[1].to_s }.sample,
   education_level:    Seller.education_level.sample(1),
   types:    Seller.types.sample(2),
+  tag_list: Seller.tags.sample(3),
   )
   seller.user = user
   seller.save!

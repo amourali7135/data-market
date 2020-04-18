@@ -1,22 +1,26 @@
-Make card fatter/taller to show more info...pic needed?
-
 <section class="clean-block clean-catalog dark">
   <div class="container">
     <div class="block-heading">
       <h2 class="text-dark row align-items-center justify-content-center py-2">Browse existing inquiries for data purchases!</h2>
           </div>
 
-   <%= simple_form_for :search, url: inquiries_path, method: "GET" do |f| %>
+<section>
+  <%= simple_form_for :search, url: inquiries_path, method: "GET" do |f| %>
     <%= f.input :types, collection: Inquiry.types, input_html: {multiple: true}, label: "What type of data inquiry do you do want?", required: false, input_html: { id: "buyer_search_type"} %>
     <%= f.input :title, label: "Search for key words in inquiry titles", required: false %>
+    <%= f.input :tag_list, collection: Inquiry.tags, input_html: {multiple: true, id: "inquiry_tag_search"}, label: "Select tags to find inquiries that are a match for you.", required: false %>
+    <%= f.input :information_usage, label: "Search for key words in inquiry titles", required: false %>
+    <%= f.input :requirements, label: "Search for key words in inquiry titles", required: false %>
+    <%= f.input :reward, label: "Search for key words in inquiry titles", required: false %>
     <%#= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: { id: "browse_country"} %>
     <%#= f.input :city, id:"artist_city2", required: false %>
     <%#= f.input :sorted_by, :collection => %w[most_comments most_likes most_viewed most_recent], required: false %>
     <%= link_to "Reset", inquiries_path  %>
     <%= f.submit 'Submit', class: 'btn btn-primary'%>
   <% end %>
+</section>
 
-
+<section>
 <div class="content", id="inquiries-container">
   <div class="products pl-5 card-grid-3c">
     <%@inquiries.each do |inquiry| %>
@@ -29,9 +33,10 @@ Make card fatter/taller to show more info...pic needed?
     </div>
   </div>
 </div>
+</section>
+
 
 <%= link_to "More", inquiries_path(page: 2), id: 'more-btn', remote: true, class: "d-none" %>
-
 
 <%= javascript_pack_tag 'inquiry_controller' %>
 

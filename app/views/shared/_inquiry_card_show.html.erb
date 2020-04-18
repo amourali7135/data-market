@@ -47,6 +47,7 @@
 <%= simple_form_for @sellerinquiry do |f| %>
 <%= f.input :completed, as: :hidden, :input_html => { :value => DateTime.current  } %>
 <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => @inquiry.id } %>
+<%= f.input :seller_id, as: :hidden, :input_html => { :value => current_user.seller.id } %>  <%# Do i need this?  %>
 <div style="text-align:center">
 <%= f.button :submit, 'Completed', class: 'btn btn-primary'%>
 </div>

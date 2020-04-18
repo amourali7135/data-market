@@ -27,6 +27,8 @@ const initSelect2 = () => {
   $('#seller_tag_new').select2();
   $('#seller_tag_edit').select2();
   $('#seller_tag_index').select2();
+  $('#inquiry_tag_search').select2();
+  $('#seller_tag_search').select2();
 
 }
 

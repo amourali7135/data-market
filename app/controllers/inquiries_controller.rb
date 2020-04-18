@@ -5,11 +5,12 @@ class InquiriesController < ApplicationController
 
   def index
     if params["search"] #reject '' in middle added 112619
-      @filter = params["search"]
-      @filter = params["search"]["information_usage"].concat([params['requirements']]).concat([params["search"]["reward"]]).concat([params["search"]["types"]]).concat([params["search"]["information_usage"]]).flatten.reject(&:blank?)
-      @buyers = Buyer.global_search(@filter)
+      # @filter = params["search"]
+      # @filter = params["search"]["tag_list"].concat([params["search"]['types']]).concat([params["search"]["reward"]]).concat([params["search"]["types"]]).concat([params["search"]["tag_list"]]).flatten.reject(&:blank?)
+      @filter = params["search"]["tag_list"].concat([params["search"]['types']]).flatten.reject(&:blank?)
+      # @buyers = Buyer.global_search(@filter)
       @inquiries = Inquiry.global_search(@filter).paginate(page: @current_page, per_page: 15)
-    else #112619 I added this while trying to get sort to work.
+        else #112619 I added this while trying to get sort to work.
       # @buyers = Buyer.all        This was an N + 1, wow dude.
       @inquiries = Inquiry.includes([:buyer]).paginate(page: @current_page, per_page: 15)
       if @current_page > 1
@@ -96,7 +97,7 @@ class InquiriesController < ApplicationController
   end
 
   def inquiry_params
-    params.require(:inquiry).permit(:information_usage, :requirements, :reward, :anonymous, :total, :accept?, :title, :format, :instructions, :price_cents, :active, :types, types: [], tag_list: [],  )
+    params.require(:inquiry).permit(:information_usage, :requirements, :reward, :anonymous, :total, :title, :format, :instructions, :price_cents, :active, :types, types: [], tag_list: [],  )
   end
 
 end
