@@ -22,18 +22,20 @@ class Sellerinquiry < ApplicationRecord
 
   def full_house
     if Sellerinquiry.where(inquiry_id: inquiry.id).count == self.inquiry.total
-      # inquiry.sellerinquiries.count == inquiry.total  #Ray method, works too actually.
+      # if inquiry.sellerinquiries.count == inquiry.total  #Ray method, works too actually.
       self.inquiry.active = false
       self.inquiry.save
       puts "Your inquiry is full now!"
     end
   end
 
-  def duplicates
-  if Seller.inquiry.where(inquiry_id: inquiry.id, seller_id: @seller.id).count == 2
+  def duplicates # fix this
+    # if Sellerinquiry.where(inquiry_id: inquiry.id, seller_id: @seller.id).count == 2
+    if Sellerinquiry.where(inquiry_id: inquiry.id, seller_id: seller.id).present?
+    # if Sellerinquiry.where(inquiry_id: @inquiry.id, seller_id: @seller.id).present?
+
+      end
+    end
+
 
   end
-  end
-
-
-end

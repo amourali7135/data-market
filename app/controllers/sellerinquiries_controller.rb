@@ -14,7 +14,6 @@ class SellerinquiriesController < ApplicationController
       flash[:notice] = "There was an error, please try again!"
       redirect_to buyer_inquiry_path(@buyer, @inquiry)
     end
-raise
   end
 
   def update

@@ -10,7 +10,7 @@ class InquiriesController < ApplicationController
       @filter = params["search"]["tag_list"].concat([params["search"]['types']]).flatten.reject(&:blank?)
       # @buyers = Buyer.global_search(@filter)
       @inquiries = Inquiry.global_search(@filter).paginate(page: @current_page, per_page: 15)
-        else #112619 I added this while trying to get sort to work.
+    else #112619 I added this while trying to get sort to work.
       # @buyers = Buyer.all        This was an N + 1, wow dude.
       @inquiries = Inquiry.includes([:buyer]).paginate(page: @current_page, per_page: 15)
       if @current_page > 1
@@ -48,9 +48,16 @@ class InquiriesController < ApplicationController
     @seller = current_user.seller if user_signed_in? # current_user.seller  user_signed_in? is so fucking clutch!
     @buyer = Buyer.find(params[:buyer_id])
     @inquiry = Inquiry.find(params[:id])
-    @sellerinquiry = Sellerinquiry.new || Sellerinquiry.find_by(seller_id: current_user.seller.id, inquiry_id: @inquiry.id)
+    # @sellerinquiry = Sellerinquiry.new || Sellerinquiry.find_by(seller_id: current_user.seller.id, inquiry_id: @inquiry.id)
+    if
+      Sellerinquiry.where(inquiry_id: @inquiry.id, seller_id: @seller.id).present?
+      @sellerinquiry = Sellerinquiry.find_by(inquiry_id: @inquiry.id, seller_id: @seller.id)
+    else
+      @sellerinquiry = Sellerinquiry.new
+    end
     @inquiry.punch(request)
     # @conversation = Conversation.find_by(author: @user, receiver: @artist)
+    # raise
   end
 
   def update

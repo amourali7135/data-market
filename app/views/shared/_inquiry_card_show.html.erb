@@ -19,15 +19,17 @@
 </div>
 </div>
 
+<%# Do a hidden/public conditional when it is working  %>
 <div class="container row align-items-center justify-content-center py-1">
   <p><strong>Share: </strong><%= social_share_button_tag(@buyer.name) %>
 </div>
 
 
-
+<section>
 <% if user_signed_in? && current_user.seller && !current_user.seller.inquiry_ids.include?(@inquiry.id) %>
 <div class="container align-items-center justify-content-center">
-  <p><strong>Would you like to join this inquiry? </strong>
+<div class="align-items-center justify-content-center">
+  <p><strong>Would you like to participate in this transaction? </strong>
   <%= simple_form_for @sellerinquiry do |f|%>
 <%= f.input :seller_id, as: :hidden, :input_html => { :value => current_user.seller.id } %>
 <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => @inquiry.id } %>
@@ -38,13 +40,12 @@
 </div>
 <% end %>
 
-
 <%# current_user.seller.inquiry_ids This is an array, must check array for matching integer %>
-<% if user_signed_in? && current_user.seller && current_user.seller.inquiry_ids.include?(@inquiry.id) && !@sellerinquiry.completed %>
+<% if user_signed_in? && current_user.seller.inquiry_ids.include?(@inquiry.id) && @sellerinquiry.completed.nil? %>
 <div class="container align-items-center justify-content-center">
-<p class="card-text row align-items-center justify-content-center"><strong>Data Submitting Instructions: </strong><%= @inquiry.instructions %></p>
-<p class="card-text row align-items-center justify-content-center">After you have completed the instructions to submit your data, hit the complete button below!</p>
-<%= simple_form_for @sellerinquiry do |f| %>
+<p class="card-text row align-items-center justify-content-center"><strong>Data Submission Instructions:  </strong><%= @inquiry.instructions %></p>
+<p class="card-text row align-items-center justify-content-center">After you have completed the instructions to submit your data, click the completed button below!</p>
+<%= simple_form_for @sellerinquiry, url: sellerinquiry_path, method: "PATCH" do |f| %>
 <%= f.input :completed, as: :hidden, :input_html => { :value => DateTime.current  } %>
 <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => @inquiry.id } %>
 <%= f.input :seller_id, as: :hidden, :input_html => { :value => current_user.seller.id } %>  <%# Do i need this?  %>
@@ -53,4 +54,5 @@
 </div>
 <% end %>
 <% end %>
+</section>
 
