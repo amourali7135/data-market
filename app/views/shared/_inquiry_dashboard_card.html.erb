@@ -49,6 +49,7 @@
 <% end %>
 </section>
 
+<%#% why does above work with simple form, but not below? , url: buyer_inquiry_path(@buyer.id, inquiry.id), method: "PATCH"%>
 
 <section>
 <% if inquiry.hidden.nil? %>
@@ -65,7 +66,7 @@
 
 <% if !inquiry.hidden.nil? %>
     <div class="container pb-4">
-     <%= simple_form_for [@buyer, inquiry] do |f|%>
+     <%= simple_form_for [@buyer, inquiry]  do |f|%>
      <%= f.input :inquiry_id, as: :hidden, :input_html => { :value => inquiry.id } %>
      <%= f.input :hidden, as: :hidden, :input_html => { :value => nil   } %>
      <div style="text-align:center">
@@ -74,16 +75,18 @@
      <% end %>
     </div>
 <% end %>
-<%= inquiry.percentage_done %>
-<%= inquiry.full_house %>
 </section>
 
+<div class="row justify-content-center pb-3">
+<p>So far, there's <%= inquiry.percentage_done %>% of the inquiry done</p>
+</div>
 
+<div class="row align-items-center justify-content-center pb-3">
 <%= form_tag orders_path do %>
   <%= hidden_field_tag 'inquiry_id', inquiry.id %>
   <%= submit_tag 'Deposit', class: 'btn btn-primary' %>
 <% end %>
-
+</div>
 
     </div>
     </div>

@@ -51,7 +51,7 @@ def self.purpose
 end
 
 def percentage_done
-  @percentage = Sellerinquiry.where(inquiry_id: self.id).count / self.total
+  @percentage = (Sellerinquiry.where(inquiry_id: self.id).count / self.total) * 100
   @percentage
 end
 
@@ -59,14 +59,7 @@ def self.tags
   [ 'Obese', 'Anorexic', 'HIV+', 'Diabetic', 'Sickle Cell Anemia', 'COPD', 'Cancer', 'Stroke', 'Heart Attack', 'Bankrupt Previously', 'Scoliosis', 'High Debt', 'Psychiatric Disorders', 'STD', 'Nationalist', 'Overweight', 'Auto-immune Disorder', 'Artist', 'Musician', ''].sort
 end
 
-# private
+private
 
-def full_house  #Where do I call this though for it to work?  Wait, do I need a button?
-  if Sellerinquiry.where(inquiry_id: self.id).count = self.total
-    self.inquiry.active = false #&& Sellerinquiry.where(inquiry_id: self.id).last.destroy
-    self.save
-    puts "Your inquiry is full now!"
-  end
-end  #callback
 
 end

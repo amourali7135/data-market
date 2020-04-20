@@ -1,5 +1,5 @@
-<% if user_signed_in? && current_user.seller && current_user.seller.inquiry_ids.include?(@inquiry.id) && @sellerinquiry.completed %>
-<h3 class="card-text container align-items-center justify-content-center">Thank you for participating in this inquiry! :)</h3>
+<% if user_signed_in? && @seller.present? && current_user.seller.inquiry_ids.include?(@inquiry.id) && @sellerinquiry.completed %>
+<h3 class="card-text container justify-content-center">Thank you for participating in this inquiry! :) :)</h3>
 <% end %>
 
 <div class="card mb-3 col-sm-6 card align-items-center", id="seller-card-show">
@@ -26,7 +26,7 @@
 
 
 <section>
-<% if user_signed_in? && current_user.seller && !current_user.seller.inquiry_ids.include?(@inquiry.id) %>
+<% if user_signed_in? && @seller.present? && current_user.seller && !current_user.seller.inquiry_ids.include?(@inquiry.id) %>
 <div class="container align-items-center justify-content-center">
 <div class="align-items-center justify-content-center">
   <p><strong>Would you like to participate in this transaction? </strong>
@@ -41,7 +41,7 @@
 <% end %>
 
 <%# current_user.seller.inquiry_ids This is an array, must check array for matching integer %>
-<% if user_signed_in? && current_user.seller.inquiry_ids.include?(@inquiry.id) && @sellerinquiry.completed.nil? %>
+<% if user_signed_in? && @seller.present? && current_user.seller.inquiry_ids.include?(@inquiry.id) && @sellerinquiry.completed.nil? %>
 <div class="container align-items-center justify-content-center">
 <p class="card-text row align-items-center justify-content-center"><strong>Data Submission Instructions:  </strong><%= @inquiry.instructions %></p>
 <p class="card-text row align-items-center justify-content-center">After you have completed the instructions to submit your data, click the completed button below!</p>

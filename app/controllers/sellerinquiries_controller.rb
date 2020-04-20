@@ -24,7 +24,7 @@ class SellerinquiriesController < ApplicationController
     @sellerinquiry = Sellerinquiry.find_by(params[:sellerinquiry][:id])
     @sellerinquiry.completed = DateTime.current
     if @sellerinquiry.save
-      flash[:notice] = "You've successfully completed this inquiry"
+      flash[:notice] = "You've successfully completed this inquiry!"
       redirect_to buyer_inquiry_path(@buyer, @inquiry)
     else
       flash[:notice] = "There was an error, please try again!"

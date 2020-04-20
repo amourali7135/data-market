@@ -20,6 +20,8 @@ class Sellerinquiry < ApplicationRecord
   # end
   #  Notification.first.destroy if Notification.count > 50
 
+  private
+
   def full_house
     if Sellerinquiry.where(inquiry_id: inquiry.id).count == self.inquiry.total
       # if inquiry.sellerinquiries.count == inquiry.total  #Ray method, works too actually.
@@ -31,8 +33,8 @@ class Sellerinquiry < ApplicationRecord
 
   def duplicates # fix this
     # if Sellerinquiry.where(inquiry_id: inquiry.id, seller_id: @seller.id).count == 2
-    if Sellerinquiry.where(inquiry_id: inquiry.id, seller_id: seller.id).present?
     # if Sellerinquiry.where(inquiry_id: @inquiry.id, seller_id: @seller.id).present?
+    if Sellerinquiry.where(inquiry_id: inquiry.id, seller_id: seller.id).present?
 
       end
     end

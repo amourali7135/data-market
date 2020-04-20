@@ -1047,7 +1047,7 @@ def self.income
 end
 
 def self.tags
-  [ 'Obese', 'Anorexic', 'HIV+', 'Diabetic', 'Sickle Cell Anemia', 'COPD', 'Cancer', 'Stroke', 'Heart Attack', 'Bankrupt', ].sort
+  [ 'Obese', 'Anorexic', 'HIV+', 'Diabetic', 'Sickle Cell Anemia', 'COPD', 'Cancer', 'Stroke', 'Heart Attack', 'Bankrupt', 'Addict', 'Suicidal', '' ].sort
 end
 
 end

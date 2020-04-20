@@ -12,8 +12,6 @@
     <%= f.input :information_usage, label: "Search for key words in inquiry titles", required: false %>
     <%= f.input :requirements, label: "Search for key words in inquiry titles", required: false %>
     <%= f.input :reward, label: "Search for key words in inquiry titles", required: false %>
-    <%#= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: { id: "browse_country"} %>
-    <%#= f.input :city, id:"artist_city2", required: false %>
     <%#= f.input :sorted_by, :collection => %w[most_comments most_likes most_viewed most_recent], required: false %>
     <%= link_to "Reset", inquiries_path  %>
     <%= f.submit 'Submit', class: 'btn btn-primary'%>

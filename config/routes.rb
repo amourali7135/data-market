@@ -8,10 +8,16 @@ Rails.application.routes.draw do
   end
 
   resources :buyers do
-    resources :inquiries #, except: [:index]
+    resources :inquiries do  #, except: [:index]
+      resources :sellerinquiries, only: [:index]
+    end
   end
 
   resources :inquiries, only: [:index]
+
+  # resources :inquiries, only: [:index] do
+  #   resources :sellerinquiries, only: [:index]
+  # end
 
   resources :orders, only: [:show, :create] do
     resources :payments, only: [:new, :create]

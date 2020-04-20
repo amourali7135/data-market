@@ -50,7 +50,7 @@ class InquiriesController < ApplicationController
     @inquiry = Inquiry.find(params[:id])
     # @sellerinquiry = Sellerinquiry.new || Sellerinquiry.find_by(seller_id: current_user.seller.id, inquiry_id: @inquiry.id)
     if
-      Sellerinquiry.where(inquiry_id: @inquiry.id, seller_id: @seller.id).present?
+      user_signed_in? && @seller.present? && Sellerinquiry.where(inquiry_id: @inquiry.id, seller_id: @seller.id).present?
       @sellerinquiry = Sellerinquiry.find_by(inquiry_id: @inquiry.id, seller_id: @seller.id)
     else
       @sellerinquiry = Sellerinquiry.new
@@ -63,12 +63,13 @@ class InquiriesController < ApplicationController
   def update
     @inquiry = Inquiry.find(params[:id])
     if @inquiry.update(inquiry_params)
-      flash[:notice] = "Your inquiry profile was successfully updated!"
+      flash[:notice] = "Your inquiry was successfully updated!"
       redirect_to buyerdashboard_path
     else
       flash[:error] = "There was an error, please try again!"
       render 'edit'
     end
+
   end
 
   def destroy
@@ -103,8 +104,8 @@ class InquiriesController < ApplicationController
     @current_page = params[:page]&.to_i || 1
   end
 
-  def inquiry_params
-    params.require(:inquiry).permit(:information_usage, :requirements, :reward, :anonymous, :total, :title, :format, :instructions, :price_cents, :active, :types, types: [], tag_list: [],  )
+  def inquiry_params #stop forgetting columns man!
+    params.require(:inquiry).permit(:information_usage, :requirements, :reward, :anonymous, :total, :title, :format, :instructions, :hidden, :price_cents, :active, :types, types: [], tag_list: [],  )
   end
 
 end

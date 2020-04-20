@@ -1,5 +1,9 @@
-Restrict access via dual account system.  Inquiries.  Liked. 
-<div class="row align-items-center justify-content-center">
+<section>
+
+<div class="dashboard_container mt-4">
+
+
+<div class="row align-items-center justify-content-center mt-3">
   <div class="row">
     <p>Edit your seller profile  <%= link_to 'Edit', edit_seller_path(@seller.id), class: 'btn btn-primary'  %>   </p>
   </div>
@@ -7,22 +11,45 @@ Restrict access via dual account system.  Inquiries.  Liked.
 
 
 <div class="row align-items-center justify-content-center">
-<div class="row">
-<p>Change your username or password  <%= link_to 'Change', edit_user_registration_path(@current_user.id), class: 'btn btn-primary'  %>   </p>
-  </div>
-</div>
-
-
-
-<div class="row align-items-center justify-content-center">
-<div class="row">
-<%# <p> See your conversations! <%= link_to 'Convos', conversation_path(@user), class: 'btn btn-primary' %>
- <p> See your conversations! <%= link_to 'Convos', conversations_path, class: 'btn btn-primary' %> </p> 
+  <div class="row">
+    <p>Change your username or password  <%= link_to 'Change', edit_user_registration_path(@current_user.id), class: 'btn btn-primary'  %>   </p>
   </div>
 </div>
 
 <div class="row align-items-center justify-content-center">
-<div class="row">
-<p>You have participated in blank_amount inquiries  <%= link_to 'Change', edit_user_registration_path(@current_user.id), class: 'btn btn-primary'  %>   </p>
+  <div class="row">
+     <%# <p> See your conversations! <%= link_to 'Convos', conversation_path(@user), class: 'btn btn-primary' %>
+    <p> See your conversations! <%= link_to 'Convos', conversations_path, class: 'btn btn-primary' %> </p>
   </div>
 </div>
+
+<div class="row align-items-center justify-content-center">
+  <div class="row">
+    <p>You have participated in blank_amount inquiries  <%= link_to 'Change', edit_user_registration_path(@current_user.id), class: 'btn btn-primary'  %>   </p>
+  </div>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="dashboard_container mt-4 mb-4">
+  <p class="grid-headers pt-2">You've sold data in the following inquiries</p>
+    <div class="row align-items-center justify-content-center">
+      <div class="container front-page-grid">
+        <% @seller.sellerinquiries.each do |sellerinquiry| %>
+          <div class="row ">
+            <div class="products pl-5 card-grid-3c">
+            <div>
+              <%= render partial: 'shared/sellerinquiry_seller_dashboard_card', locals: {inquiry: sellerinquiry.inquiry, seller: @seller, buyer: sellerinquiry.inquiry.buyer} %>
+            </div>
+              <% end %>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
+
+</section>
